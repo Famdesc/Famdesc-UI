@@ -19,7 +19,7 @@
 
 /* Light mode colors. */
 :root[data-theme="light"] {
-    --border: hsla(var(--border-yellow), .4);
+    --border: hsla(var(--border-salmon), .4);
     --backdrop-color: #f6f6f699;
     --sl-color-accent: #b73d00;
     --sl-color-accent-high: #562800;
@@ -34,7 +34,7 @@
     --sl-color-gray-7: #f6f6f6;
     --sl-color-white: #181818;
     --list-marker-color: #fb923c;
-    --border-yellow: 54.9, 96.7%, 88%;
+    --border-salmon: 54.9, 96.7%, 88%;
 
 }
 
@@ -51,7 +51,7 @@ header.header {
     padding-inline: 2rem !important;
 }
 
-header > div:first-of-type {
+header>div:first-of-type {
     backdrop-filter: blur(12px) !important;
     background-color: var(--backdrop-color) !important;
     border: 1px var(--border) solid;
@@ -81,7 +81,7 @@ header > div:first-of-type {
     border: none !important;
 }
 
-mobile-starlight-toc > nav {
+mobile-starlight-toc>nav {
     border: none !important;
     border-radius: 1rem;
     margin-top: 2rem !important;
@@ -131,17 +131,17 @@ article.card {
     padding-left: 0;
 }
 
-.sl-markdown-content ul:not(:where(.not-content *)) > li {
+.sl-markdown-content ul:not(:where(.not-content *))>li {
     padding-left: 1.75rem;
     position: relative;
 }
 
-.sl-markdown-content li:not(:where(.not-content *)) > ul,
-.sl-markdown-content li + li:not(:where(.not-content *)) {
+.sl-markdown-content li:not(:where(.not-content *))>ul,
+.sl-markdown-content li+li:not(:where(.not-content *)) {
     margin-top: 0.625rem;
 }
 
-.sl-markdown-content ul:not(:where(.not-content *)) > li:before {
+.sl-markdown-content ul:not(:where(.not-content *))>li:before {
     background: var(--list-marker-color);
     border-radius: 1px;
     content: "";
@@ -153,16 +153,16 @@ article.card {
 }
 
 @media screen and (max-width: 800px) {
-    mobile-starlight-toc > nav {
+    mobile-starlight-toc>nav {
         border-radius: 1rem;
         margin-top: 3rem !important;
     }
 
-    header > div:first-of-type {
+    header>div:first-of-type {
         padding-inline-end: 5rem !important;
     }
 
-    starlight-menu-button > button {
+    starlight-menu-button>button {
         right: 3rem !important;
         top: 2.2rem !important;
     }
