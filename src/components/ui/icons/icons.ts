@@ -109,6 +109,24 @@ export const Icons = {
     strokeLinejoin: "round",
     stroke: "currentColor",
   },
+
+  features: {
+    paths: [
+      {
+        d: "M12 4.354a1.8 1.8 0 00-2.054.395l-4.95 4.95a1.8 1.8 0 000 2.55l4.95 4.95a1.8 1.8 0 002.55 0l4.95-4.95a1.8 1.8 0 000-2.55l-4.95-4.95A1.8 1.8 0 0012 4.354z",
+      },
+    ],
+    class:
+      "h-6 w-6 flex-shrink-0 text-neutral-700 hs-tab-active:text-blue-400 dark:text-neutral-300 dark:hs-tab-active:text-blue-300 md:h-7 md:w-7",
+    width: 24,
+    height: 24,
+    viewBox: "0 0 24 24",
+    fill: "none",
+    strokeWidth: "1.5",
+    strokeLinecap: "round",
+    strokeLinejoin: "round",
+    stroke: "currentColor",
+  },
   arrowUp: {
     paths: [
       {
