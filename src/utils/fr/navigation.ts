@@ -1,4 +1,3 @@
-
 const navBarLinks = [
   { name: "Accueil", url: "/fr" },
   { name: "Produits", url: "/fr/products" },
@@ -28,11 +27,11 @@ const footerLinks = [
 ];
 
 const socialLinks = {
-  facebook: "#",
-  x: "#",
-  github: "https://github.com/mearashadowfax/ScrewFast",
-  google: "#",
-  slack: "#",
+  facebook: "https://www.facebook.com/famdesc",
+  x: "https://twitter.com/fam_desc",
+  github: "https://github.com/nardis9501/Famdesc-landing-blog",
+  discord:
+    "https://discord.com/channels/1244297608420261983/1244332379154288812",
 };
 
 export default {
