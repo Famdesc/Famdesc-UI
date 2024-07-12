@@ -1,12 +1,13 @@
 ---
 import Icon from "@components/ui/icons/Icon.astro";
 // Destructure the properties from Astro.props
-const { title, url, noArrow } = Astro.props;
+const { title, url, noArrow, openInNewTab } = Astro.props;
 // Define TypeScript interface for the properties
 interface Props {
   title?: string;
   url?: string;
   noArrow?: boolean;
+  openInNewTab?: boolean;
 }
 // Define CSS classes for styling the button
 const baseClasses =
@@ -19,11 +20,13 @@ const fontSizeClasses = "2xl:text-base";
 const ringClasses = "dark:ring-zinc-200";
 ---
 
-<!-- Link styled as a button, with dynamic title, URL, and optional arrow -->
+<!-- Link styled as a button, with dynamic title, URL and optional openInNewTab and arrow -->
 <a
   class={`${baseClasses} ${borderClasses} ${bgColorClasses} ${disableClasses} ${fontSizeClasses} ${ringClasses}`}
   href={url}
+  target={`${openInNewTab ? "_blank" : "_self"}`}
 >
+  <!-- opens the url in a new tab based on the openInNewTab property, recommended when the url does not belong to your domain. -->
   {title}
   <!-- Display the arrow based on the 'noArrow' property -->
 
