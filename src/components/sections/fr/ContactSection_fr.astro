@@ -47,19 +47,22 @@ const formSubTitle: string =
                 id="hs-firstname-contacts"
                 label="Prénom"
                 name="hs-firstname-contacts"
+                required
               />
               <TextInput
                 id="hs-lastname-contacts"
                 label="Nom"
                 name="hs-firstname-contacts"
+                required
               />
             </div>
-            <EmailContactInput id="hs-email-contacts" />
-            <PhoneInput id="hs-phone-number" />
+            <EmailContactInput id="hs-email-contacts" required />
+            <PhoneInput id="hs-phone-number" required={false} />
             <TextAreaInput
               id="hs-about-contacts"
               label="Détails"
               name="hs-about-contacts"
+              required
             />
           </div>
 
