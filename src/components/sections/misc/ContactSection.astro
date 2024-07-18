@@ -9,9 +9,9 @@ import TextAreaInput from "@components/ui/forms/input/TextAreaInput.astro";
 import Icon from "@components/ui/icons/Icon.astro";
 
 // Define the variables that will be used in this component
-const title: string = "Contact us";
+const title: string = "Contact Famdesc Team";
 const subTitle: string =
-  "Have questions or want to discuss a project? Reach out, and let's craft the perfect solution with our tools and services.";
+  "Interested in learning more about our vision? Do you have any questions or comments about our platform? We want to hear from you!";
 const formTitle: string = "Fill in the form below";
 const formSubTitle: string = "We'll get back to you in 1-2 business days.";
 ---
@@ -46,19 +46,22 @@ const formSubTitle: string = "We'll get back to you in 1-2 business days.";
                 id="hs-firstname-contacts"
                 label="First Name"
                 name="hs-firstname-contacts"
+                required
               />
               <TextInput
                 id="hs-lastname-contacts"
                 label="Last Name"
                 name="hs-firstname-contacts"
+                required
               />
             </div>
-            <EmailContactInput id="hs-email-contacts" />
-            <PhoneInput id="hs-phone-number" />
+            <EmailContactInput id="hs-email-contacts" required />
+            <PhoneInput id="hs-phone-number" required={false} />
             <TextAreaInput
               id="hs-about-contacts"
               label="Details"
               name="hs-about-contacts"
+              required
             />
           </div>
 
@@ -98,9 +101,9 @@ const formSubTitle: string = "We'll get back to you in 1-2 business days.";
 
         <ContactIconBlock
           heading="Visit our office"
-          content="UK ScrewFast"
-          isAddressVisible={true}
-          addressContent="72 Union Terrace, E10 4PE London"
+          content="Famdesc LLC"
+          isAddressVisible={false}
+          addressContent="Habana"
           ><Icon name="mapPin" />
         </ContactIconBlock>
 
@@ -108,8 +111,8 @@ const formSubTitle: string = "We'll get back to you in 1-2 business days.";
           heading="Contact us by email"
           content="Prefer the written word? Drop us an email at"
           isLinkVisible={true}
-          linkTitle="support@screwfast.uk"
-          linkURL="#"
+          linkTitle="contact@famdesc.com"
+          linkURL="mailto:contact@famdesc.com"
           ><Icon name="envelopeOpen" />
         </ContactIconBlock>
       </div>
