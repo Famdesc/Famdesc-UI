@@ -7,27 +7,17 @@ interface Props {
 ---
 
 <div class="flex flex-col items-center justify-center">
-  <video
-    class="aspect-video h-full w-full rounded-xl border-none"
-    width="320"
-    height="240"
-    controls
-    autoplay
-    muted
-    loop
-    playsinline
-    preload="none"
-  >
-    <source src={src} type="video/webm" />
+  <div class="relative w-full" style="padding-top: 56.25%;">
+    <iframe
+      class="absolute left-0 top-0 h-full w-full rounded-xl"
+      src={src}
+      allow="autoplay; fullscreen; picture-in-picture; clipboard-write"
+      title="famdesc-promo-video"></iframe>
+  </div>
 
-    <p>
-      Your browser does not support HTML video. Here is a
-      <a href={src} download="Famdesc-video.mp4"> link to the video </a>{" "}
-      instead.
-    </p>
-  </video>
+  <script src="https://player.vimeo.com/api/player.js"></script>
 
-  <p class="mt-2 text-pretty text-neutral-600 dark:text-neutral-400 md:mt-4">
+  <p class="mt-14 text-pretty text-neutral-600 dark:text-neutral-400 md:mt-4">
     {alt}
   </p>
 </div>
