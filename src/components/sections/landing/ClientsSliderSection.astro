@@ -1,50 +1,21 @@
 ---
 import AvatarTestimonialSectionLarge from "@/components/ui/avatars/AvatarTestimonialSectionLarge.astro";
-import Nardis from "@images/nardis.webp";
-import Liang from "@images/liang.webp";
-import Arian from "@images/arian.webp";
-import Frank from "@images/frank.webp";
+
 // Define props from Astro
-const { title, subTitle } = Astro.props;
+const { title, subTitle, testimonialsData } = Astro.props;
 
 // Define TypeScript interface for props
 interface Props {
   title: string;
   subTitle?: string;
+  testimonialsData: Array<Testimonials>;
 }
-
-// Contains objects representing testimonials.
-const TestimonialsData = [
-  {
-    author: "Nardis Del Campo",
-    avatarUrl: Nardis,
-    testimonial:
-      "Famdesc is a digital platform dedicated to strengthening family bonds and preserving special moments over time.",
-    role: "CEO at Famdesc",
-  },
-  {
-    author: "Liang Ricardo",
-    avatarUrl: Liang,
-    testimonial:
-      "With a user-centric approach and authenticity, offers a welcoming space where families can build, share and celebrate together.",
-    role: "Full Stack Developer",
-  },
-  {
-    author: "Arian Milanes",
-    avatarUrl: Arian,
-    testimonial:
-      "On Famdesc, users have the opportunity to create and explore detailed family trees, connecting past and present generations.",
-    role: "Full Stack Developer",
-  },
-
-  {
-    author: "Frank Siret",
-    avatarUrl: Frank,
-    testimonial:
-      "Famdesc will be an enhanced, open source, user-centric social network with content of value to everyone globally",
-    role: "React/Spring Developer | Peoplewalking",
-  },
-];
+type Testimonials = {
+  author: string;
+  avatarUrl: any;
+  testimonial: string;
+  role: `${string} | ${string}`;
+};
 ---
 
 <section
@@ -74,7 +45,7 @@ const TestimonialsData = [
       <div class="swiper-wrapper">
         <!-- Slides -->
         {
-          TestimonialsData.map(({ author, role, testimonial, avatarUrl }) => (
+          testimonialsData.map(({ author, role, testimonial, avatarUrl }) => (
             <div class="swiper-slide flex flex-col items-center justify-center">
               <AvatarTestimonialSectionLarge
                 author={author}
@@ -93,32 +64,34 @@ const TestimonialsData = [
   </div>
 </section>
 
-<!-- External stylesheets and scripts are loaded for Swiper. -->
-<link
-  rel="stylesheet"
-  href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.css"
-/>
-<script
-  is:inline
-  src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
-<script is:inline>
-  new Swiper(".swiper", {
-    loop: true,
+<head>
+  <!-- External stylesheets and scripts are loaded for Swiper. -->
+  <link
+    rel="stylesheet"
+    href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.css"
+  />
+  <script
+    is:inline
+    src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+  <script is:inline>
+    new Swiper(".swiper", {
+      loop: true,
 
-    // If we need pagination
-    pagination: {
-      el: ".swiper-pagination",
-      clickable: true,
-    },
-    autoplay: {
-      delay: 4000,
-      disableOnInteraction: false,
-    },
-    breakpoints: {
-      320: {
-        slidesPerView: 1,
-        spaceBetween: 15,
+      // If we need pagination
+      pagination: {
+        el: ".swiper-pagination",
+        clickable: true,
       },
-    },
-  });
-</script>
+      autoplay: {
+        delay: 4000,
+        disableOnInteraction: false,
+      },
+      breakpoints: {
+        320: {
+          slidesPerView: 1,
+          spaceBetween: 15,
+        },
+      },
+    });
+  </script>
+</head>
