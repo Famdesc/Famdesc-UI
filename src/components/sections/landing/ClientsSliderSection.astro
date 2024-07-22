@@ -8,9 +8,9 @@ const { title, subTitle, testimonialsData } = Astro.props;
 interface Props {
   title: string;
   subTitle?: string;
-  testimonialsData: TestimonialsData[];
+  testimonialsData: Array<Testimonials>;
 }
-type TestimonialsData = {
+type Testimonials = {
   author: string;
   avatarUrl: any;
   testimonial: string;
@@ -64,32 +64,34 @@ type TestimonialsData = {
   </div>
 </section>
 
-<!-- External stylesheets and scripts are loaded for Swiper. -->
-<link
-  rel="stylesheet"
-  href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.css"
-/>
-<script
-  is:inline
-  src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
-<script is:inline>
-  new Swiper(".swiper", {
-    loop: true,
+<head>
+  <!-- External stylesheets and scripts are loaded for Swiper. -->
+  <link
+    rel="stylesheet"
+    href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.css"
+  />
+  <script
+    is:inline
+    src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+  <script is:inline>
+    new Swiper(".swiper", {
+      loop: true,
 
-    // If we need pagination
-    pagination: {
-      el: ".swiper-pagination",
-      clickable: true,
-    },
-    autoplay: {
-      delay: 4000,
-      disableOnInteraction: false,
-    },
-    breakpoints: {
-      320: {
-        slidesPerView: 1,
-        spaceBetween: 15,
+      // If we need pagination
+      pagination: {
+        el: ".swiper-pagination",
+        clickable: true,
       },
-    },
-  });
-</script>
+      autoplay: {
+        delay: 4000,
+        disableOnInteraction: false,
+      },
+      breakpoints: {
+        320: {
+          slidesPerView: 1,
+          spaceBetween: 15,
+        },
+      },
+    });
+  </script>
+</head>

@@ -4,7 +4,7 @@ import Image from "astro/components/Image.astro";
 const { src, alt, author, role, content } = Astro.props;
 
 interface Props {
-  src: ImageMetadata;
+  src: string;
   alt: string;
   author: string;
   role: string;
@@ -19,6 +19,7 @@ interface Props {
     class="size-16 rounded-full md:h-24 md:w-24"
     draggable={"false"}
     loading={"eager"}
+    inferSize
     format={"webp"}
   />
   <div class="flex flex-col items-center justify-center">

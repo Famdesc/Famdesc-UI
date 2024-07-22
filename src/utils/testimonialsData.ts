@@ -1,10 +1,10 @@
-type TestimonialsData = {
+type Testimonials = {
   author: string;
   avatarUrl: any;
   testimonial: string;
   role: `${string} | ${string}`;
 };
-const usTestimonialData: TestimonialsData[] = [
+const usTestimonialData: Array<Testimonials> = [
   {
     author: "Nardis Del Campo",
     avatarUrl:
@@ -40,7 +40,7 @@ const usTestimonialData: TestimonialsData[] = [
   },
 ];
 
-const esTestimonialData: TestimonialsData[] = [
+const esTestimonialData: Array<Testimonials> = [
   {
     author: "Nardis Del Campo",
     avatarUrl:
