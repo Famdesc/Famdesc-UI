@@ -8,7 +8,7 @@ import starlight from "@astrojs/starlight";
 // https://astro.build/config
 export default defineConfig({
   // https://docs.astro.build/en/guides/images/#authorizing-remote-images
-  site: "https://screwfast.uk",
+  site: "https://famdesc.com",
   image: {
     domains: ["images.unsplash.com"],
   },
@@ -27,9 +27,10 @@ export default defineConfig({
     tailwind(),
     sitemap({
       i18n: {
-        defaultLocale: "en", // All urls that don't contain `fr` after `https://screwfast.uk/` will be treated as default locale, i.e. `en`
+        defaultLocale: "en", // All urls that don't contain `fr` after `https://famdesc.com/` will be treated as default locale, i.e. `en`
         locales: {
           en: "en", // The `defaultLocale` value must present in `locales` keys
+          es: "es",
           fr: "fr",
         },
       },
@@ -93,7 +94,8 @@ export default defineConfig({
       components: {
         SiteTitle: "./src/components/ui/starlight/SiteTitle.astro",
         Head: "./src/components/ui/starlight/Head.astro",
-        MobileMenuFooter: "./src/components/ui/starlight/MobileMenuFooter.astro",
+        MobileMenuFooter:
+          "./src/components/ui/starlight/MobileMenuFooter.astro",
         ThemeSelect: "./src/components/ui/starlight/ThemeSelect.astro",
       },
       head: [
@@ -101,14 +103,14 @@ export default defineConfig({
           tag: "meta",
           attrs: {
             property: "og:image",
-            content: "https://screwfast.uk" + "/social.webp",
+            content: "https://famdesc.com" + "/social.webp",
           },
         },
         {
           tag: "meta",
           attrs: {
             property: "twitter:image",
-            content: "https://screwfast.uk" + "/social.webp",
+            content: "https://famdesc.com" + "/social.webp",
           },
         },
       ],
