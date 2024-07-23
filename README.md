@@ -188,6 +188,7 @@ src/
 │   ├── 404.astro         # Custom 404 page
 │   ├── blog/   
 │   ├── fr/               # Localized content
+│   ├── es/               # Localized content 
 │   ├── contact.astro     
 │   ├── index.astro       # The landing/home page
 │   ├── insights/         

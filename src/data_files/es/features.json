@@ -1,0 +1,22 @@
+[
+  {
+    "heading": "Diseño Centrado en el Usuario",
+    "content": "Experimenta la diferencia con el diseño de Famdesc enfocado en el usuario, donde la funcionalidad se encuentra con la practicidad para una experiencia en linea mejorada.",
+    "svg": "frame"
+  },
+  {
+    "heading": "Código Abierto",
+    "content": "Famdesc es una plataforma de código abierto, lo que permite una mejora continua, mayor seguridad y transparencia en el desarrollo.",
+    "svg": "openSource"
+  },
+  {
+    "heading": "Contenido de Alta Calidad",
+    "content": "En Famdesc, priorizamos y promovemos contenido de alta calidad y valioso para nuestros usuarios, enriqueciendo su experiencia y proporcionándoles información útil y relevante.",
+    "svg": "books"
+  },
+  {
+    "heading": "Privacidad y Seguridad de los Datos",
+    "content": "La privacidad y seguridad de los datos de nuestros usuarios en Famdesc es una prioridad absoluta.",
+    "svg": "privacity"
+  }
+]

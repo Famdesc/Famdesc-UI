@@ -1,0 +1,13 @@
+{
+  "subTitle": "Pregúntanos cualquier cosa sobre nuestra marca y servicios, y obtén respuestas precisas.",
+  "faqs": [
+    {
+      "question": "¿Qué es Famdesc?",
+      "answer": "Famdesc es una red social diseñada para fortalecer los lazos familiares y preservar recuerdos a lo largo del tiempo. Permite a las familias conectarse, compartir momentos especiales y crear árboles genealógicos detallados."
+    },
+    {
+      "question": "¿Cómo protegen la privacidad de mis datos?",
+      "answer": "En Famdesc, nos tomamos muy en serio la privacidad. Utilizamos cifrado avanzado y políticas de privacidad estrictas para garantizar que tu información personal y recuerdos estén protegidos. Puedes controlar quién tiene acceso a tus publicaciones y datos."
+    }
+  ]
+}

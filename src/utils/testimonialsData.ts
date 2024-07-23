@@ -10,7 +10,7 @@ const usTestimonialData: Array<Testimonials> = [
     avatarUrl:
       "https://raw.githubusercontent.com/nardis9501/avatar/main/nardis.webp",
     testimonial:
-      "Famdesc is a digital platform dedicated to strengthening family bonds and preserving special moments over time.",
+      "Famdesc is a digital platform dedicated to strengthening family bonds and preserving special moments over time. We are deeply committed to offering the best tools to connect and enrich the lives of families around the world.",
     role: "CEO | Famdesc",
   },
   {
@@ -46,7 +46,7 @@ const esTestimonialData: Array<Testimonials> = [
     avatarUrl:
       "https://raw.githubusercontent.com/nardis9501/avatar/main/nardis.webp",
     testimonial:
-      "Famdesc is a digital platform dedicated to strengthening family bonds and preserving special moments over time.",
+      "Estamos comprometidos a fortalecer los lazos familiares, preservar momentos especiales y en ofrecer las mejores herramientas para conectar y enriquecer la vida de las familias de todo el mundo.",
     role: "CEO | Famdesc",
   },
   {
@@ -54,7 +54,7 @@ const esTestimonialData: Array<Testimonials> = [
     avatarUrl:
       "https://raw.githubusercontent.com/nardis9501/avatar/main/liang.webp",
     testimonial:
-      "With a user-centric approach and authenticity, offers a welcoming space where families can build, share and celebrate together.",
+      "Con un enfoque centrado en el usuario y la autenticidad, ofrece un espacio acogedor donde las familias pueden construir, compartir y celebrar juntas.",
     role: "Full Stack Developer |    ",
   },
   {
@@ -62,7 +62,7 @@ const esTestimonialData: Array<Testimonials> = [
     avatarUrl:
       "https://raw.githubusercontent.com/nardis9501/avatar/main/arian.webp",
     testimonial:
-      "Famdesc tiene la visión de cambiar la forma en la que interactuamos en las redes sociales, dando un enfoque familiar en la manera que conectamos con parientes y amigos. Su algoritmo promete ser revolucionario mejorando la comunicación entre sus usuarios.",
+      "Famdesc tiene la visión de cambiar la forma en la que interactuamos en las redes sociales, dando un enfoque familiar en la manera que conectamos con parientes y amigos.",
     role: "Team Leader | Agencia Áurea",
   },
 
@@ -71,7 +71,7 @@ const esTestimonialData: Array<Testimonials> = [
     avatarUrl:
       "https://raw.githubusercontent.com/nardis9501/avatar/main/frank.webp",
     testimonial:
-      "Famdesc will be an enhanced, open source, user-centric social network with content of value to everyone globally",
+      "Famdesc será una red social mejorada, de código abierto y centrada en el usuario, con contenidos de valor para todos a nivel mundial.",
     role: "React/Spring Developer | Peoplewalking",
   },
 ];
