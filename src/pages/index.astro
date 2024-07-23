@@ -16,6 +16,7 @@ import tools from "@images/innovative-tools.avif";
 import dashboard from "@images/dashboard-image.avif";
 import ClientsSliderSection from "@/components/sections/landing/ClientsSliderSection.astro";
 import TestimonialData from "@utils/testimonialsData";
+import { famdescPromo } from "@/videos/videosLink";
 
 const avatarSrcs: Array<string> = [
   "https://images.unsplash.com/photo-1568602471122-7832951cc4c5?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=facearea&facepad=2&w=300&h=300&q=80",
@@ -61,7 +62,7 @@ const avatarSrcs: Array<string> = [
   <FeaturesGeneral
     title="Discover Famdesc: Our Vision And Core Values."
     subTitle="At Famdesc, we address the unique challenges faced in the realm of social connectivity. From innovative features to expert services, we're dedicated to helping you forge meaningful connections and enhance your online experience."
-    src="https://player.vimeo.com/video/987746713?title=0&byline=0&portrait=0&badge=0&autopause=0&player_id=0&app_id=58479"
+    src={famdescPromo}
     alt="Famdesc can help you connect with your loved ones while keeping your data secure. Join us and start sharing today!"
     features={features}
   />

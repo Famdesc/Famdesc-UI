@@ -1,0 +1,145 @@
+---
+// Import the necessary components
+import MainLayout from "@/layouts/MainLayout.astro";
+import HeroSection from "@components/sections/landing/HeroSection.astro";
+import HeroSectionAlt from "@components/sections/landing/HeroSectionAlt.astro";
+import FeaturesGeneral from "@components/sections/features/FeaturesGeneral.astro";
+import FeaturesNavs from "@components/sections/features/FeaturesNavs.astro";
+import TestimonialsSection from "@components/sections/testimonials/TestimonialsSection.astro";
+import FAQ from "@components/sections/misc/FAQ.astro";
+import AnnouncementBanner from "@components/ui/banners/AnnouncementBanner.astro";
+import heroImage from "@images/hero-image.avif";
+import faqs from "@data/es/faqs.json";
+import features from "@data/es/features.json";
+import robustFeatures from "@images/robust-features.avif";
+import tools from "@images/innovative-tools.avif";
+import dashboard from "@images/dashboard-image.avif";
+import { getRelativeLocaleUrl } from "astro:i18n";
+import ClientsSliderSection from "@/components/sections/landing/ClientsSliderSection.astro";
+import TestimonialData from "@utils/testimonialsData";
+import { famdescPromo } from "@/videos/videosLink";
+
+const avatarSrcs: Array<string> = [
+  "https://images.unsplash.com/photo-1568602471122-7832951cc4c5?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=facearea&facepad=2&w=300&h=300&q=80",
+  "https://images.unsplash.com/photo-1531927557220-a9e23c1e4794?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=facearea&facepad=2&w=300&h=300&q=80",
+  "https://images.unsplash.com/photo-1541101767792-f9b2b1c4f127?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&&auto=format&fit=facearea&facepad=3&w=300&h=300&q=80",
+  "https://images.unsplash.com/photo-1492562080023-ab3db95bfbce?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=facearea&facepad=2&w=300&h=300&q=80",
+];
+---
+
+<MainLayout lang="es">
+  <AnnouncementBanner
+    btnId="dismiss-button"
+    title="Orgullosamente de Código Abierto"
+    btnTitle="Estamos en GitHub"
+    url="https://github.com/nardis9501/Famdesc-landing-blog"
+  />
+
+  <HeroSection
+    title=`<span class="text-salmon-500 dark:text-salmon-400">Famdesc:</span> construye, comparte y preserva `
+    subTitle="El Espacio Digital para las Familias"
+    primaryBtn="Dona ahora"
+    openInNewTab={true}
+    primaryBtnURL="https://www.gofundme.com/famdesc"
+    secondaryBtn="Contáctanos"
+    secondaryBtnURL={getRelativeLocaleUrl("es", "contact")}
+    withReview={true}
+    avatars={avatarSrcs}
+    rating=`<span class="font-bold">4.8</span> / 5`
+    starCount={4}
+    reviews=`A partir de <span class="font-bold">12,8k</span> reseñas`
+    src={heroImage}
+    alt="Familia multigeneracional fundida en un abrazo y ronriendo"
+  />
+
+  <ClientsSliderSection
+    title="Confianza de Expertos"
+    subTitle="Únete a los visionarios que confían en Famdesc para revolucionar sus conexiones sociales."
+    testimonialsData={TestimonialData.esTestimonialData}
+  />
+
+  <FeaturesGeneral
+    title="Descubra Nuestra Visión y Valores"
+    subTitle="En Famdesc, abordamos los retos a los que se enfrenta el ámbito de la conectividad social. Desde funciones innovadoras hasta servicios expertos, nos dedicamos a ayudarle a forjar conexiones significativas y a mejorar su experiencia en línea."
+    src={famdescPromo}
+    alt="Famdesc puede ayudarle a conectar con sus seres queridos manteniendo sus datos seguros. !Únase a nosotros y empiece a compartir hoy mismo!"
+    features={features}
+  />
+
+  <FeaturesNavs
+    title={`Personaliza <span class="text-salmon-500 dark:text-salmon-400">Famdesc</span> para Adaptarse Perfectamente a tus Necesidades de Redes Sociales.`}
+    tabs={[
+      {
+        heading: "Herramientas Innovadoras",
+        content:
+          "Potencia tus interacciones sociales con las herramientas innovadoras de Famdesc. Desde compartir contenido sin problemas hasta controles avanzados de privacidad, disfruta de una experiencia sofisticada en redes sociales.",
+        svg: "tools",
+        src: tools,
+        alt: "Familia usando herramientas innovadoras de redes sociales en Famdesc compartiendo contenido sin esfuerzo.",
+        first: true,
+      },
+      {
+        heading: "Tableros Intuitivos",
+        content:
+          "Navega con facilidad utilizando los tableros intuitivos de Famdesc. Gestiona tus conexiones e interacciones sin esfuerzo con interfaces fáciles de usar, diseñadas para una red social rápida y efectiva.",
+        svg: "dashboard",
+        src: dashboard,
+        alt: "Una captura de pantalla o representación gráfica del tablero intuitivo.",
+        second: true,
+      },
+      {
+        heading: "Características Robustas",
+        content:
+          "Minimiza la complejidad, maximiza el compromiso. Las características robustas de Famdesc optimizan tus interacciones sociales, ofreciendo una experiencia que destaca por su excelencia y facilidad de uso.",
+        svg: "features",
+        src: robustFeatures,
+        alt: "Imagen que refleja interacciones sociales sólidas.",
+      },
+    ]}
+  />
+
+  <TestimonialsSection
+    title="Conéctate y Prospera con Famdesc"
+    subTitle="En Famdesc, redefinimos la manera en que te conectas con tus seres queridos. Experimenta interacciones familiares fluidas con nuestra plataforma intuitiva diseñada para fortalecer los lazos y enriquecer vidas."
+    testimonials={[
+      {
+        content:
+          "Famdesc mejora significativamente nuestras conexiones familiares. La configuración fue sencilla, y la capacidad de compartir momentos preciosos al instante ha transformado nuestras interacciones familiares. ¡Verdaderamente una plataforma notable para fomentar conexiones reales y significativas!",
+        author: "Yuri",
+        role: "Ingeniero de Software | ONLIVE.SITE.",
+        avatarSrc:
+          "https://raw.githubusercontent.com/nardis9501/avatar/main/yuri.avif",
+      },
+    ]}
+    statistics={[
+      {
+        count: "50k+",
+        description:
+          "usuarios activos — familias, genealogistas e historiadores comunitarios construyendo y preservando sus legados.",
+      },
+      {
+        count: "3x",
+        description:
+          "incremento en conexiones significativas con un diseño centrado en el usuario y herramientas de compartición mejoradas.",
+      },
+      {
+        count: "20%",
+        description:
+          "aumento en la eficiencia en la gestión de árboles genealógicos y el compartir recuerdos, gracias a nuestra interfaz optimizada y fácil de usar.",
+      },
+      {
+        count: "4.8/5",
+        description:
+          "calificación promedio de satisfacción del usuario, reflejando nuestro compromiso con contenido de alta calidad y una experiencia de usuario excepcional.",
+      },
+    ]}
+  />
+
+  <FAQ title="Preguntas<br />frecuentes" faqs={faqs} />
+
+  <HeroSectionAlt
+    title="Construyamos Juntos"
+    subTitle="Famdesc es una plantilla de código abierto, meticulosamente diseñada con Astro, Tailwind CSS y los frameworks de Preline UI."
+    url="https://github.com/nardis9501/Famdesc-landing-blog"
+  />
+</MainLayout>
