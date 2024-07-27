@@ -1,0 +1,30 @@
+---
+// Import the necessary components
+import MainLayout from "@/layouts/MainLayout.astro";
+import ContactSection from "@components/sections/fr/ContactSection_fr.astro";
+---
+
+<!--Utilizing MainLayout for the outer layout of the page, and defining meta for SEO purposes-->
+<MainLayout
+  title="Contact | Famdesc"
+  lang="es"
+  structuredData={{
+    "@context": "https://schema.org",
+    "@type": "WebPage",
+    "@id": "https://famdesc.com/es/contact",
+    url: "https://famdesc.com/es/contact",
+    name: "Contáctanos | Famdesc",
+    description:
+      "¿Le interesa saber más sobre nuestra visión? ¿Tiene alguna pregunta o comentario sobre nuestra plataforma? Estaremos encantados de escucharle.",
+    isPartOf: {
+      "@type": "WebSite",
+      url: "https://famdesc.com/es/",
+      name: "Famdesc",
+      description:
+        "Famdesc ofrece herramientas y servicios digitales de primera calidad para fortalecer los lazos familiares y preservar recuerdos importantes.",
+    },
+    inLanguage: "es",
+  }}
+>
+  <ContactSection />
+</MainLayout>
