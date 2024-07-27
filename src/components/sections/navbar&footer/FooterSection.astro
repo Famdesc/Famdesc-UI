@@ -31,7 +31,11 @@ const sectionThreeContent: string =
       ? "Abonnez-vous pour recevoir les dernières mises à jour et fonctionnalités!"
       : "Subscribe now for the latest updates and features on Famdesc!";
 const crafted: string =
-  Astro.currentLocale === "fr" ? "Fabriqué par" : "Crafted by";
+  Astro.currentLocale === "es"
+    ? "Desarrollado por"
+    : Astro.currentLocale === "fr"
+      ? "Fabriqué par"
+      : "Crafted by";
 ---
 
 <footer class="w-full bg-neutral-300 dark:bg-neutral-900">
