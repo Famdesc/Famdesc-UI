@@ -75,4 +75,41 @@ const esTestimonialData: Array<Testimonials> = [
     role: "React/Spring Developer | Peoplewalking",
   },
 ];
-export default { usTestimonialData, esTestimonialData };
+
+const frTestimonialData: Array<Testimonials> = [
+  {
+    author: "Nardis Del Campo",
+    avatarUrl:
+      "https://raw.githubusercontent.com/nardis9501/avatar/main/nardis.webp",
+    testimonial:
+      "Nous sommes engagés à renforcer les liens familiaux, à préserver des moments spéciaux et à offrir les meilleurs outils pour connecter et enrichir la vie des familles à travers le monde.",
+    role: "PDG | Famdesc",
+  },
+  {
+    author: "Liang Ricardo",
+    avatarUrl:
+      "https://raw.githubusercontent.com/nardis9501/avatar/main/liang.webp",
+    testimonial:
+      "Avec un accent sur l'utilisateur et l'authenticité, Famdesc offre un espace accueillant où les familles peuvent construire, partager et célébrer ensemble.",
+    role: "Développeur Full Stack | ",
+  },
+  {
+    author: "Arian Milanes",
+    avatarUrl:
+      "https://raw.githubusercontent.com/nardis9501/avatar/main/arian.webp",
+    testimonial:
+      "Famdesc a pour vision de changer la façon dont nous interagissons sur les réseaux sociaux, en mettant l'accent sur la famille dans notre manière de nous connecter avec les proches et les amis.",
+    role: "Chef d'Équipe | Agencia Áurea",
+  },
+
+  {
+    author: "Frank Siret",
+    avatarUrl:
+      "https://raw.githubusercontent.com/nardis9501/avatar/main/frank.webp",
+    testimonial:
+      "Famdesc sera un réseau social amélioré, open source et centré sur l'utilisateur, offrant des contenus de valeur pour tous à l'échelle mondiale.",
+    role: "Développeur React/Spring | Peoplewalking",
+  },
+];
+
+export default { usTestimonialData, esTestimonialData, frTestimonialData };

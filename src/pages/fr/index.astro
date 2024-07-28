@@ -1,24 +1,22 @@
 ---
-// Import the necessary components
+// Importer les composants nécessaires
 import MainLayout from "@/layouts/MainLayout.astro";
 import HeroSection from "@components/sections/landing/HeroSection.astro";
 import HeroSectionAlt from "@components/sections/landing/HeroSectionAlt.astro";
-import ClientsSection from "@components/sections/landing/ClientsSection.astro";
 import FeaturesGeneral from "@components/sections/features/FeaturesGeneral.astro";
 import FeaturesNavs from "@components/sections/features/FeaturesNavs.astro";
 import TestimonialsSection from "@components/sections/testimonials/TestimonialsSection.astro";
-import PricingSection from "@components/sections/pricing/PricingSection.astro";
 import FAQ from "@components/sections/misc/FAQ.astro";
 import AnnouncementBanner from "@components/ui/banners/AnnouncementBanner.astro";
 import heroImage from "@images/hero-image.avif";
 import faqs from "@data/fr/faqs.json";
 import features from "@data/fr/features.json";
-import pricing from "@data/fr/pricing.json";
-import featureImage from "@images/features-image.avif";
 import robustFeatures from "@images/robust-features.avif";
 import tools from "@images/innovative-tools.avif";
 import dashboard from "@images/dashboard-image.avif";
-import { getRelativeLocaleUrl } from "astro:i18n";
+import ClientsSliderSection from "@/components/sections/landing/ClientsSliderSection.astro";
+import TestimonialData from "@utils/testimonialsData";
+import { famdescPromo } from "@/videos/videosLink";
 
 const avatarSrcs: Array<string> = [
   "https://images.unsplash.com/photo-1568602471122-7832951cc4c5?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=facearea&facepad=2&w=300&h=300&q=80",
@@ -30,116 +28,120 @@ const avatarSrcs: Array<string> = [
 
 <MainLayout lang="fr">
   <AnnouncementBanner
+    title="Fièrement Open Source"
     btnId="dismiss-button"
-    btnTitle="Découvrez ScrewFast sur GitHub"
-    url="https://github.com/mearashadowfax/ScrewFast"
+    btnTitle="Explorez Famdesc sur GitHub"
+    url="https://github.com/nardis9501/Famdesc-landing-blog"
   />
 
   <HeroSection
-    title=`Équipez vos projets avec <span class="text-salmon-500 dark:text-salmon-400">ScrewFast</span>`
-    subTitle="Outils matériels de haute qualité et services de construction experts pour tous les besoins en projet."
-    primaryBtn="Commencez à explorer"
-    primaryBtnURL={getRelativeLocaleUrl("fr", "products")}
-    secondaryBtn="Contacter l'équipe commerciale"
-    secondaryBtnURL={getRelativeLocaleUrl("fr", "contact")}
+    title=`Construire, Partager, Préserver:
+    <span
+        class="text-salmon-500 dark:text-salmon-400">Famdesc</span>`
+    subTitle="Votre Havre Numérique pour les Moments en Famille"
+    primaryBtn="Faire un Don"
+    openInNewTab={true}
+    primaryBtnURL="https://www.gofundme.com/famdesc"
+    secondaryBtn="Contactez Notre Équipe"
+    secondaryBtnURL="/contact"
     withReview={true}
     avatars={avatarSrcs}
     rating=`<span class="font-bold">4.8</span> / 5`
     starCount={4}
-    reviews=`À partir de plus de <span class="font-bold">12,8k</span> avis`
+    reviews=`Basé sur plus de <span class="font-bold">12.8k</span> avis`
     src={heroImage}
-    alt="Pile de boîtes de produits ScrewFast contenant des outils matériels assortis"
+    alt="Famille multigénérationnelle réunie et souriante"
   />
 
-  <ClientsSection
-    title="Faites confiance aux leaders de l'industrie"
-    subTitle="Découvrez la fiabilité choisie par les géants de l'industrie."
+  <ClientsSliderSection
+    title="Approuvé par les Experts du Secteur"
+    subTitle="Rejoignez les visionnaires qui font confiance à Famdesc pour révolutionner leurs connexions sociales."
+    testimonialsData={TestimonialData.frTestimonialData}
   />
 
   <FeaturesGeneral
-    title="Répondre aux exigences de l'industrie"
-    subTitle="Chez ScrewFast, nous relevons les défis uniques rencontrés dans les secteurs du matériel et de la construction. Des outils de pointe aux services experts, nous sommes déterminés à vous aider à surmonter les obstacles et à atteindre vos objectifs."
-    src={featureImage}
-    alt="Produits ScrewFast dans des boîtes flottantes"
+    title="Découvrez Famdesc: Notre Vision et Nos Valeurs Fondamentales."
+    subTitle="Chez Famdesc, nous abordons les défis uniques dans le domaine de la connectivité sociale. Des fonctionnalités innovantes aux services d'experts, nous sommes dédiés à vous aider à créer des connexions significatives et à améliorer votre expérience en ligne."
+    src={famdescPromo}
+    alt="Famdesc peut vous aider à vous connecter avec vos proches tout en gardant vos données sécurisées. Rejoignez-nous et commencez à partager dès aujourd'hui !"
     features={features}
   />
 
   <FeaturesNavs
-    title=`Personnalisez les offres de <span class="text-salmon-500 dark:text-salmon-400">ScrewFast</span> pour répondre parfaitement à vos besoins en matériel et en construction.`
+    title=`Personnalisez <span class="text-salmon-500 dark:text-salmon-400">Famdesc</span> pour Répondre Parfaitement à Vos Besoins de Réseautage Social.`
     tabs={[
       {
-        heading: "Outils de pointe",
+        heading: "Outils Innovants",
         content:
-          "Optimisez vos projets avec les outils de pointe de ScrewFast. Faites l'expérience d'une efficacité accrue dans la gestion de la construction avec nos solutions automatisées sophistiquées.",
+          "Renforcez vos interactions sociales avec les outils innovants de Famdesc. De la partage de contenu fluide aux contrôles de confidentialité avancés, profitez d'une expérience de réseau social sophistiquée qui vous laisse le contrôle.",
         svg: "tools",
         src: tools,
-        alt: "Équipement lourd jaune et noir sur un champ d'herbe brune",
+        alt: "Famille utilisant des outils de réseaux sociaux innovants sur Famdesc, partageant du contenu sans effort.",
         first: true,
       },
       {
-        heading: "Tableaux de bord intuitifs",
+        heading: "Tableaux de Bord Intuitifs",
         content:
-          "Naviguez facilement avec les tableaux de bord intuitifs de ScrewFast. Configurez et supervisez vos projets de manière transparente, avec des interfaces conviviales conçues pour une gestion efficace des flux de travail rapide et efficace.",
+          "Naviguez facilement avec les tableaux de bord intuitifs de Famdesc. Gérez vos connexions et interactions sans effort grâce à des interfaces conviviales conçues pour un réseautage social rapide et efficace.",
         svg: "dashboard",
         src: dashboard,
-        alt: "Capture d'écran ou représentation graphique du tableau de bord intuitif",
+        alt: "Une capture d'écran ou une représentation graphique du tableau de bord intuitif",
         second: true,
       },
       {
-        heading: "Fonctionnalités robustes",
+        heading: "Fonctionnalités Robustes",
         content:
-          "Minimisez la complexité, maximisez la productivité. Les fonctionnalités robustes de ScrewFast sont conçues pour rationaliser votre processus de construction, offrant des résultats qui se distinguent par leur excellence.",
-        svg: "house",
+          "Minimisez la complexité, maximisez l'engagement. Les fonctionnalités robustes de Famdesc simplifient vos interactions sociales, offrant une expérience exceptionnelle et facile à utiliser.",
+        svg: "features",
         src: robustFeatures,
-        alt: "Structure métallique grise d'un bâtiment près d'une grue à tour pendant la journée",
+        alt: "Image reflétant des interactions sociales solides",
       },
     ]}
   />
 
   <TestimonialsSection
-    title="Accélérez vos projets"
-    subTitle="Chez ScrewFast, nous assurons un démarrage rapide avec une configuration de compte instantanée. Découvrez la vitesse de la construction redéfinie."
+    title="Connectez-vous et Épanouissez-vous avec Famdesc"
+    subTitle="Chez Famdesc, nous redéfinissons la manière dont vous vous connectez avec vos proches. Expérimentez des interactions familiales fluides avec notre plateforme intuitive conçue pour renforcer les liens et enrichir les vies."
+    ;
     testimonials={[
       {
         content:
-          "ScrewFast a considérablement augmenté l'efficacité de notre projet. La configuration a été instantanée et leurs temps de réponse rapides sont phénoménaux. Vraiment un changement de jeu dans le support matériel et de construction !",
-        author: "Samantha Ruiz",
-        role: "Directrice des opérations | ConstructIt Inc.",
+          "Famdesc améliore significativement nos connexions familiales. L'installation a été simple, et la possibilité de partager des moments précieux instantanément a transformé nos interactions familiales. Une plateforme vraiment remarquable pour favoriser des connexions réelles et significatives !",
+        author: "Yuri",
+        role: "Ingénieur Logiciel | ONLIVE.SITE.",
         avatarSrc:
-          "https://images.unsplash.com/photo-1593104547489-5cfb3839a3b5?q=80&w=1453&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D8&auto=format&fit=facearea&facepad=2&w=320&h=320&q=80",
+          "https://raw.githubusercontent.com/nardis9501/avatar/main/yuri.avif",
       },
     ]}
     statistics={[
       {
-        count: "70k+",
+        count: "50k+",
         description:
-          "clients équipés — des bricoleurs aux grandes entreprises de construction",
+          "utilisateurs actifs — familles, généalogistes et historiens communautaires construisant et préservant leurs héritages.",
       },
       {
-        count: "35%",
+        count: "3x",
         description:
-          "hausse de l'efficacité des projets avec les outils et services de ScrewFast",
+          "augmentation des connexions significatives grâce à un design centré sur l'utilisateur et des outils de partage améliorés.",
       },
       {
-        count: "15,3%",
+        count: "20%",
         description:
-          "réduction des coûts de maintenance rapportée par des clients à long terme",
+          "augmentation de l'efficacité dans la gestion des arbres généalogiques et le partage de souvenirs, grâce à notre interface simplifiée et conviviale.",
       },
       {
-        count: "2x",
+        count: "4.8/5",
         description:
-          "assemblage plus rapide grâce à des solutions de fixation innovantes",
+          "note moyenne de satisfaction des utilisateurs, reflétant notre engagement envers un contenu de haute qualité et une expérience utilisateur exceptionnelle.",
       },
     ]}
   />
 
-  <PricingSection pricing={pricing} />
-
-  <FAQ title="Questions<br />fréquemment posées" faqs={faqs} />
+  <FAQ title="Questions Fréquemment Posées" faqs={faqs} />
 
   <HeroSectionAlt
-    title="Construisons ensemble"
-    subTitle="ScrewFast est un modèle open source, méticuleusement conçu avec les frameworks Astro, Tailwind CSS et Preline UI."
-    url="https://github.com/mearashadowfax/ScrewFast"
+    title="Construisons Ensemble"
+    subTitle="Famdesc est un modèle open-source, méticuleusement conçu avec les frameworks Astro, Tailwind CSS, et Preline UI."
+    url="https://github.com/nardis9501/Famdesc-landing-blog"
   />
 </MainLayout>

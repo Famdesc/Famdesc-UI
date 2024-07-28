@@ -1,22 +1,22 @@
 [
   {
-    "heading": "Équipes dédiées",
-    "content": "Bénéficiez de nos équipes engagées qui veillent à ce que votre réussite soit personnelle. Comptez sur un accompagnement expert et des résultats exceptionnels tout au long de votre parcours de projet.",
-    "svg": "groups"
+    "heading": "Design Centré sur l'Utilisateur",
+    "content": "Découvrez la différence avec le design centré sur l'utilisateur de Famdesc — où fonctionnalité et praticité se rencontrent pour une expérience en ligne améliorée.",
+    "svg": "frame"
   },
   {
-    "heading": "Simplicité et accessibilité",
-    "content": "Trouvez des solutions faciles à utiliser et abordables avec la gamme d'outils et d'équipements de ScrewFast. Nos produits simplifient l'approvisionnement et permettent de respecter les budgets de projet.",
-    "svg": "verified"
+    "heading": "Open Source",
+    "content": "Famdesc est une plateforme open source, ce qui permet une amélioration continue, une plus grande sécurité et une transparence dans le développement.",
+    "svg": "openSource"
   },
   {
-    "heading": "Documentation complète",
-    "content": "Intégrez facilement grâce aux guides exhaustifs et aux bibliothèques de ScrewFast. Réalisez une adoption de produit sans faille avec notre ensemble complet de documentation conçu pour votre succès.",
+    "heading": "Contenu de Haute Qualité",
+    "content": "Chez Famdesc, nous privilégions et promouvons du contenu de haute qualité et de valeur pour nos utilisateurs, enrichissant leur expérience et leur fournissant des informations utiles et pertinentes.",
     "svg": "books"
   },
   {
-    "heading": "Conception centrée sur l'utilisateur",
-    "content": "Faites l'expérience de la différence avec la conception axée sur l'utilisateur de ScrewFast, où la fonctionnalité rencontre la praticité pour une expérience de travail améliorée.",
-    "svg": "frame"
+    "heading": "Confidentialité et Sécurité des Données",
+    "content": "La confidentialité et la sécurité des données de nos utilisateurs chez Famdesc sont une priorité absolue.",
+    "svg": "privacity"
   }
 ]
