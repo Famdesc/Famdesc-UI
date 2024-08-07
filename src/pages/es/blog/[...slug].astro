@@ -119,7 +119,7 @@ const pageTitle: string = `${post.data.title} | ${SITE.title}`;
         <!-- Content component to conditionally display markdown body if it has content -->
         {
           post.body && (
-            <>
+            <article class="prose lg:prose-xl dark:prose-invert">
               <Image
                 class="w-full rounded-xl object-cover"
                 src={post.data.cardImage}
@@ -128,7 +128,7 @@ const pageTitle: string = `${post.data.title} | ${SITE.title}`;
                 format={"avif"}
               />
               <Content />
-            </>
+            </article>
           )
         }
       </div>

@@ -23,11 +23,13 @@ El Convenio de Commits Convencional es una especificación para estructurar los 
 
 Un mensaje de commit convencional sigue esta estructura básica:
 
+```markdown
 <tipo>[alcance opcional]: <descripción>
 
 [cuerpo opcional]
 
 [pie de página opcional]
+```
 
 #### Tipos de Commit en Famdesc
 
@@ -114,6 +116,10 @@ Adoptar el Convenio de Commits Convencional en Famdesc nos ha permitido mantener
 **Pie de foto**: Ejemplo de un mensaje de commit siguiendo el Convenio de Commits Convencional en Famdesc
 
 ---
+
+```
+
+```
 
 ```
 

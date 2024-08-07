@@ -38,5 +38,6 @@ export default {
     require("tailwindcss/nesting"),
     require("preline/plugin"),
     require("@tailwindcss/forms"),
+    require("@tailwindcss/typography"),
   ],
 };
