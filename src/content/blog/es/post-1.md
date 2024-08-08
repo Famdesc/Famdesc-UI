@@ -8,7 +8,7 @@ authorImageAlt: "Avatar Description"
 pubDate: 2024-08-02
 cardImage: "@/images/blog/post-1.avif"
 cardImageAlt: "Top view mechanical tools arrangement"
-readTime: 4
+readTime: 5
 tags: ["Software", "git", "Conventional commits"]
 contents: [""]
 ---
