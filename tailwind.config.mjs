@@ -32,7 +32,51 @@ export default {
       red: colors.red, // Used for bookmark icon
       zinc: colors.zinc, // Used mainly for box-shadow
     },
-    extend: {},
+    extend: {
+      typography: {
+        DEFAULT: {
+          css: {
+            pre: {
+              backgroundColor: "#f3f4f6", // Fondo claro
+              color: "#111827", // Texto oscuro
+              borderRadius: "0.5rem",
+              padding: "1rem",
+              overflowX: "auto",
+            },
+            code: {
+              backgroundColor: "#f3f4f6", // Fondo claro
+              color: "#111827", // Texto oscuro
+              borderRadius: "0.25rem",
+              padding: "0.2rem 0.4rem",
+            },
+            "pre code": {
+              backgroundColor: "transparent",
+              padding: "0",
+              color: "inherit",
+              fontSize: "inherit",
+            },
+            "code::before": {
+              content: '""',
+            },
+            "code::after": {
+              content: '""',
+            },
+          },
+        },
+        dark: {
+          css: {
+            pre: {
+              backgroundColor: "#1f2937", // Fondo oscuro
+              color: "#f3f4f6", // Texto claro
+            },
+            code: {
+              backgroundColor: "#1f2937", // Fondo oscuro
+              color: "#f3f4f6", // Texto claro
+            },
+          },
+        },
+      },
+    },
   },
   plugins: [
     require("tailwindcss/nesting"),

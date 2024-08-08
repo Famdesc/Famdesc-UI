@@ -119,12 +119,12 @@ const pageTitle: string = `${post.data.title} | ${SITE.title}`;
         <!-- Content component to conditionally display markdown body if it has content -->
         {
           post.body && (
-            <article class="prose lg:prose-xl dark:prose-invert">
+            <article class="prose prose-lg dark:prose-invert lg:prose-xl prose-code:bg-gray-100 prose-code:text-gray-800 prose-pre:bg-gray-100 prose-pre:text-gray-800 dark:prose-code:bg-gray-800 dark:prose-code:text-gray-200 dark:prose-pre:bg-gray-800 dark:prose-pre:text-gray-200">
               <Image
                 class="w-full rounded-xl object-cover"
                 src={post.data.cardImage}
                 alt={post.data.cardImageAlt}
-                draggable={"false"}
+                draggable={false}
                 format={"avif"}
               />
               <Content />
