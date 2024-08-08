@@ -111,16 +111,7 @@ Adoptar el Convenio de Commits Convencional en Famdesc nos ha permitido mantener
 
 ---
 
-![Ejemplo de Mensaje de Commit](@/images/blog/post-1-commit-example.avif)
-
-**Pie de foto**: Ejemplo de un mensaje de commit siguiendo el Convenio de Commits Convencional en Famdesc
-
----
-
-```
-
-```
-
-```
-
-```
+<figure>
+  <img src="/src/images/blog/post-1-commit-example.avif" alt="Ejemplo de un mensaje de commit en Famdesc utilizando el formato de Commits Convencionales.">
+  <figcaption>Ejemplo de un mensaje de commit siguiendo el Convenio de Commits Convencional en Famdesc.</figcaption>
+</figure>
