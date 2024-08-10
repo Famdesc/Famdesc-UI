@@ -36,6 +36,9 @@ export default {
       typography: {
         DEFAULT: {
           css: {
+            img: {
+              borderRadius: "0.75rem",
+            },
             pre: {
               backgroundColor: "#f3f4f6", // Fondo claro
               color: "#111827", // Texto oscuro
