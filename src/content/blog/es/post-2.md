@@ -111,7 +111,7 @@ Esta actualización mejora la accesibilidad y usabilidad de la plataforma Famdes
 
 #### Screenshots
 
-![Página "Contáctanos" con traducciones al español](https://github.com/user-attachments/assets/b7b29393-bf04-4239-b970-5c4a0ba68127)
+![Página "Contáctanos" con traducciones al español](https://raw.githubusercontent.com/nardis9501/Famdesc-images/main/blog/contact-screenshot.avif)
 
 ### Conclusión
 
