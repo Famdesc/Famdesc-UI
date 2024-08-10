@@ -6,8 +6,8 @@ role: "Founder & Developer, Famdesc"
 authorImage: "@/images/blog/nardis.avif"
 authorImageAlt: "Foto del autor Nardis"
 pubDate: 2024-08-09
-cardImage: "@/images/blog/pull-requests.avif"
-cardImageAlt: "Vista superior de una laptop con código en la pantalla"
+cardImage: "@/images/blog/post-2.avif"
+cardImageAlt: "Banner de solicitudes de extracción (pull requests) en Famdesc"
 readTime: 6
 tags: ["Git", "Open Source", "Colaboración", "Pull Requests"]
 contents: [""]
