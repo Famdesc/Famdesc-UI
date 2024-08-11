@@ -25,7 +25,7 @@ export async function getStaticPaths() {
 // Get the current post's data
 const { post } = Astro.props;
 
-//
+// Get the body of the markdown file into a component for rendering
 const { Content } = await post.render();
 
 // Get all blog posts
@@ -75,7 +75,7 @@ const pageTitle: string = `${post.data.title} | ${SITE.title}`;
                   <li
                     class="relative inline-block pe-6 before:absolute before:end-2 before:top-1/2 before:size-1 before:-translate-y-1/2 before:rounded-full before:bg-neutral-300 last:pe-0 last-of-type:before:hidden dark:text-neutral-400 dark:before:bg-neutral-600"
                   >
-                    {post.data.readTime} min read
+                    Lectura en {post.data.readTime} min
                   </li>
                 </ul>
               </div>
@@ -161,9 +161,9 @@ const pageTitle: string = `${post.data.title} | ${SITE.title}`;
       </div>
     </div>
     <PostFeedback
-      title="Cet article était-il utile?"
-      firstChoice="Oui"
-      secondChoice="Non"
+      title="El artículo te resultó útil?"
+      firstChoice="Sí"
+      secondChoice="No"
     />
   </section>
 
