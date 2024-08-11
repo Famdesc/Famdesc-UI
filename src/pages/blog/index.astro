@@ -20,7 +20,7 @@ const englishInsightsEntries = await getCollection("insights", ({ id }) => {
 
 const blogPosts: CollectionEntry<"blog">[] = englishBlogEntries.sort(
   (a: CollectionEntry<"blog">, b: CollectionEntry<"blog">) =>
-    b.data.pubDate.valueOf() - a.data.pubDate.valueOf()
+    b.data.pubDate.valueOf() - a.data.pubDate.valueOf(),
 );
 // Get all insights posts
 const insightPosts: CollectionEntry<"insights">[] = englishInsightsEntries;
@@ -30,12 +30,12 @@ const mostRecentPost: CollectionEntry<"blog"> = blogPosts[0];
 const otherPosts: CollectionEntry<"blog">[] = blogPosts.slice(1);
 
 // Define variables for page content
-const title: string = "Your Gateway to Construction Excellence";
+const title: string = "Your Gateway to Excellence in Family and Technology";
 const subTitle: string =
-  "Explore the latest news, tips, and insights from ScrewFast to enhance your construction projects. From product spotlights to project management strategies, our blog is your go-to resource for all things hardware and construction.";
-const secondTitle: string = "Insights";
+  "Discover the latest updates, tips, and insights from Famdesc to enrich your family connections and genealogy. From technological innovations to software development strategies, our blog is your essential resource for everything related to family, science, and technology.";
+const secondTitle: string = "Insights: Innovation and Connection";
 const secondSubTitle: string =
-  "Stay up-to-date with the latest trends and developments in the construction industry with insights from ScrewFast's team of industry experts. ";
+  "Stay updated with the latest trends and news in technology, innovation, and social media with analyses from the Famdesc expert team.";
 
 const pageTitle: string = `Blog | ${SITE.title}`;
 ---
@@ -45,17 +45,17 @@ const pageTitle: string = `Blog | ${SITE.title}`;
   structuredData={{
     "@context": "https://schema.org",
     "@type": "WebPage",
-    "@id": "https://screwfast.uk/blog",
-    url: "https://screwfast.uk/blog",
-    name: "Blog | ScrewFast",
+    "@id": "https://famdesc.com/blog",
+    url: "https://famdesc.com/blog",
+    name: "Blog | Famdesc",
     description:
-      "Stay up-to-date with the latest trends and developments in the construction industry with insights from ScrewFast's team of industry experts.",
+      "Stay updated with the latest trends and news in technology, innovation, and social media with analyses from the Famdesc expert team.",
     isPartOf: {
       "@type": "WebSite",
-      url: "https://screwfast.uk",
-      name: "ScrewFast",
+      url: "https://famdesc.com",
+      name: "Famdesc",
       description:
-        "ScrewFast offers top-tier hardware tools and expert construction services to meet all your project needs.",
+        "Famdesc is a social platform that connects families, offering tools and services designed to strengthen family ties and facilitate communication and collaboration at home.",
     },
     inLanguage: "en-US",
   }}
