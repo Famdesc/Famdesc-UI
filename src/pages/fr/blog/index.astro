@@ -30,32 +30,36 @@ const mostRecentPost: CollectionEntry<"blog"> = blogPosts[0];
 const otherPosts: CollectionEntry<"blog">[] = blogPosts.slice(1);
 
 // Define variables for page content
-const title: string = "Votre Passerelle vers l'Excellence en Construction";
+const title: string =
+  "Votre passerelle vers l'excellence en famille et en technologie";
 const subTitle: string =
-  "Explorez les dernières actualités, astuces et analyses de ScrewFast pour améliorer vos projets de construction. Des mises en avant de produits aux stratégies de gestion de projet, notre blog est votre ressource incontournable pour tout ce qui concerne les outils et la construction.";
-const secondTitle: string = "Perspectives";
+  "Découvrez les dernières mises à jour, conseils et analyses de Famdesc pour enrichir vos liens familiaux et votre généalogie. Des innovations technologiques aux stratégies de développement logiciel, notre blog est votre ressource essentielle pour tout ce qui concerne la famille, la science et la technologie.";
+const secondTitle: string = "Perspectives : Innovation et Connexion";
 const secondSubTitle: string =
-  "Restez à jour avec les dernières tendances et évolutions de l'industrie de la construction grâce aux analyses de l'équipe d'experts de ScrewFast.";
+  "Restez informé des dernières tendances et actualités en matière de technologie, d'innovation et de médias sociaux grâce aux analyses de l'équipe d'experts de Famdesc.";
 
 const pageTitle: string = `Blog | ${SITE.title}`;
 ---
 
-<MainLayout lang="fr"
+<MainLayout
+  lang="fr"
   title={pageTitle}
   structuredData={{
     "@context": "https://schema.org",
     "@type": "WebPage",
-    "@id": "https://screwfast.uk/fr/blog",
-    "url": "https://screwfast.uk/fr/blog",
-    "name": "Blog | ScrewFast",
-    "description": "Restez informé des dernières tendances et évolutions dans le secteur de la construction avec les analyses de l'équipe d'experts de ScrewFast.",
-    "isPartOf": {
+    "@id": "https://famdesc.com/fr/blog",
+    url: "https://famdesc.com/fr/blog",
+    name: "Blogue | Famdesc",
+    description:
+      "Restez informé des dernières tendances et actualités en matière de technologie, d'innovation et de médias sociaux grâce aux analyses de l'équipe d'experts de Famdesc.",
+    isPartOf: {
       "@type": "WebSite",
-      "url": "https://screwfast.uk/fr",
-      "name": "ScrewFast",
-      "description": "ScrewFast propose des outils matériels de premier ordre et des services de construction experts pour répondre à tous vos besoins de projet."
+      url: "https://famdesc.com/fr",
+      name: "Famdesc",
+      description:
+        "Famdesc est une plateforme sociale qui connecte les familles, offrant des outils et des services conçus pour renforcer les liens familiaux et faciliter la communication et la collaboration à la maison.",
     },
-    "inLanguage": "fr"
+    inLanguage: "fr",
   }}
 >
   <section
@@ -82,7 +86,11 @@ const pageTitle: string = `Blog | ${SITE.title}`;
   >
     <!--Blog posts grid-->
     <div class="grid gap-6 lg:grid-cols-2">
-      {otherPosts.map((blogEntry) => <CardBlog blogEntry={blogEntry} blogLocale="fr"/>)}
+      {
+        otherPosts.map((blogEntry) => (
+          <CardBlog blogEntry={blogEntry} blogLocale="fr" />
+        ))
+      }
     </div>
   </section>
   <!--Most recent blog post-->
