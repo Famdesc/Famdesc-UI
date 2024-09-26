@@ -1,14 +1,15 @@
 # Versatile Landing, Blog & Docs Template for a Simplified Web Presence
 
-![ScrewFast](https://github.com/mearashadowfax/ScrewFast/assets/125820963/cdf299bd-414a-4a2d-baf0-d188bb4709c7)
+![Famdesc](https://raw.githubusercontent.com/nardis9501/Famdesc-images/refs/heads/main/famdesc.jpeg)
 
-ScrewFast is an open-source template designed for quick and efficient web project setup, blending minimalism with functionality. Whether you're showcasing a portfolio, launching a company landing page, or running a blog, ScrewFast provides everything you need. By combining the power of the [Astro](https://astro.build/), [Tailwind CSS](https://tailwindcss.com/), and [Preline UI](https://preline.co/), this template offers a functional and aesthetically pleasing solution for your web presence.
+Famdesc is a versatile platform that has evolved into a social network. Originally built on the [ScrewFast](https://github.com/mearashadowfax/ScrewFast) open-source template, designed for quick and efficient web project setup, Famdesc began as a flexible solution for landing pages, blogs, and documentation. By leveraging the power of [Astro](https://astro.build/), [Tailwind CSS](https://tailwindcss.com/), and [Preline UI](https://preline.co/), the template offered a minimalist yet functional foundation for our project. Today, Famdesc has evolved into a secure, family-focused social network aimed at fostering authentic connections and delivering a comprehensive user experience. Special thanks to the ScrewFast team for their open-source contribution, which was crucial in the early stages of development. Open-source software plays a vital role in driving innovation, allowing projects like Famdesc to grow and transform, providing value to users across the globe.
 
-**[View Live Demo](https://screwfast.uk)**
+
+**[View Live Demo](https://famdesc.com)**
 
 ## Table of Contents
 
-* [Why Choose ScrewFast?](#why-choose-screwfast)
+* [Why Choose Famdesc?](#why-choose-famdesc)
 * [Features](#features)
 * [What's New](#whats-new)
 * [Getting Started](#getting-started)
@@ -51,7 +52,7 @@ ScrewFast is an open-source template designed for quick and efficient web projec
 * [Contributing](#contributing)
 * [License](#license)
 
-## Why Choose ScrewFast?
+## Why Choose Famdesc?
 
 * **Efficient Architecture:** Deploy faster with a template that's simple to set up and navigate.
 * **Optimized for Small Projects:** Perfect for crisp, professional web personas without excess complexity.
@@ -103,8 +104,7 @@ ScrewFast is an open-source template designed for quick and efficient web projec
 * [x] **Internationalization (i18n) Features**:
   * Integrates [Astro’s internationalization (i18n) features](https://docs.astro.build/en/guides/internationalization/).
   * Additionally, a custom LanguagePicker component has been developed to facilitate language selection.
-  * Developers can access the monolingual version directly from [`monolingual-site` branch](https://github.com/mearashadowfax/ScrewFast/tree/monolingual-site).
-
+  
 * [x] **Dynamic Table of Contents (ToC) with Scroll Progress Indicator**:
   * Enhances ease of navigation in insight posts by highlighting the relevant section in the ToC, and includes a progress indicator to visually represent scroll progress.
   * Developers seeking alternatives might consider the [remark-toc](https://github.com/remarkjs/remark-toc) plugin.
@@ -115,7 +115,7 @@ ScrewFast is an open-source template designed for quick and efficient web projec
 
 ### Bug Fixes
 
-* Currently, there are no known bugs. If you encounter any issues, please report them on our [issues page](https://github.com/mearashadowfax/ScrewFast/issues).
+* Join us in improving Famdesc! While we strive to keep everything running smoothly, bugs and issues can still appear. If you encounter any problems or have suggestions, we invite you to report them on our [issues page](https://github.com/nardis9501/Famdesc-UI/issues) and help us make Famdesc even better.
 
 ## Getting Started
 
@@ -157,11 +157,11 @@ This creates a `dist/` directory with your built site (configurable via [outDir 
 
 Click the button below to start deploying your project on Vercel:  
 
-[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https%3A%2F%2Fgithub.com%2Fmearashadowfax%2FScrewFast)
+[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https%3A%2F%2Fgithub.com%2Fnardis9501%2FFamdesc-UI)
 
 ## Project Structure
 
-ScrewFast organizes modular components, content, and layouts to streamline development and content management.
+Famdesc organizes modular components, content, and layouts to streamline development and content management.
 
 ```md
 
@@ -212,7 +212,7 @@ public/
 
 ## Customization
 
-ScrewFast allows for easy customization to suit your specific needs. Here are a couple of ways you can configure components and content:
+Famdesc allows for easy customization to suit your specific needs. Here are a couple of ways you can configure components and content:
 
 ### Editing Component Variables
 
@@ -220,9 +220,9 @@ Some components have properties defined as TypeScript variables within the compo
 
 ```typescript
 // Define the string variables title and subTitle for the main heading and sub-heading text.
-const title: string = "Meeting Industry Demands";
+const title: string = "Famdesc - Your Digital Haven for Family Moments";
 const subTitle: string =
-  "At ScrewFast, we tackle the unique challenges encountered in the hardware and construction sectors.";
+  "A New Way to Preserve and Share Your Family's Precious Moments";
 ```
 
 For collections of content like testimonials or statistics, edit the corresponding array of objects:
@@ -330,11 +330,11 @@ We also have `Navbar.astro` and `NavbarMegaMenu.astro` components located in `sr
 
 ## Integrations and Enhancements
 
-ScrewFast leverages the power of Astro — a modern, cutting-edge site building framework — and integrates it seamlessly with the utility-first CSS framework TailwindCSS, to deliver exceptional site performance and a seamless user experience. Here are some notable integrations and enhancements included in the project:
+Famdesc leverages the power of Astro — a modern, cutting-edge site building framework — and integrates it seamlessly with the utility-first CSS framework TailwindCSS, to deliver exceptional site performance and a seamless user experience. Here are some notable integrations and enhancements included in the project:
 
 ### Starlight Documentation
 
-ScrewFast is now equipped with the Starlight, which is designed to elevate the user's experience with documentation. This modern and elegant theme comes with a suite of features to make the content more accessible and pleasant to navigate.
+Famdesc is now equipped with the Starlight, which is designed to elevate the user's experience with documentation. This modern and elegant theme comes with a suite of features to make the content more accessible and pleasant to navigate.
 
 Key Features:
 
@@ -436,7 +436,7 @@ Additionally, update the `<html>` tag to remove the `scrollbar-hide` class, resu
 
 ### SEO Configuration
 
-The SEO Configuration in the ScrewFast template is designed to empower users in optimizing their website's visibility on search engines and social media platforms. This documentation outlines the implementation details and usage instructions for effectively managing SEO settings.
+The SEO Configuration in the Famdesc template is designed to empower users in optimizing their website's visibility on search engines and social media platforms. This documentation outlines the implementation details and usage instructions for effectively managing SEO settings.
 
 #### Using constants.ts
 
@@ -448,7 +448,7 @@ To customize SEO settings, modify the values in the `constants.ts` file. Key con
 // constants.ts
 
 export const SITE = {
-  title: "ScrewFast",
+  title: "Famdesc",
   // Other SITE properties...
 };
 
@@ -458,7 +458,7 @@ export const SEO = {
 };
 
 export const OG = {
-  title: `${SITE.title}: Hardware Tools & Construction Services`,
+  title: `${SITE.title}: Famdesc - Your Digital Haven for Family Moments`,
   // Other OG properties...
 };
 ```
@@ -515,8 +515,8 @@ Structured data in JSON-LD format can be managed by the `Meta.astro` component, 
   structuredData={{
     "@context": "https://schema.org",
     "@type": "WebSite",
-    "name": "ScrewFast",
-    "url": "https://screwfast.uk",
+    "name": "Famdesc",
+    "url": "https://famdesc.com",
     "description": "Discover top-quality hardware tools and services"
   }}
 >
@@ -676,4 +676,4 @@ If you're interested in helping, you can contribute in several ways:
 
 ## License
 
-This project is released under the MIT License. Please read the [LICENSE](https://github.com/mearashadowfax/ScrewFast/blob/main/LICENSE) file for more details.
+This project is released under the MIT License. Please read the [LICENSE](https://github.com/nardis9501/Famdesc-UI/blob/main/LICENSE) file for more details.
