@@ -1,9 +1,10 @@
 import { defineConfig } from "astro/config";
 import tailwind from "@astrojs/tailwind";
-import vercelStatic from "@astrojs/vercel/static";
 import sitemap from "@astrojs/sitemap";
 import compressor from "astro-compressor";
 import starlight from "@astrojs/starlight";
+import clerk from '@clerk/astro'
+import vercel from '@astrojs/vercel/serverless';
 
 // https://astro.build/config
 export default defineConfig({
@@ -25,6 +26,7 @@ export default defineConfig({
   prefetch: true,
   integrations: [
     tailwind(),
+    clerk(),
     sitemap({
       i18n: {
         defaultLocale: "en", // All urls that don't contain `fr` after `https://famdesc.com/` will be treated as default locale, i.e. `en`
@@ -120,10 +122,10 @@ export default defineConfig({
       brotli: true,
     }),
   ],
-  output: "static",
+  output: "hybrid",
   experimental: {
     clientPrerender: true,
     directRenderScript: true,
   },
-  adapter: vercelStatic(),
+  adapter: vercel(),
 });
