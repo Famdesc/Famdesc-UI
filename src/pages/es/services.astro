@@ -9,12 +9,12 @@ import FeaturesStats from "@components/sections/features/FeaturesStats.astro";
 // Import necessary images
 import familyTreeOne from "@images/familytree-image-1.avif";
 import familyTreeTwo from "@images/family-tree-image-2.avif";
-import videocall from "@images/chat-videocall.avif";
+import videocall from "@images/chat-videocall-image.avif";
 import security from "@images/cyber-security.avif";
 import privacity from "@images/privacity.avif";
-import usingTools from "@images/using-tools.avif";
-import progressBuilding from "@images/progress-building.avif";
-import underConstruction from "@images/under-construction.avif";
+import algorithm from "@images/algorithm-image.avif";
+import virtualAssistant from "@images/virtual-assistant.avif";
+import customized from "@images/customized.avif";
 import { SITE } from "@data/constants";
 
 interface Article {
@@ -41,9 +41,12 @@ const articles: Article[] = [
       "Descubre y construye tu historia familiar con un árbol interactivo que permite conectar generaciones y compartir recuerdos con fotos, videos y relatos. Explora nuevas conexiones con herramientas de rastreo genealógico y deja un legado visual para las próximas generaciones.",
     single: false,
     imgOne: familyTreeOne,
-    imgOneAlt: "Árbol genealógico digital, con un diseño vibrante y moderno",
+    imgOneAlt: "Un árbol brillante con ramas digitales que se transforman en fotos familiares y líneas que conectan generaciones, sobre un fondo suave de cielo al atardecer",
     imgTwo: familyTreeTwo,
-    imgTwoAlt: "Person working in the office",
+    imgTwoAlt: "Un gráfico interactivo con nodos que representan a familiares, conectados por líneas brillantes; alrededor, documentos antiguos y fotos enmarcadas emergen del fondo",
+    btnExists: true,
+    btnTitle: "Más sobre el árbol genealógico",
+    btnURL: "#",
   },
   {
     isRightSection: false,
@@ -51,7 +54,7 @@ const articles: Article[] = [
     subTitle:
       "Mantente cerca de tus seres queridos con chats seguros y videollamadas de alta calidad. Comparte fotos y mensajes sin preocuparte por la privacidad, y disfruta de reacciones y experiencias compartidas en tiempo real, sin interrupciones ni intrusiones.",
     img: videocall,
-    imgAlt: "Construction site before and after",
+    imgAlt: "Amigos o familiares sonríen en una llamada grupal, rodeada por símbolos de candados y ondas seguras de conexión",
     btnExists: true,
     btnTitle: "Más sobre comunicación segura",
     btnURL: "#",
@@ -63,18 +66,24 @@ const articles: Article[] = [
       "Tú decides qué compartes y con quién. Con controles avanzados y cifrado seguro, tienes total transparencia sobre quién accede a tu información. La privacidad no es una opción en Famdesc, es nuestra prioridad.",
     single: false,
     imgOne: privacity,
-    imgOneAlt: "Construction workers orchestrating a project",
+    imgOneAlt: "Un usuario frente a una pantalla con múltiples capas de seguridad visibles como escudos y candados digitales",
     imgTwo: security,
-    imgTwoAlt: "Aerial view of managed construction",
+    imgTwoAlt: "Una interfaz visual con controles de privacidad activados, cada ícono de datos protegido por candados o líneas brillantes de seguridad",
+    btnExists: true,
+    btnTitle: "Más sobre privacidad y control",
+    btnURL: "#",
   },
   {
     isRightSection: false,
     title: "Contenido de Alta Calidad Curado Solo para Ti",
     subTitle:
       "Disfruta de un feed libre de ruido con contenido significativo y útil, ajustado a tus intereses y relaciones. No somos una red más, sino un espacio que prioriza lo que realmente importa sin saturar tu día a día.",
-    img: usingTools,
+    img: algorithm,
     imgAlt:
-      "Man in blue and black vest wearing white helmet holding salmon and black power tool",
+      "Algoritmos como engranajes que organizan contenido diverso: libros, videos, y eventos familiares",
+      btnExists: true,
+    btnTitle: "Más sobre algoritmos éticos de contenido",
+    btnURL: "#",
   },
   {
     isRightSection: true,
@@ -82,9 +91,9 @@ const articles: Article[] = [
     subTitle:
       "Descubre cómo un asistente virtual puede ayudarte a gestionar tareas, recordar eventos importantes y ofrecer recomendaciones personalizadas. La IA en Famdesc está aquí para mejorar tu experiencia sin complicaciones.",
     single: false,
-    imgOne: progressBuilding,
+    imgOne: virtualAssistant,
     imgOneAlt: "In progress building structure",
-    imgTwo: underConstruction,
+    imgTwo: customized,
     imgTwoAlt: "Brown and gray building under construction",
     btnExists: true,
     btnTitle: "Más sobre IA y organización familiar",
