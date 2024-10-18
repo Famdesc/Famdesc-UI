@@ -20,7 +20,7 @@
     "@preline/collapse": "^2.3.0",
     "@preline/dropdown": "^2.3.0",
     "@preline/overlay": "^2.3.0",
-    "@preline/tabs": "^2.3.0",
+    "@preline/tabs": "^2.4.1",
     "astro": "^4.13.2",
     "astro-compressor": "^0.4.1",
     "clipboard": "^2.0.11",
@@ -39,7 +39,7 @@
     "astro-vtbot": "^1.8.6",
     "prettier": "^3.3.3",
     "prettier-plugin-astro": "^0.14.1",
-    "prettier-plugin-tailwindcss": "^0.6.5",
+    "prettier-plugin-tailwindcss": "^0.6.6",
     "typescript": "^5.5.3"
   }
 }
