@@ -15,7 +15,6 @@ import privacity from "@images/privacity.avif";
 import algorithm from "@images/algorithm-image.avif";
 import virtualAssistant from "@images/virtual-assistant.avif";
 import customized from "@images/customized.avif";
-import { SITE } from "@data/constants";
 
 interface Article {
   isRightSection: boolean;
@@ -100,26 +99,25 @@ const articles: Article[] = [
     btnURL: "#",
   },
 ];
-
-const pageTitle: string = `Services | ${SITE.title}`;
 ---
 
 <MainLayout
-  title={pageTitle}
+  title="Services | Famdesc"
   lang="es"
   structuredData={{
     "@context": "https://schema.org",
     "@type": "WebPage",
     "@id": "https://famdesc.com/es/services",
     "url": "https://famdesc.com/es/services",
-    "name": "Expert Consultation Services | Famdesc",
-    "description": "Uniting expertise with your vision, Famdesc provides exceptional service and comprehensive solutions in the hardware and construction industry, from consultation to project completion.",
+    "name": "Servicios Digitales para Conectar Familias | Famdesc",
+    "description": "Famdesc combina tecnología avanzada con una visión familiar para ofrecer herramientas digitales que fortalecen los lazos familiares. Desde árboles genealógicos interactivos y comunicación segura hasta asistencia personalizada con inteligencia artificial, nuestra plataforma está diseñada para preservar recuerdos y crear conexiones significativas en un entorno seguro y privado.",
     "isPartOf": {
         "@type": "WebSite",
         "url": "https://famdesc.com/es",
         "name": "Famdesc",
-        "description": "Famdesc offers top-tier hardware tools and expert construction services to meet all your project needs."
-    },
+        "description": "Famdesc ofrece herramientas digitales y servicios enfocados en la familia, priorizando la privacidad, la seguridad y la personalización para mantener conexiones auténticas y duraderas entre generaciones."
+}
+,
     "inLanguage": "es"
   }}
 >
