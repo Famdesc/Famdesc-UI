@@ -7,14 +7,14 @@ import RightSection from "@components/ui/blocks/RightSection.astro";
 import FeaturesStats from "@components/sections/features/FeaturesStats.astro";
 
 // Import necessary images
-import blueprints from "@images/blueprints-image.avif";
-import personWorking from "@images/person-working.avif";
-import beforeAfter from "@images/before-after.avif";
-import constructionWorkers from "@images/construction-workers.avif";
-import aerialView from "@images/aerial-view.avif";
-import usingTools from "@images/using-tools.avif";
-import progressBuilding from "@images/progress-building.avif";
-import underConstruction from "@images/under-construction.avif";
+import familyTreeOne from "@images/familytree-image-1.avif";
+import familyTreeTwo from "@images/family-tree-image-2.avif";
+import videocall from "@images/chat-videocall-image.avif";
+import security from "@images/cyber-security.avif";
+import privacity from "@images/privacity.avif";
+import algorithm from "@images/algorithm-image.avif";
+import virtualAssistant from "@images/virtual-assistant.avif";
+import customized from "@images/customized.avif";
 import { SITE } from "@data/constants";
 
 interface Article {
@@ -36,58 +36,67 @@ interface Article {
 const articles: Article[] = [
   {
     isRightSection: true,
-    title: "Delivering Expert Guidance",
+    title: "Interactive Family Tree",
     subTitle:
-      "Embarking on a construction project can be overwhelming. With our professional consultation services, we guide you through every stage, ensuring you make informed decisions. Whether you are a DIY enthusiast or a skilled contractor, our experts are on hand to offer tailored advice on product selection, project scope, and compliance with local regulations.",
+      "Discover and build your family history with an interactive tree that connects generations and allows you to share memories through photos, videos, and stories. Explore new connections with genealogy tracking tools and leave a visual legacy for future generations.",
     single: false,
-    imgOne: blueprints,
-    imgOneAlt: "Blueprints and digital tablet with construction plans.",
-    imgTwo: personWorking,
-    imgTwoAlt: "Person working in the office",
+    imgOne: familyTreeOne,
+    imgOneAlt: "A glowing tree with digital branches transforming into family photos and connections, set against a sunset sky",
+    imgTwo: familyTreeTwo,
+    imgTwoAlt: "An interactive chart with nodes representing family members, connected by bright lines, with framed photos and ancient documents in the background",
+    btnExists: true,
+    btnTitle: "Learn more about the family tree",
+    btnURL: "#",
   },
   {
     isRightSection: false,
-    title: "Transforming Designs into Reality",
+    title: "Chat and Video Calls with End-to-End Encryption",
     subTitle:
-      "Our skilled craftsmen bring precision and excellence to every construction project. From minor installations to substantial structural work, ScrewFast offers reliable construction services to turn your plans into tangible outcomes. We ensure the highest standards of safety and workmanship, utilizing top-quality tools and materials from our extensive inventory.",
-    img: beforeAfter,
-    imgAlt: "Construction site before and after",
+      "Stay close to your loved ones with secure chats and high-quality video calls. Share photos and messages privately and enjoy real-time reactions without interruptions or privacy concerns.",
+    img: videocall,
+    imgAlt: "Friends or family smiling on a group call, surrounded by lock icons and secure connection waves",
     btnExists: true,
-    btnTitle: "Learn More",
+    btnTitle: "Learn more about secure communication",
     btnURL: "#",
   },
   {
     isRightSection: true,
-    title: "Navigating Projects with Professional Oversight",
+    title: "Privacy and Full Data Security",
     subTitle:
-      "Effective project management is at the heart of any successful build. ScrewFast provides thorough planning and robust management services that keep your project on time and within budget. Let us handle the complexities of workflow coordination, resource allocation, and stakeholder communication while you focus on your vision.",
+      "You control what you share and with whom. With advanced settings and secure encryption, you have full transparency over data access. Privacy isn't optional at Famdesc—it’s our top priority.",
     single: false,
-    imgOne: constructionWorkers,
-    imgOneAlt: "Construction workers orchestrating a project",
-    imgTwo: aerialView,
-    imgTwoAlt: "Aerial view of managed construction",
+    imgOne: privacity,
+    imgOneAlt: "A user facing a screen showing multiple security layers like shields and digital locks",
+    imgTwo: security,
+    imgTwoAlt: "A visual interface with activated privacy controls, where every data icon is secured with locks or glowing lines",
+    btnExists: true,
+    btnTitle: "Learn more about privacy and control",
+    btnURL: "#",
   },
   {
     isRightSection: false,
-    title: "Ensuring Long-lasting Performance",
+    title: "High-Quality Content Curated Just for You",
     subTitle:
-      "Our commitment to your project doesn't end at completion. ScrewFast offers ongoing maintenance and support services to ensure your construction's longevity and performance. From regular check-ups to emergency assistance, our responsive team is there to provide seamless support.",
-    img: usingTools,
+      "Enjoy a distraction-free feed with meaningful, relevant content tailored to your interests and relationships. We're not just another social network—we prioritize what truly matters to you.",
+    img: algorithm,
     imgAlt:
-      "Man in blue and black vest wearing white helmet holding salmon and black power tool",
+      "Algorithms depicted as gears organizing diverse content: books, videos, and family events",
+    btnExists: true,
+    btnTitle: "Learn more about ethical content algorithms",
+    btnURL: "#",
   },
   {
     isRightSection: true,
-    title: "Crafting Bespoke Strategies for Unique Challenges",
+    title: "AI-Powered Personal Assistance for Your Family",
     subTitle:
-      "For our larger enterprise clients, ScrewFast offers custom solutions designed to meet specific industry challenges. By understanding your unique needs, we engineer tailored strategies aimed at optimizing your operations, enhancing efficiency, and driving your business forward.",
+      "Discover how a virtual assistant can help you manage tasks, remember important events, and provide personalized recommendations. Our AI enhances your experience without complexity.",
     single: false,
-    imgOne: progressBuilding,
-    imgOneAlt: "In progress building structure",
-    imgTwo: underConstruction,
-    imgTwoAlt: "Brown and gray building under construction",
+    imgOne: virtualAssistant,
+    imgOneAlt: "An AI-powered virtual assistant assisting a user with schedules and reminders",
+    imgTwo: customized,
+    imgTwoAlt: "A digital assistant dashboard showing family-related task delegation and recommendations",
     btnExists: true,
-    btnTitle: "Read more",
+    btnTitle: "Learn more about AI for family organization",
     btnURL: "#",
   },
 ];
@@ -100,26 +109,24 @@ const pageTitle: string = `Services | ${SITE.title}`;
   structuredData={{
     "@context": "https://schema.org",
     "@type": "WebPage",
-    "@id": "https://screwfast.uk/services",
-    "url": "https://screwfast.uk/services",
-    "name": "Expert Consultation Services | ScrewFast",
-    "description": "Uniting expertise with your vision, ScrewFast provides exceptional service and comprehensive solutions in the hardware and construction industry, from consultation to project completion.",
+    "@id": "https://famdesc.com/services",
+    "url": "https://famdesc.com/services",
+    "name": "FDigital Services to Connect Families | Famdesc",
+    "description": "Famdesc blends advanced technology with a family-oriented vision to provide digital tools that strengthen family bonds. From interactive family trees and secure communication to AI-powered assistance, our platform is designed to preserve memories and create meaningful connections in a safe, private environment.",
     "isPartOf": {
         "@type": "WebSite",
-        "url": "https://screwfast.uk",
-        "name": "ScrewFast",
-        "description": "ScrewFast offers top-tier hardware tools and expert construction services to meet all your project needs."
+        "url": "https://famdesc.com",
+        "name": "Famdesc",
+        "description": "Famdesc offers digital tools and services focused on family, prioritizing privacy, security, and personalization to nurture meaningful connections across generations."
     },
     "inLanguage": "en-US"
   }}
 >
   <!--MainSection is the introductory section of the page, it also contains a CTA button-->
   <MainSection
-    title="Uniting Expertise with Your Vision"
-    subTitle="At ScrewFast, we take pride in providing comprehensive solutions and exceptional service in the hardware and construction industry. Our experienced team is dedicated to supporting your project from inception to completion with a range of specialized services."
-    btnExists={true}
-    btnTitle="Schedule a Consultation"
-    btnURL="#"
+    title="Our Vision for the Future"
+    subTitle="We believe technology is the key to connecting families of tomorrow. In the coming years, we will expand our services to meet emerging needs, exploring new forms of automation, personalization, and emotional support. Strategic partnerships will further enrich the Famdesc experience."
+    btnExists={false}
   />
   <!-- RightSection and LeftSection contain details about various services along with pertinent imagery.
   They alternate for variety in design.
@@ -159,22 +166,22 @@ const pageTitle: string = `Services | ${SITE.title}`;
   }
   <!--FeaturesStats section showcases essential stats valuable to users-->
   <FeaturesStats
-    title="By the Numbers"
-    subTitle="Our commitment to quality and reliability is evident in every project we undertake. At ScrewFast, we are dedicated to delivering industry-leading services that ensure your construction projects are built to last."
-    mainStatTitle="96%"
-    mainStatSubTitle="of our clients rate their experience with ScrewFast as exceptional"
+    title="Our Future: A Dynamic and Family-Connected Ecosystem"
+    subTitle="Famdesc is building a platform that goes beyond digital, becoming an integral part of family life. We will integrate augmented reality (AR) to relive historical moments at home and explore connections with smart home devices—all while maintaining our core values of privacy, security, and enriching family experiences."
+    mainStatTitle="-- %"
+    mainStatSubTitle="of our users rate their experience with Famdesc as exceptional"
     stats={[
       {
-        stat: "99.8%",
-        description: "project completion rate",
+        stat: "-- %",
+        description: "of users find the content they receive relevant.",
       },
       {
-        stat: "5,000+",
-        description: "successful installations",
+        stat: "99.9% ",
+        description: "uptime for all services at any time",
       },
       {
-        stat: "85%",
-        description: "client growth year-over-year",
+        stat: "-- %",
+        description: "of users interact on Famdesc at least once a day.",
       },
     ]}
   />
