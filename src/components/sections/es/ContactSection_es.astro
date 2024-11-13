@@ -15,6 +15,9 @@ const subTitle: string =
 const formTitle: string = "Llena el formulario a continuación";
 const formSubTitle: string =
   "Nos pondremos en contacto contigo en 1-2 días hábiles.";
+  const scriptURL= import.meta.env.SCRIPT_API_URL
+  const token= import.meta.env.CONTACT_FORM_TOKEN
+
 ---
 
 <!-- Contact Us -->
@@ -39,7 +42,7 @@ const formSubTitle: string =
           {formTitle}
         </h2>
         <!-- Form for user input with various input fields.-->
-        <form id="contactForm" action="https://script.google.com/macros/s/AKfycbyhIaeNQH9hbiC9GTnwTx6gctLzCPQZsPnv2z9sYBRS/dev" method="post">
+        <form id="contactForm" action=`${scriptURL}` method="post">
           <div class="grid gap-4">
             <div class="grid grid-cols-1 gap-4 sm:grid-cols-2">
               <TextInput
@@ -66,7 +69,7 @@ const formSubTitle: string =
           </div>
 
           <!-- Token hidden field -->
-          <input type="hidden" name="token" value="YOUR_SECURE_TOKEN">
+          <input type="hidden" name="token" value=`${token}`>
 
           <div class="mt-4 grid">
             <AuthBtn title="Enviar Mensaje" />
