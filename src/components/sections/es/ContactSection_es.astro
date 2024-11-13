@@ -15,6 +15,9 @@ const subTitle: string =
 const formTitle: string = "Llena el formulario a continuación";
 const formSubTitle: string =
   "Nos pondremos en contacto contigo en 1-2 días hábiles.";
+  const scriptURL= import.meta.env.SCRIPT_API_URL
+  const token= import.meta.env.CONTACT_FORM_TOKEN
+
 ---
 
 <!-- Contact Us -->
@@ -39,8 +42,7 @@ const formSubTitle: string =
           {formTitle}
         </h2>
         <!-- Form for user input with various input fields.-->
-        <!-- Each field utilizes a different input component for the specific type of input (text, email, phone, and textarea)-->
-        <form action=https://script.google.com/macros/s/AKfycbyTcUPQj8pyPw2hI4j6ZD0GFlsrlat_kRhVnUG5YafALXFc1C9vXmmkw-9_KDccM1__4g/exec method="post">
+        <form id="contactForm" action=`${scriptURL}` method="post">
           <div class="grid gap-4">
             <div class="grid grid-cols-1 gap-4 sm:grid-cols-2">
               <TextInput
@@ -66,6 +68,9 @@ const formSubTitle: string =
             />
           </div>
 
+          <!-- Token hidden field -->
+          <input type="hidden" name="token" value=`${token}`>
+
           <div class="mt-4 grid">
             <AuthBtn title="Enviar Mensaje" />
           </div>
@@ -76,6 +81,9 @@ const formSubTitle: string =
             </p>
           </div>
         </form>
+        <!-- hidden iframe -->
+        <iframe name="hidden_iframe" style="display:none;"></iframe>
+        <p id="formMessage" class="mt-4 text-center text-sm text-neutral-600 dark:text-neutral-400"></p>
       </div>
 
       <!--ContactIconBlocks are used to display different methods of contacting, including visiting office, email, browsing knowledgebase, and FAQ.-->
@@ -120,3 +128,11 @@ const formSubTitle: string =
     </div>
   </div>
 </section>
+
+<script>
+ import { handleContactFormSubmission } from '@utils/contactFormHandler'; // Ajusta la ruta si es necesario
+
+document.addEventListener("DOMContentLoaded", () => {
+  handleContactFormSubmission();
+});
+</script>
