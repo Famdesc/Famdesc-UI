@@ -7,6 +7,25 @@ export function handleContactFormSubmission() {
     console.error("Formulario, iframe o elemento de mensaje no encontrado");
     return;
   }
+  // Detect language from URL
+  const path = window.location.pathname;
+  let lang = "en"; // By default, English
+
+  if (path.startsWith("/es")) {
+    lang = "es";
+  } else if (path.startsWith("/fr")) {
+    lang = "fr";
+  }
+  console.log(lang);
+  
+
+  // Add language field as hidden input
+  const languageInput = document.createElement("input");
+  languageInput.type = "hidden";
+  languageInput.name = "language";
+  languageInput.value = lang;
+  form.appendChild(languageInput);
+
 
   let submitted = false;
 
