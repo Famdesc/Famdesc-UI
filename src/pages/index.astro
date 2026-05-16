@@ -6,6 +6,7 @@ import HeroSectionAlt from "@components/sections/landing/HeroSectionAlt.astro";
 import FeaturesGeneral from "@components/sections/features/FeaturesGeneral.astro";
 import FeaturesNavs from "@components/sections/features/FeaturesNavs.astro";
 import TestimonialsSection from "@components/sections/testimonials/TestimonialsSection.astro";
+import MainSection from "@components/ui/blocks/MainSection.astro";
 import FAQ from "@components/sections/misc/FAQ.astro";
 import AnnouncementBanner from "@components/ui/banners/AnnouncementBanner.astro";
 import heroImage from "@images/hero-image.avif";
@@ -33,7 +34,6 @@ const avatarSrcs: Array<string> = [
     btnTitle="Explore Famdesc on GitHub"
     url="https://github.com/nardis9501/Famdesc-landing-blog"
   />
-
   <HeroSection
     title=`<span
         class="text-salmon-500 dark:text-salmon-400">Famdesc:</span>
@@ -61,78 +61,94 @@ const avatarSrcs: Array<string> = [
 
   <FeaturesGeneral
     title="Discover Famdesc: Our Vision And Core Values."
-    subTitle="At Famdesc, we address the unique challenges faced in the realm of social connectivity. From innovative features to expert services, we're dedicated to helping you forge meaningful connections and enhance your online experience."
+    subTitle="Famdesc is a technology initiative focused on building tools that improve everyday life and strengthen family connections. We are evolving from a social network in pause into a technology company delivering real solutions today while building the foundation for our future social platform."
     src={famdescPromo}
-    alt="Famdesc can help you connect with your loved ones while keeping your data secure. Join us and start sharing today!"
+    alt="Promotional video showcasing the evolution of Famdesc: from high-fidelity hardware solutions like the FSA audio line, to ecosystem tools designed to keep families connected and secure."
     features={features}
   />
 
   <FeaturesNavs
-    title=`Customize <span class="text-salmon-500 dark:text-salmon-400">Famdesc</span> to Perfectly Suit Your Social Networking Needs.`
+    title=`Famdesc <span class="text-salmon-500 dark:text-salmon-400">Technology</span>`
     tabs={[
       {
-        heading: "Innovative Tools",
+        heading: "Technology Product Line",
         content:
-          "Empower your social interactions with Famdesc's innovative tools. From seamless content sharing to advanced privacy controls, enjoy a sophisticated social networking experience that keeps you in control.",
+          "Our first technology product line is Famdesc Sound Authority (FSA), a growing sub-brand under Famdesc focused on quality audio solutions designed for real life and long-term use.",
         svg: "tools",
         src: tools,
-        alt: "Family using innovative social media tools on Famdesc effortlessly sharing content.",
+        alt: "Famdesc technology team developing the Famdesc Sound Authority line.",
         first: true,
       },
       {
-        heading: "Intuitive Dashboards",
+        heading: "Built for Durability",
         content:
-          "Navigate with ease using Famdesc's intuitive dashboards. Manage your connections and interactions effortlessly with user-friendly interfaces designed for quick and effective social networking.",
+          "FSA Line One Pro is our first release: wired headphones created with attention to durability, sound fidelity, and Famdesc brand identity instead of generic off-the-shelf products.",
         svg: "dashboard",
         src: dashboard,
-        alt: "A screenshot or graphic representation of the intuitive dashboard",
+        alt: "A first look at durable wired headphones from the FSA line.",
         second: true,
       },
       {
-        heading: "Robust Features",
+        heading: "Umbrella Brand Vision",
         content:
-          "Minimize complexity, maximize engagement. Famdesc's robust features streamline your social interactions, delivering an experience that stands out for its excellence and ease of use.",
+          "Famdesc is becoming a technology umbrella brand, built to launch specialized sub-brands and products over time while staying focused on family-centered innovation.",
         svg: "features",
         src: robustFeatures,
-        alt: "Image reflecting solid social interactions",
+        alt: "Famdesc umbrella-brand strategy for multiple technology product lines.",
       },
     ]}
   />
 
+  <div class="mx-auto mt-0 max-w-[85rem] px-4 pb-8 sm:px-6 lg:px-8">
+    <a
+      href="/products"
+      class="inline-flex items-center justify-center gap-x-2 rounded-lg border border-transparent bg-salmon-500 px-4 py-3 text-sm font-medium text-white transition hover:bg-salmon-600 focus:bg-salmon-600 focus:outline-hidden disabled:pointer-events-none disabled:opacity-50 dark:focus:bg-salmon-500"
+    >
+      Learn about FSA
+    </a>
+  </div>
+
+  <MainSection
+    title="Introducing FSA - Famdesc Sound Authority."
+    subTitle="Professional audio products designed with attention to detail, durability, and sound fidelity."
+    btnExists={true}
+    btnTitle="View Products"
+    btnURL="/products"
+  />
+
   <TestimonialsSection
-    title="Connect and Thrive with Famdesc"
-    subTitle="At Famdesc, we redefine the way you connect with your loved ones. Experience seamless family interactions with our intuitive platform designed to strengthen bonds and enrich lives."
-    ;
+    title="The Famdesc Social Platform (Coming Soon)"
+    subTitle="We are developing the next chapter of Famdesc: a future social platform built on top of our technology company foundation. As Famdesc Technology grows through product lines like FSA, we continue building toward meaningful social tools that help families stay connected."
     testimonials={[
       {
         content:
-          "Famdesc significantly enhances our family connections. The setup was seamless, and the ability to share precious moments instantly has transformed our family interactions. Truly a remarkable platform for fostering real, meaningful connections!",
-        author: "Yuri",
-        role: " Software Engineer | ONLIVE.SITE.",
+          "Famdesc began as a social vision and is now evolving into a technology company that creates real products first. This path allows us to finance sustainable innovation and return stronger with a platform designed to connect families in deeper, more practical ways.",
+        author: "Famdesc Team",
+        role: " Technology & Community Vision",
         avatarSrc:
           "https://raw.githubusercontent.com/nardis9501/avatar/main/yuri.avif",
       },
     ]}
     statistics={[
       {
-        count: "50k+",
+        count: "1st",
         description:
-          "active users — families, genealogists, and community historians building and preserving their legacies.",
+          "technology line launched through Famdesc Sound Authority as the first step of our umbrella-brand strategy.",
       },
       {
-        count: "3x",
+        count: "Future",
         description:
-          "increase in meaningful connections with enhanced user-centric design and sharing tools.",
+          "social platform in active planning, informed by real product-building experience and community feedback.",
       },
       {
-        count: "20%",
+        count: "Real",
         description:
-          "increase in efficiency managing family trees and sharing memories, thanks to our streamlined and user-friendly interface.",
+          "solutions-first approach to finance growth and sustain long-term innovation for families.",
       },
       {
-        count: "4.8/5",
+        count: "Family",
         description:
-          "average user satisfaction rating, reflecting our commitment to high-quality content and exceptional user experience.",
+          "core mission preserved: build technology that helps people stay connected across generations.",
       },
     ]}
   />
