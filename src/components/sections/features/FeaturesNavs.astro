@@ -3,6 +3,7 @@
 import TabNav from "@components/ui/blocks/TabNav.astro";
 import TabContent from "@components/ui/blocks/TabContent.astro";
 import Icon from "@components/ui/icons/Icon.astro";
+import PrimaryCTA from "@/components/ui/buttons/PrimaryCTA.astro";
 
 // Define props from Astro
 const { title, tabs } = Astro.props;
@@ -88,6 +89,11 @@ interface Props {
       </div>
     </div>
   </div>
+ 
+  <div class="flex flex-col space-y-4 sm:flex-row sm:space-x-4 sm:space-y-0">
+     <PrimaryCTA title="Learn about FSA" url="/products" />
+   </div>
+  
 </section>
 <!--Import the necessary Tabs plugin-->
 <!--https://preline.co/plugins/html/tabs.html-->
