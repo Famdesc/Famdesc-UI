@@ -12,9 +12,9 @@ import AnnouncementBanner from "@components/ui/banners/AnnouncementBanner.astro"
 import heroImage from "@images/hero-image.avif";
 import faqs from "@data/faqs.json";
 import features from "@data/features.json";
-import robustFeatures from "@images/robust-features.avif";
-import tools from "@images/innovative-tools.avif";
-import dashboard from "@images/dashboard-image.avif";
+import fsaLine from "@images/fsa-line.avif";
+import fsaOneLinePro from "@images/fsa-one-line-pro.avif";
+import famdescUmbrella from "@images/famdesc-umbrella.avif"
 import ClientsSliderSection from "@/components/sections/landing/ClientsSliderSection.astro";
 import TestimonialData from "@utils/testimonialsData";
 import { famdescPromo } from "@/videos/videosLink";
@@ -73,28 +73,28 @@ const avatarSrcs: Array<string> = [
       {
         heading: "Technology Product Line",
         content:
-          "Our first technology product line is Famdesc Sound Authority (FSA), a growing sub-brand under Famdesc focused on quality audio solutions designed for real life and long-term use.",
+          "Our inaugural technology vertical is Famdesc Sound Authority (FSA), introducing high-fidelity, laboratory-tested hardware engineering that sets the quality and performance benchmark for all future Famdesc subsidiaries.",
         svg: "tools",
-        src: tools,
-        alt: "Famdesc technology team developing the Famdesc Sound Authority line.",
+        src: fsaLine,
+        alt: "FSA (Famdesc Sound Authority) technology line banner inside an engineering laboratory featuring frequency analyzers, copper coils, and precision audio hardware components.",
         first: true,
       },
       {
         heading: "Built for Durability",
         content:
-          "FSA Line One Pro is our first release: wired headphones created with attention to durability, sound fidelity, and Famdesc brand identity instead of generic off-the-shelf products.",
+          "The FSA Line One Pro delivers professional sound that connects you. Engineered with premium braided tangle-free cables, aluminum acoustic cavities, an integrated high-definition microphone, a gold-plated 3.5mm jack, and tailored for an extra-bass powerful audio response with a comfortable everyday fit.",
         svg: "dashboard",
-        src: dashboard,
-        alt: "A first look at durable wired headphones from the FSA line.",
+        src: fsaOneLinePro,
+        alt: "Commercial showcase of FSA Line One Pro wired earphones highlighting its aluminum build, braided cable, inline control microphone, and technical acoustic specifications.",
         second: true,
       },
       {
         heading: "Umbrella Brand Vision",
         content:
-          "Famdesc is becoming a technology umbrella brand, built to launch specialized sub-brands and products over time while staying focused on family-centered innovation.",
+          "Grounded in fundamental physics and bleeding-edge engineering, Famdesc operates as a high-tech umbrella corporation. From consumer mobile devices and computing to bold future frontiers in satellite networks, aerospace travel, smart automotive systems, and medical health-tech, we develop advanced technology designed purely for humanity.",
         svg: "features",
-        src: robustFeatures,
-        alt: "Famdesc umbrella-brand strategy for multiple technology product lines.",
+        src: famdescUmbrella,
+        alt: "Abstract minimalist representation of the Famdesc umbrella brand ecosystem, featuring soft light rays and connected vectors of multi-industry technologies converging into a bright, human-centered environment.",
       },
     ]}
   />
