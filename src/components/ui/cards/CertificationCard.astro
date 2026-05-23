@@ -1,0 +1,46 @@
+---
+const { title, description, icon } = Astro.props;
+
+interface Props {
+  title: string;
+  description: string;
+  icon: string;
+}
+---
+
+<div
+  class="flex w-full max-w-[32rem] flex-col items-center gap-5 rounded-3xl border border-neutral-200/60 bg-neutral-50/90 p-6 shadow-xl backdrop-blur-md transition-all duration-300 hover:border-salmon-400/40 dark:border-neutral-800/60 dark:bg-neutral-900/90 sm:flex-row sm:items-start"
+>
+  {
+    icon && (
+      <div class="flex size-20 flex-shrink-0 items-center justify-center rounded-xl border border-neutral-200 bg-white shadow-sm dark:border-neutral-800 dark:bg-neutral-950 sm:size-24">
+        <img
+          src={icon}
+          alt={`Sello de certificación: ${title}`}
+          class="h-full w-full rounded-xl object-contain p-1"
+        />
+      </div>
+    )
+  }
+
+  {/* Certification text */}
+  <div class="flex-1 space-y-2 text-center sm:text-left">
+    <div class="flex flex-col gap-1 sm:flex-row sm:items-center sm:gap-2">
+      <span
+        class="sm:text-md mx-auto inline-block w-fit self-center rounded-full border border-salmon-500/20 bg-salmon-500/10 px-2 py-0.5 text-sm font-bold uppercase tracking-wider text-salmon-500 dark:text-salmon-400 sm:mx-0 sm:self-start"
+      >
+        Certificación Oficial
+      </span>
+    </div>
+    <h3
+      class="text-lg font-bold leading-snug text-neutral-900 dark:text-neutral-100"
+    >
+      {title}
+    </h3>
+    <p
+      class="text-pretty text-sm leading-relaxed text-neutral-600 dark:text-neutral-400 sm:text-base"
+    >
+      {description}
+    </p>
+  </div>
+</div>
