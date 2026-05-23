@@ -79,6 +79,150 @@ export const usSliderData: SliderItem[] = [
   },
 ];
 
+export const esSliderData: SliderItem[] = [
+  {
+    type: "certification",
+    title: "Amazon FBA Certified",
+    description:
+      "Aprobación oficial en almacenes y centros logísticos internacionales para distribución automatizada.",
+    icon: "src/images/logos/amazon.webp",
+  },
+  {
+    type: "testimonial",
+    title: "Eficiencia de Entrega",
+    description:
+      "El despliegue logístico es impecable. Mis pedidos de hardware de Famdesc llegan a tiempo, con empaques sellados y un rastreo milimétrico de punta a punta.",
+    author: "Yuri",
+    role: "Cliente FSA",
+    avatar:
+      "https://raw.githubusercontent.com/nardis9501/avatar/main/yuri.avif", // Puedes usar el avatar de tu repositorio
+  },
+  {
+    type: "certification",
+    title: "CE & FCC Compliant",
+    description:
+      "Conformidad legal con las directivas europeas y americanas de seguridad, salud y compatibilidad electromagnética.",
+    icon: "src/images/logos/ce-fcc.avif",
+  },
+  {
+    type: "testimonial",
+    title: "Ingeniería de Precisión",
+    description:
+      "Analizamos la respuesta de frecuencia y la resistencia estructural del FSA Line One Pro; el blindaje contra interferencias y la durabilidad superan los estándares comerciales ordinarios.",
+    author: "Alejandro Ruiz",
+    role: "Ingeniero de Sistemas",
+    avatar:
+      "https://images.unsplash.com/photo-1568602471122-7832951cc4c5?auto=format&fit=crop&w=150&h=150&q=80",
+  },
+  {
+    type: "certification",
+    title: "OSHWA Open Hardware",
+    description:
+      "Certificación oficial de hardware libre, asegurando esquemas legibles, modificables y completamente auditables.",
+    icon: "src/images/logos/oshwa.avif",
+  },
+  {
+    type: "testimonial",
+    title: "Fundador & CEO de Famdesc",
+    description:
+      "No construimos tecnología desechable para el consumo rápido; creamos herramientas físicas de alta resistencia diseñadas para durar y preservar los legados de nuestra comunidad.",
+    author: "Nardis Del Campo Soler",
+    role: "CEO | Famdesc",
+    avatar:
+      "https://raw.githubusercontent.com/nardis9501/avatar/main/nardis.webp",
+  },
+  {
+    type: "certification",
+    title: "RoHS Certified",
+    description:
+      "Restricción total de sustancias peligrosas en la fabricación de componentes eléctricos y electrónicos.",
+    icon: "src/images/logos/rohs.avif",
+  },
+  {
+    type: "testimonial",
+    title: "Tecnología Con Propósito",
+    description:
+      "Da tranquilidad respaldar a una empresa paraguas que, mientras expande sus líneas de audio y hardware premium, mantiene el respeto ambiental y humano como base innegociable.",
+    author: "Comunidad Famdesc",
+    role: "Usuarios y Colaboradores",
+    avatar:
+      "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=150&h=150&q=80",
+  },
+];
+
+export const frSliderData: SliderItem[] = [
+  {
+    type: "certification",
+    title: "Certifié Amazon FBA",
+    description:
+      "Agrément officiel dans les entrepôts et centres logistiques internationaux pour la distribution automatisée.",
+    icon: "src/images/logos/amazon.webp",
+  },
+  {
+    type: "testimonial",
+    title: "Efficacité de la livraison",
+    description:
+      '"Le déploiement logistique est impeccable. Mes commandes de matériel Famdesc arrivent à temps, dans des emballages scellés et avec un suivi précis de bout en bout."',
+    author: "Yuri",
+    role: "Client FSA",
+    avatar:
+      "https://raw.githubusercontent.com/nardis9501/avatar/main/yuri.avif", // Vous pouvez utiliser l'avatar de votre référentiel
+  },
+  {
+    type: "certification",
+    title: "Conforme CE & FCC",
+    description:
+      "Conformité légale aux directives européennes et américaines en matière de sécurité, de santé et de compatibilité électromagnétique.",
+    icon: "src/images/logos/ce-fcc.avif",
+  },
+  {
+    type: "testimonial",
+    title: "Ingénierie de précision",
+    description:
+      "Nous avons analysé la réponse en fréquence et la résistance structurelle du FSA Line One Pro ; le blindage contre les interférences et la durabilité dépassent les normes commerciales habituelles.",
+    author: "Alejandro Ruiz",
+    role: "Ingénieur systèmes",
+    avatar:
+      "https://images.unsplash.com/photo-1568602471122-7832951cc4c5?auto=format&fit=crop&w=150&h=150&q=80",
+  },
+  {
+    type: "certification",
+    title: "OSHWA Open Hardware",
+    description:
+      "Certification officielle de matériel libre, garantissant des schémas lisibles, modifiables et entièrement vérifiables.",
+    icon: "src/images/logos/oshwa.avif",
+  },
+  {
+    type: "testimonial",
+    title: "Fondateur et PDG de Famdesc",
+    description:
+      "Nous ne construisons pas de technologies jetables destinées à une consommation rapide ; nous créons des outils physiques hautement résistants, conçus pour durer et préserver l'héritage de notre communauté.",
+    author: "Nardis Del Campo Soler",
+    role: "PDG | Famdesc",
+    avatar:
+      "https://raw.githubusercontent.com/nardis9501/avatar/main/nardis.webp",
+  },
+  {
+    type: "certification",
+    title: "Certifié RoHS",
+    description:
+      "Restriction totale des substances dangereuses dans la fabrication de composants électriques et électroniques.",
+    icon: "src/images/logos/rohs.avif",
+  },
+  {
+    type: "testimonial",
+    title: "Une technologie qui a du sens",
+    description:
+      "C'est rassurant de soutenir une entreprise qui, tout en développant ses gammes d'audio et de matériel haut de gamme, fait du respect de l'environnement et de l'humain un principe non négociable.",
+    author: "Communauté Famdesc",
+    role: "Utilisateurs et contributeurs",
+    avatar:
+      "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=150&h=150&q=80",
+  },
+];
+
 export default {
   usSliderData,
+  esSliderData,
+  frSliderData,
 };
