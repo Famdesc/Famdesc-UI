@@ -1,13 +1,25 @@
 {
-  "subTitle": "Posez-nous des questions sur notre marque et nos services, et obtenez des réponses factuelles",
+  "subTitle": "Posez-nous toutes vos questions sur notre marque et nos services, et recevez des réponses précises.",
   "faqs": [
     {
-      "question": "Qu'est-ce que Famdesc ?",
-      "answer": "Famdesc est un réseau social conçu pour renforcer les liens familiaux et préserver les souvenirs au fil du temps. Il permet aux familles de se connecter, de partager des moments privilégiés et de créer des arbres généalogiques détaillés. "
+      "question": "Pourquoi Famdesc s'étend-elle à l'ingénierie matérielle avancée plutôt que de rester un simple réseau social ?",
+      "answer": "Famdesc a évolué en une marque mère high-tech portée par la physique fondamentale et l'ingénierie avancée. Pour préserver notre mission de connecter les familles sans dépendre de modèles de suivi publicitaire agressifs ou de la vente de données, nous concevons des gammes de matériel premium et durables comme Famdesc Sound Authority (FSA). Cette approche axée sur les solutions finance notre écosystème à long terme et crée une innovation durable et indépendante pour l'humanité."
     },
     {
-      "question": "Comment protégez-vous la confidentialité de mes données ?",
-      "answer": "Chez Famdesc, nous prenons la confidentialité très au sérieux. Nous utilisons un cryptage avancé et des politiques de confidentialité strictes pour garantir la protection de vos informations personnelles et de vos souvenirs. Vous pouvez contrôler qui a accès à vos messages et à vos données. "
+      "question": "Quelle est la vision à long terme de la plateforme sociale Famdesc ?",
+      "answer": "La plateforme sociale Famdesc reste notre objectif numérique ultime et est en planification active. En livrant d'abord des produits physiques exceptionnels, nous construisons une infrastructure technologique et financière solide. Cela garantit que lorsque nous lancerons nos outils sociaux, ils fonctionneront sur un écosystème entièrement indépendant, sécurisé et sans compromis, conçu exclusivement pour la connexion intergénérationnelle."
+    },
+    {
+      "question": "Comment Famdesc aborde-t-elle la confidentialité et la sécurité des données sur ses appareils ?",
+      "answer": "Chez Famdesc, nous considérons la sécurité et la confidentialité comme des droits humains absolus, et non comme des fonctionnalités optionnelles. Que nous concevions des dispositifs grand public, des composants domotiques ou des systèmes de données, notre architecture respecte des principes stricts de 'Privacy by Design'. Nous créons des outils puissants qui maximisent l'efficacité et résolvent des problèmes quotidiens réels localement, en garantissant que vos données personnelles et familiales ne soient jamais exposées à des tiers."
+    },
+    {
+      "question": "Comment des industries avancées comme la technologie satellite et l'automobile s'intègrent-elles à l'innovation familiale ?",
+      "answer": "La véritable protection humaine et la proximité exigent une fiabilité absolue, de la vitesse et de l'immédiateté. En appliquant une science physique rigoureuse aux infrastructures critiques — réseaux satellites, communications aérospatiales et systèmes automobiles intelligents — nous éliminons les vulnérabilités et les frictions quotidiennes. Nous assurons ainsi que les familles restent connectées et en sécurité partout sur la planète ou au-delà, en toute circonstance."
+    },
+    {
+      "question": "Où puis-je acheter les produits FSA et quels sont leurs standards de qualité de fabrication ?",
+      "answer": "Notre produit audio phare, le FSA Line One Pro, sera distribué directement via Amazon Logistics pour garantir des vitesses d'expédition d'élite, un suivi efficace et la satisfaction client, avec un lancement initial sur le marché américain. Chaque appareil est fabriqué selon des contrôles qualité internationaux rigoureux, incluant des tests des matériaux pour nos cavités acoustiques en aluminium personnalisées, le respect des normes de sécurité radiologique et les standards mondiaux de recyclage environnemental."
     }
   ]
 }
