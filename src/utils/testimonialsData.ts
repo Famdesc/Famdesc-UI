@@ -85,7 +85,7 @@ export const esSliderData: SliderItem[] = [
     title: "Amazon FBA Certified",
     description:
       "Aprobación oficial en almacenes y centros logísticos internacionales para distribución automatizada.",
-    icon: "src/images/logos/amazon.webp",
+    icon: "src/images/logos/amazon.avif",
   },
   {
     type: "testimonial",
@@ -156,7 +156,7 @@ export const frSliderData: SliderItem[] = [
     title: "Certifié Amazon FBA",
     description:
       "Agrément officiel dans les entrepôts et centres logistiques internationaux pour la distribution automatisée.",
-    icon: "src/images/logos/amazon.webp",
+    icon: "src/images/logos/amazon.avif",
   },
   {
     type: "testimonial",
