@@ -9,7 +9,8 @@ import TestimonialsSection from "@components/sections/testimonials/TestimonialsS
 import MainSection from "@components/ui/blocks/MainSection.astro";
 import FAQ from "@components/sections/misc/FAQ.astro";
 import AnnouncementBanner from "@components/ui/banners/AnnouncementBanner.astro";
-import heroImage from "@images/hero-image.avif";
+import heroImage from "@images/hero-image-light.avif";
+import heroImageDark from "@images/hero-image-dark.avif";
 import faqs from "@data/fr/faqs.json";
 import features from "@data/fr/features.json";
 import fsaLine from "@images/fsa-line.avif";
@@ -49,7 +50,8 @@ const avatarSrcs: Array<string> = [
     starCount={4}
     reviews=`Basé sur plus de <span class="font-bold">12.8k</span> avis`
     src={heroImage}
-    alt="Famille multigénérationnelle réunie et souriante"
+    srcDark={heroImageDark}
+    alt="Bannière de l’entreprise technologique Famdesc montrant un laboratoire lumineux et minimaliste avec des diagrammes holographiques et le logo de la marque."
   />
 
   <FeaturesGeneral
