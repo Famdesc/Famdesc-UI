@@ -16,7 +16,7 @@ type SliderItem = {
   author?: string;
   role?: string;
   avatar?: string;
-  icon?: string;
+  icon?: ImageMetadata;
 };
 ---
 
@@ -60,7 +60,7 @@ type SliderItem = {
                   <CertificationCard
                     title={item.title}
                     description={item.description}
-                    icon={item.icon ?? "/images/logos/amazon.svg"}
+                    icon={item.icon}
                   />
                 </div>
               )}
