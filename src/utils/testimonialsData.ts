@@ -1,3 +1,7 @@
+import amazonIcon from "../images/logos/amazon.avif";
+import cefccIcon from "../images/logos/ce-fcc.avif";
+import oshwaIcon from "../images/logos/oshwa.avif";
+import rohsIcon from "../images/logos/rohs.avif";
 type SliderItem = {
   type: "certification" | "testimonial";
   title: string;
@@ -5,7 +9,7 @@ type SliderItem = {
   author?: string;
   role?: string;
   avatar?: string;
-  icon?: string;
+  icon?: ImageMetadata;
 };
 
 export const usSliderData: SliderItem[] = [
@@ -14,7 +18,7 @@ export const usSliderData: SliderItem[] = [
     title: "Amazon FBA Ready",
     description:
       "Optimized for automated distribution through international warehouses and fulfillment networks.",
-    icon: "src/images/logos/amazon.avif",
+    icon: amazonIcon,
   },
   {
     type: "testimonial",
@@ -31,7 +35,7 @@ export const usSliderData: SliderItem[] = [
     title: "CE & FCC Compliant",
     description:
       "Legal compliance with European and American safety, health, and electromagnetic compatibility directives.",
-    icon: "src/images/logos/ce-fcc.avif",
+    icon: cefccIcon,
   },
   {
     type: "testimonial",
@@ -48,7 +52,7 @@ export const usSliderData: SliderItem[] = [
     title: "OSHWA Open Hardware",
     description:
       "Official open hardware certification, ensuring schematics that are readable, modifiable, and fully auditable.",
-    icon: "src/images/logos/oshwa.avif",
+    icon: oshwaIcon,
   },
   {
     type: "testimonial",
@@ -65,7 +69,7 @@ export const usSliderData: SliderItem[] = [
     title: "RoHS Certified",
     description:
       "Compliance with restrictions on hazardous substances in electrical and electronic manufacturing.",
-    icon: "src/images/logos/rohs.avif",
+    icon: rohsIcon,
   },
   {
     type: "testimonial",
@@ -85,7 +89,7 @@ export const esSliderData: SliderItem[] = [
     title: "Amazon FBA Certified",
     description:
       "Aprobación oficial en almacenes y centros logísticos internacionales para distribución automatizada.",
-    icon: "src/images/logos/amazon.avif",
+    icon: amazonIcon,
   },
   {
     type: "testimonial",
@@ -102,7 +106,7 @@ export const esSliderData: SliderItem[] = [
     title: "CE & FCC Compliant",
     description:
       "Conformidad legal con las directivas europeas y americanas de seguridad, salud y compatibilidad electromagnética.",
-    icon: "src/images/logos/ce-fcc.avif",
+    icon: cefccIcon,
   },
   {
     type: "testimonial",
@@ -119,7 +123,7 @@ export const esSliderData: SliderItem[] = [
     title: "OSHWA Open Hardware",
     description:
       "Certificación oficial de hardware libre, asegurando esquemas legibles, modificables y completamente auditables.",
-    icon: "src/images/logos/oshwa.avif",
+    icon: oshwaIcon,
   },
   {
     type: "testimonial",
@@ -136,7 +140,7 @@ export const esSliderData: SliderItem[] = [
     title: "RoHS Certified",
     description:
       "Restricción total de sustancias peligrosas en la fabricación de componentes eléctricos y electrónicos.",
-    icon: "src/images/logos/rohs.avif",
+    icon: rohsIcon,
   },
   {
     type: "testimonial",
@@ -156,7 +160,7 @@ export const frSliderData: SliderItem[] = [
     title: "Certifié Amazon FBA",
     description:
       "Agrément officiel dans les entrepôts et centres logistiques internationaux pour la distribution automatisée.",
-    icon: "src/images/logos/amazon.avif",
+    icon: amazonIcon,
   },
   {
     type: "testimonial",
@@ -173,7 +177,7 @@ export const frSliderData: SliderItem[] = [
     title: "Conforme CE & FCC",
     description:
       "Conformité légale aux directives européennes et américaines en matière de sécurité, de santé et de compatibilité électromagnétique.",
-    icon: "src/images/logos/ce-fcc.avif",
+    icon: cefccIcon,
   },
   {
     type: "testimonial",
@@ -190,7 +194,7 @@ export const frSliderData: SliderItem[] = [
     title: "OSHWA Open Hardware",
     description:
       "Certification officielle de matériel libre, garantissant des schémas lisibles, modifiables et entièrement vérifiables.",
-    icon: "src/images/logos/oshwa.avif",
+    icon: oshwaIcon,
   },
   {
     type: "testimonial",
@@ -207,7 +211,7 @@ export const frSliderData: SliderItem[] = [
     title: "Certifié RoHS",
     description:
       "Restriction totale des substances dangereuses dans la fabrication de composants électriques et électroniques.",
-    icon: "src/images/logos/rohs.avif",
+    icon: rohsIcon,
   },
   {
     type: "testimonial",
