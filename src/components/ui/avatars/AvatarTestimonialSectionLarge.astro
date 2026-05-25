@@ -1,9 +1,10 @@
 ---
 import Image from "astro/components/Image.astro";
 
-const { src, alt, author, role, content } = Astro.props;
+const { src, alt, author, role, content, title } = Astro.props;
 
 interface Props {
+  title: string;
   src: string;
   alt: string;
   author: string;
@@ -12,23 +13,34 @@ interface Props {
 }
 ---
 
-<div class="flex flex-col items-center justify-center">
+<div
+  class="mx-auto flex max-w-xl flex-col items-center justify-center p-6 py-4"
+>
   <Image
     src={src}
     alt={alt}
-    class="size-16 rounded-full md:h-24 md:w-24"
+    class="size-16 rounded-full md:size-24"
     draggable={"false"}
     loading={"eager"}
     inferSize
-    format={"webp"}
+    format={"avif"}
   />
-  <div class="flex flex-col items-center justify-center">
-    <div class="font-bold text-neutral-800 dark:text-neutral-200">
+
+  <div class="mt-4 flex flex-col items-center justify-center text-center">
+    <div class="font-semibold text-neutral-800 dark:text-neutral-200">
       {author}
     </div>
-    <div class="text-xs text-neutral-500">{role}</div>
+    <div class="text-xs text-neutral-400 dark:text-neutral-500">{role}</div>
 
-    <p class="mt-4 text-xl italic text-neutral-800 dark:text-neutral-200">
+    <div class="py-3 text-center sm:py-1">
+      <p class="text-sm font-bold uppercase tracking-wider text-neutral-500">
+        {title}
+      </p>
+    </div>
+
+    <p
+      class="mt-1 text-base italic leading-relaxed text-neutral-700 dark:text-neutral-300 sm:text-lg"
+    >
       {content}
     </p>
   </div>

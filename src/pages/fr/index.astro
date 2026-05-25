@@ -6,14 +6,15 @@ import HeroSectionAlt from "@components/sections/landing/HeroSectionAlt.astro";
 import FeaturesGeneral from "@components/sections/features/FeaturesGeneral.astro";
 import FeaturesNavs from "@components/sections/features/FeaturesNavs.astro";
 import TestimonialsSection from "@components/sections/testimonials/TestimonialsSection.astro";
+import MainSection from "@components/ui/blocks/MainSection.astro";
 import FAQ from "@components/sections/misc/FAQ.astro";
 import AnnouncementBanner from "@components/ui/banners/AnnouncementBanner.astro";
 import heroImage from "@images/hero-image.avif";
 import faqs from "@data/fr/faqs.json";
 import features from "@data/fr/features.json";
-import robustFeatures from "@images/robust-features.avif";
-import tools from "@images/innovative-tools.avif";
-import dashboard from "@images/dashboard-image.avif";
+import fsaLine from "@images/fsa-line.avif";
+import fsaOneLinePro from "@images/fsa-one-line-pro.avif";
+import famdescUmbrella from "@images/famdesc-umbrella.avif";
 import ClientsSliderSection from "@/components/sections/landing/ClientsSliderSection.astro";
 import TestimonialData from "@utils/testimonialsData";
 import { famdescPromo } from "@/videos/videosLink";
@@ -31,18 +32,16 @@ const avatarSrcs: Array<string> = [
     title="Fièrement Open Source"
     btnId="dismiss-button"
     btnTitle="Explorez Famdesc sur GitHub"
-    url="https://github.com/nardis9501/Famdesc-landing-blog"
+    url="https://github.com/Famdesc/Famdesc-UI"
   />
 
   <HeroSection
-    title=`Construire, Partager, Préserver:
-    <span
-        class="text-salmon-500 dark:text-salmon-400">Famdesc</span>`
-    subTitle="Votre Havre Numérique pour les Moments en Famille"
-    primaryBtn="Faire un Don"
+    title=`<span class="text-salmon-500 dark:text-salmon-400">Famdesc:</span> Technologie pour les gens. Conçue pour les familles.`
+    subTitle="Famdesc construit un écosystème technologique axé sur la connexion, la qualité et la valeur durable."
+    primaryBtn="Faire un don"
     openInNewTab={true}
     primaryBtnURL="https://www.gofundme.com/famdesc"
-    secondaryBtn="Contactez Notre Équipe"
+    secondaryBtn="Contactez notre équipe"
     secondaryBtnURL="/contact"
     withReview={true}
     avatars={avatarSrcs}
@@ -53,95 +52,106 @@ const avatarSrcs: Array<string> = [
     alt="Famille multigénérationnelle réunie et souriante"
   />
 
-  <ClientsSliderSection
-    title="Approuvé par les Experts du Secteur"
-    subTitle="Rejoignez les visionnaires qui font confiance à Famdesc pour révolutionner leurs connexions sociales."
-    testimonialsData={TestimonialData.frTestimonialData}
-  />
-
   <FeaturesGeneral
-    title="Découvrez Famdesc: Notre Vision et Nos Valeurs Fondamentales."
-    subTitle="Chez Famdesc, nous abordons les défis uniques dans le domaine de la connectivité sociale. Des fonctionnalités innovantes aux services d'experts, nous sommes dédiés à vous aider à créer des connexions significatives et à améliorer votre expérience en ligne."
+    title="Découvrez Famdesc : Notre vision et nos valeurs fondamentales."
+    subTitle="Famdesc est une initiative technologique dédiée à développer des outils qui améliorent le quotidien et renforcent les liens familiaux. Nous sommes passés d'un réseau social en pause à une entreprise technologique qui livre des solutions concrètes aujourd'hui, tout en jetant les bases de notre future plateforme sociale."
     src={famdescPromo}
-    alt="Famdesc peut vous aider à vous connecter avec vos proches tout en gardant vos données sécurisées. Rejoignez-nous et commencez à partager dès aujourd'hui !"
+    alt="Vidéo promotionnelle montrant l'évolution de Famdesc : des solutions matérielles haute fidélité comme la ligne audio FSA jusqu'aux outils de l'écosystème conçus pour garder les familles connectées et en sécurité."
     features={features}
   />
 
   <FeaturesNavs
-    title=`Personnalisez <span class="text-salmon-500 dark:text-salmon-400">Famdesc</span> pour Répondre Parfaitement à Vos Besoins de Réseautage Social.`
+    buttonConfig={{
+      btnExists: false,
+    }}
+    title={`Famdesc <span class="text-salmon-500 dark:text-salmon-400">Technologie</span>`}
+    subtitle="Notre division matérielle développe des solutions qui combinent physique fondamentale et design centré sur l'humain. De l'acoustique de précision aux futurs systèmes de connectivité, nous construisons des outils durables dans un monde d'obsolescence accélérée."
     tabs={[
       {
-        heading: "Outils Innovants",
+        heading: "Ligne de produits technologiques",
         content:
-          "Renforcez vos interactions sociales avec les outils innovants de Famdesc. De la partage de contenu fluide aux contrôles de confidentialité avancés, profitez d'une expérience de réseau social sophistiquée qui vous laisse le contrôle.",
+          "Notre verticale technologique inaugurale est Famdesc Sound Authority (FSA), qui introduit une ingénierie matérielle haut de gamme testée en laboratoire et établit la référence en matière de qualité et de performance pour toutes les futures filiales Famdesc.",
         svg: "tools",
-        src: tools,
-        alt: "Famille utilisant des outils de réseaux sociaux innovants sur Famdesc, partageant du contenu sans effort.",
+        src: fsaLine,
+        alt: "Bannière de la ligne audio FSA dans un laboratoire d'ingénierie de haute performance, avec analyseurs de fréquence, bobines en cuivre et composants audio de précision.",
         first: true,
       },
       {
-        heading: "Tableaux de Bord Intuitifs",
+        heading: "Conçu pour la durabilité",
         content:
-          "Naviguez facilement avec les tableaux de bord intuitifs de Famdesc. Gérez vos connexions et interactions sans effort grâce à des interfaces conviviales conçues pour un réseautage social rapide et efficace.",
+          "Les FSA Line One Pro offrent un son professionnel qui rapproche. Conçus avec des câbles tressés premium anti-nœuds, des cavités acoustiques en aluminium, un microphone intégré haute définition, un connecteur 3,5mm en L plaqué or et optimisés pour une réponse basse puissante avec un confort quotidien.",
         svg: "dashboard",
-        src: dashboard,
-        alt: "Une capture d'écran ou une représentation graphique du tableau de bord intuitif",
+        src: fsaOneLinePro,
+        alt: "Présentation commerciale des écouteurs FSA Line One Pro mettant en avant leur finition en aluminium, câble tressé, microphone intégré et spécifications acoustiques techniques.",
         second: true,
       },
       {
-        heading: "Fonctionnalités Robustes",
+        heading: "Vision de marque parapluie",
         content:
-          "Minimisez la complexité, maximisez l'engagement. Les fonctionnalités robustes de Famdesc simplifient vos interactions sociales, offrant une expérience exceptionnelle et facile à utiliser.",
+          "Ancré dans la physique fondamentale et l'ingénierie de pointe, Famdesc opère comme une société mère high-tech. Des appareils mobiles grand public et de l'informatique aux frontières futures des réseaux satellites, des voyages aérospatiaux, des systèmes automobiles intelligents et des technologies médicales, nous développons des technologies avancées conçues pour l'humanité.",
         svg: "features",
-        src: robustFeatures,
-        alt: "Image reflétant des interactions sociales solides",
+        src: famdescUmbrella,
+        alt: "Représentation minimaliste de l'écosystème de la marque Famdesc, avec des rayons de lumière doux et des vecteurs connectés d'industries diverses convergeant vers un environnement humain et moderne.",
       },
     ]}
   />
 
+  <ClientsSliderSection
+    title="Validation technique, engagement humain"
+    subTitle="Nos produits physiques respectent les normes internationales les plus strictes, renforçant la base économique et technologique de l'écosystème Famdesc de demain."
+    testimonialsData={TestimonialData.frSliderData}
+  />
+
+  <MainSection
+    title="Présentation de FSA - Famdesc Sound Authority."
+    subTitle="Produits audio professionnels conçus avec une attention au détail, à la durabilité et à la fidélité sonore."
+    btnExists={true}
+    btnTitle="Voir les produits"
+    btnURL="/products"
+  />
+
   <TestimonialsSection
-    title="Connectez-vous et Épanouissez-vous avec Famdesc"
-    subTitle="Chez Famdesc, nous redéfinissons la manière dont vous vous connectez avec vos proches. Expérimentez des interactions familiales fluides avec notre plateforme intuitive conçue pour renforcer les liens et enrichir les vies."
-    ;
+    title="La plateforme sociale Famdesc (bientôt)"
+    subTitle="Nous développons le prochain chapitre de Famdesc : une future plateforme sociale construite sur notre socle technologique. À mesure que Famdesc Technology se développe avec des gammes comme FSA, nous continuons à bâtir des outils sociaux significatifs qui aident les familles à rester connectées."
     testimonials={[
       {
         content:
-          "Famdesc améliore significativement nos connexions familiales. L'installation a été simple, et la possibilité de partager des moments précieux instantanément a transformé nos interactions familiales. Une plateforme vraiment remarquable pour favoriser des connexions réelles et significatives !",
-        author: "Yuri",
-        role: "Ingénieur Logiciel | ONLIVE.SITE.",
+          "Famdesc a commencé comme une vision sociale et évolue désormais vers une entreprise technologique qui crée d'abord des produits réels. Ce parcours nous permet de financer une innovation durable et de revenir plus forts avec une plateforme conçue pour connecter les familles de manière plus profonde et pratique.",
+        author: "Équipe Famdesc",
+        role: "Vision Technologie & Communauté",
         avatarSrc:
           "https://raw.githubusercontent.com/nardis9501/avatar/main/yuri.avif",
       },
     ]}
     statistics={[
       {
-        count: "50k+",
+        count: "1er",
         description:
-          "utilisateurs actifs — familles, généalogistes et historiens communautaires construisant et préservant leurs héritages.",
+          "ligne technologique lancée par Famdesc Sound Authority comme la première étape de notre stratégie parapluie.",
       },
       {
-        count: "3x",
+        count: "Futur",
         description:
-          "augmentation des connexions significatives grâce à un design centré sur l'utilisateur et des outils de partage améliorés.",
+          "plateforme sociale en planification active, appuyée par l'expérience réelle de construction de produits et les retours de la communauté.",
       },
       {
-        count: "20%",
+        count: "Réel",
         description:
-          "augmentation de l'efficacité dans la gestion des arbres généalogiques et le partage de souvenirs, grâce à notre interface simplifiée et conviviale.",
+          "approche solutions-first pour financer la croissance et soutenir l'innovation à long terme pour les familles.",
       },
       {
-        count: "4.8/5",
+        count: "Famille",
         description:
-          "note moyenne de satisfaction des utilisateurs, reflétant notre engagement envers un contenu de haute qualité et une expérience utilisateur exceptionnelle.",
+          "mission centrale préservée : créer une technologie qui aide les gens à rester connectés entre les générations.",
       },
     ]}
   />
 
-  <FAQ title="Questions Fréquemment Posées" faqs={faqs} />
+  <FAQ title="Questions<br />Fréquemment Posées" faqs={faqs} />
 
   <HeroSectionAlt
     title="Construisons Ensemble"
-    subTitle="Famdesc est un modèle open-source, méticuleusement conçu avec les frameworks Astro, Tailwind CSS, et Preline UI."
-    url="https://github.com/nardis9501/Famdesc-landing-blog"
+    subTitle="Famdesc est un modèle open source, méticuleusement conçu avec Astro, Tailwind CSS et les frameworks Preline UI."
+    url="https://github.com/Famdesc/Famdesc-UI"
   />
 </MainLayout>

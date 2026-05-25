@@ -1,28 +1,31 @@
 ---
 import AvatarTestimonialSectionLarge from "@/components/ui/avatars/AvatarTestimonialSectionLarge.astro";
+import CertificationCard from "@/components/ui/cards/CertificationCard.astro";
+import type { ImageMetadata } from "astro";
 
-// Define props from Astro
 const { title, subTitle, testimonialsData } = Astro.props;
 
-// Define TypeScript interface for props
 interface Props {
   title: string;
   subTitle?: string;
-  testimonialsData: Array<Testimonials>;
+  testimonialsData: Array<SliderItem>;
 }
-type Testimonials = {
-  author: string;
-  avatarUrl: any;
-  testimonial: string;
-  role: `${string} | ${string}`;
+type SliderItem = {
+  type: "certification" | "testimonial";
+  title: string;
+  description: string;
+  author?: string;
+  role?: string;
+  avatar?: string;
+  icon?: ImageMetadata;
+  badgeText?: string;
 };
 ---
 
 <section
   class="mx-auto max-w-[85rem] px-4 py-10 sm:px-6 lg:px-8 lg:py-14 2xl:max-w-full"
 >
-  <!-- Title and description -->
-  <div class="mx-auto mb-6 w-full space-y-1 text-center sm:w-1/2 lg:w-1/3">
+  <div class="mx-auto mb-10 w-full space-y-2 text-center sm:w-1/2 lg:w-2/5">
     <h2
       class="text-balance text-2xl font-bold leading-tight text-neutral-800 dark:text-neutral-200 sm:text-3xl"
     >
@@ -30,42 +33,50 @@ type Testimonials = {
     </h2>
     {
       subTitle && (
-        <p class="text-pretty leading-tight text-neutral-600 dark:text-neutral-400">
+        <p class="text-pretty text-sm leading-tight text-neutral-600 dark:text-neutral-400 sm:text-base">
           {subTitle}
         </p>
       )
     }
   </div>
+
   <div>
-    <!-- Slider main container -->
     <div
-      class="swiper h-[370px] w-[290px] sm:h-[300px] sm:w-[545px] lg:h-[300px] lg:w-[760px]"
+      class="swiper h-[400px] w-[310px] sm:h-[320px] sm:w-[560px] lg:h-[320px] lg:w-[780px]"
     >
-      <!-- Additional required wrapper -->
       <div class="swiper-wrapper">
-        <!-- Slides -->
         {
-          testimonialsData.map(({ author, role, testimonial, avatarUrl }) => (
-            <div class="swiper-slide flex flex-col items-center justify-center">
-              <AvatarTestimonialSectionLarge
-                author={author}
-                role={role}
-                content={testimonial}
-                alt="hola"
-                src={avatarUrl}
-              />
+          testimonialsData.map((item) => (
+            <div class="swiper-slide flex items-center justify-center px-2 py-4">
+              {item.type === "testimonial" ? (
+                <AvatarTestimonialSectionLarge
+                  author={item.author ?? "Famdesc User"}
+                  title={item.title}
+                  role={item.role ?? "Famdesc User"}
+                  content={item.description}
+                  alt={`Avatar of ${item.author ?? "user testimonial"}`}
+                  src={item.avatar ?? "/images/logos/amazon.svg"}
+                />
+              ) : (
+                <div class="flex w-full items-center justify-center py-8 sm:py-10">
+                  <CertificationCard
+                    title={item.title}
+                    description={item.description}
+                    icon={item.icon}
+                    badgeText={item.badgeText}
+                  />
+                </div>
+              )}
             </div>
           ))
         }
       </div>
-      <!-- If we need pagination -->
       <div class="swiper-pagination"></div>
     </div>
   </div>
 </section>
 
 <head>
-  <!-- External stylesheets and scripts are loaded for Swiper. -->
   <link
     rel="stylesheet"
     href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.css"
@@ -83,15 +94,21 @@ type Testimonials = {
         clickable: true,
       },
       autoplay: {
-        delay: 4000,
-        disableOnInteraction: false,
+        delay: 5000,
+        disableOnInteraction: true,
       },
       breakpoints: {
         320: {
           slidesPerView: 1,
-          spaceBetween: 15,
+          spaceBetween: 20,
         },
       },
     });
   </script>
 </head>
+
+<style>
+  .swiper-pagination {
+    bottom: 0px !important;
+  }
+</style>

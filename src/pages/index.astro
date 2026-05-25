@@ -14,7 +14,7 @@ import faqs from "@data/faqs.json";
 import features from "@data/features.json";
 import fsaLine from "@images/fsa-line.avif";
 import fsaOneLinePro from "@images/fsa-one-line-pro.avif";
-import famdescUmbrella from "@images/famdesc-umbrella.avif"
+import famdescUmbrella from "@images/famdesc-umbrella.avif";
 import ClientsSliderSection from "@/components/sections/landing/ClientsSliderSection.astro";
 import TestimonialData from "@utils/testimonialsData";
 import { famdescPromo } from "@/videos/videosLink";
@@ -32,7 +32,7 @@ const avatarSrcs: Array<string> = [
     title="Proudly Open Source"
     btnId="dismiss-button"
     btnTitle="Explore Famdesc on GitHub"
-    url="https://github.com/nardis9501/Famdesc-landing-blog"
+    url="https://github.com/Famdesc/Famdesc-UI"
   />
   <HeroSection
     title=`<span
@@ -53,12 +53,6 @@ const avatarSrcs: Array<string> = [
     alt="Multigenerational family gathered and smiling"
   />
 
-  <ClientsSliderSection
-    title="Trusted by Industry Experts"
-    subTitle="Join the visionaries who trust Famdesc to revolutionize their social connections."
-    testimonialsData={TestimonialData.usTestimonialData}
-  />
-
   <FeaturesGeneral
     title="Discover Famdesc: Our Vision And Core Values."
     subTitle="Famdesc is a technology initiative focused on building tools that improve everyday life and strengthen family connections. We are evolving from a social network in pause into a technology company delivering real solutions today while building the foundation for our future social platform."
@@ -68,7 +62,11 @@ const avatarSrcs: Array<string> = [
   />
 
   <FeaturesNavs
+    buttonConfig={{
+      btnExists: false,
+    }}
     title=`Famdesc <span class="text-salmon-500 dark:text-salmon-400">Technology</span>`
+    subtitle="Our hardware division develops solutions that combine fundamental physics with human-centered design. From precision acoustics to future connectivity systems, we build durable tools in a world of accelerated obsolescence."
     tabs={[
       {
         heading: "Technology Product Line",
@@ -99,6 +97,11 @@ const avatarSrcs: Array<string> = [
     ]}
   />
 
+  <ClientsSliderSection
+    title="Technical Validation, Human Commitment"
+    subTitle="Our physical products comply with the strictest international standards, strengthening the economic and technological foundation of the future Famdesc ecosystem."
+    testimonialsData={TestimonialData.usSliderData}
+  />
 
   <MainSection
     title="Introducing FSA - Famdesc Sound Authority."

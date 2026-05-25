@@ -6,7 +6,7 @@ import Icon from "@components/ui/icons/Icon.astro";
 import PrimaryCTA from "@/components/ui/buttons/PrimaryCTA.astro";
 
 // Define props from Astro
-const { title, tabs } = Astro.props;
+const { title, subtitle, tabs, buttonConfig } = Astro.props;
 
 // Define TypeScript interface for tab object
 interface Tab {
@@ -19,10 +19,16 @@ interface Tab {
   second?: boolean;
 }
 
+type ButtonConfig =
+  | { btnExists: false; btnTitle?: never; btnURL?: never }
+  | { btnExists: true; btnTitle: string; btnURL: string };
+
 // Define TypeScript interface for props
 interface Props {
   title?: string;
+  subtitle?: string;
   tabs: Tab[];
+  buttonConfig: ButtonConfig;
 }
 ---
 
@@ -41,6 +47,13 @@ interface Props {
           <!-- About Fragment: https://docs.astro.build/en/basics/astro-syntax/#fragments -->
           <Fragment set:html={title} />
         </h2>
+        {
+          subtitle && (
+            <p class="mt-2 text-lg text-neutral-600 dark:text-neutral-400">
+              {subtitle}
+            </p>
+          )
+        }
         <!-- Tab navigation - use the attribute 'first' in the first TabNav for the component to work -->
         <nav class="mt-5 grid gap-4 md:mt-10" aria-label="Tabs" role="tablist">
           {
@@ -89,11 +102,14 @@ interface Props {
       </div>
     </div>
   </div>
- 
+
   <div class="flex flex-col space-y-4 sm:flex-row sm:space-x-4 sm:space-y-0">
-     <PrimaryCTA title="Learn about FSA" url="/products" />
-   </div>
-  
+    {
+      buttonConfig.btnExists && (
+        <PrimaryCTA title={buttonConfig.btnTitle} url={buttonConfig.btnURL} />
+      )
+    }
+  </div>
 </section>
 <!--Import the necessary Tabs plugin-->
 <!--https://preline.co/plugins/html/tabs.html-->
