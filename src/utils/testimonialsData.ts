@@ -10,6 +10,7 @@ type SliderItem = {
   role?: string;
   avatar?: string;
   icon?: ImageMetadata;
+  badgeText?: string
 };
 
 export const usSliderData: SliderItem[] = [
@@ -19,6 +20,7 @@ export const usSliderData: SliderItem[] = [
     description:
       "Optimized for automated distribution through international warehouses and fulfillment networks.",
     icon: amazonIcon,
+    badgeText: "Official Certification",
   },
   {
     type: "testimonial",
@@ -36,6 +38,7 @@ export const usSliderData: SliderItem[] = [
     description:
       "Legal compliance with European and American safety, health, and electromagnetic compatibility directives.",
     icon: cefccIcon,
+    badgeText: "Official Certification",
   },
   {
     type: "testimonial",
@@ -53,6 +56,7 @@ export const usSliderData: SliderItem[] = [
     description:
       "Official open hardware certification, ensuring schematics that are readable, modifiable, and fully auditable.",
     icon: oshwaIcon,
+    badgeText: "Official Certification",
   },
   {
     type: "testimonial",
@@ -70,6 +74,7 @@ export const usSliderData: SliderItem[] = [
     description:
       "Compliance with restrictions on hazardous substances in electrical and electronic manufacturing.",
     icon: rohsIcon,
+    badgeText: "Official Certification",
   },
   {
     type: "testimonial",
@@ -90,6 +95,7 @@ export const esSliderData: SliderItem[] = [
     description:
       "Aprobación oficial en almacenes y centros logísticos internacionales para distribución automatizada.",
     icon: amazonIcon,
+    badgeText: "Certificación Oficial",
   },
   {
     type: "testimonial",
@@ -107,6 +113,7 @@ export const esSliderData: SliderItem[] = [
     description:
       "Conformidad legal con las directivas europeas y americanas de seguridad, salud y compatibilidad electromagnética.",
     icon: cefccIcon,
+    badgeText: "Certificación Oficial",
   },
   {
     type: "testimonial",
@@ -124,6 +131,7 @@ export const esSliderData: SliderItem[] = [
     description:
       "Certificación oficial de hardware libre, asegurando esquemas legibles, modificables y completamente auditables.",
     icon: oshwaIcon,
+    badgeText: "Certificación Oficial",
   },
   {
     type: "testimonial",
@@ -141,6 +149,7 @@ export const esSliderData: SliderItem[] = [
     description:
       "Restricción total de sustancias peligrosas en la fabricación de componentes eléctricos y electrónicos.",
     icon: rohsIcon,
+    badgeText: "Certificación Oficial",
   },
   {
     type: "testimonial",
@@ -161,6 +170,7 @@ export const frSliderData: SliderItem[] = [
     description:
       "Agrément officiel dans les entrepôts et centres logistiques internationaux pour la distribution automatisée.",
     icon: amazonIcon,
+    badgeText: "Certification Officielle",
   },
   {
     type: "testimonial",
@@ -178,6 +188,7 @@ export const frSliderData: SliderItem[] = [
     description:
       "Conformité légale aux directives européennes et américaines en matière de sécurité, de santé et de compatibilité électromagnétique.",
     icon: cefccIcon,
+    badgeText: "Certification Officielle",
   },
   {
     type: "testimonial",
@@ -195,6 +206,7 @@ export const frSliderData: SliderItem[] = [
     description:
       "Certification officielle de matériel libre, garantissant des schémas lisibles, modifiables et entièrement vérifiables.",
     icon: oshwaIcon,
+    badgeText: "Certification Officielle",
   },
   {
     type: "testimonial",
@@ -212,6 +224,7 @@ export const frSliderData: SliderItem[] = [
     description:
       "Restriction totale des substances dangereuses dans la fabrication de composants électriques et électroniques.",
     icon: rohsIcon,
+    badgeText: "Certification Officielle",
   },
   {
     type: "testimonial",
