@@ -1,12 +1,12 @@
 import ogImageSrc from "@images/social.png";
 
 export const SITE = {
-  title: "Famdesc - Your Digital Haven for Family Moments",
-  tagline: "A New Way to Preserve and Share Your Family&aposs Precious Moments",
+  title: "Famdesc - People-Centered Technology & Premium Audio",
+  tagline: "Premium audio today, private family technology for tomorrow",
   description:
-    "Join Famdesc to build your family tree, share cherished memories and preserve the moments that matter most. Connect with loved ones in your digital space dedicated to family moments.",
+    "Famdesc is a people-centered technology company starting with premium audio products through Famdesc Sound Authority while building toward a private family social platform.",
   description_short:
-    "Join Famdesc to build your family tree, share cherished memories and preserve the moments that matter most.",
+    "Famdesc builds people-centered technology, beginning with premium FSA audio products.",
   url: "https://famdesc.com",
   author: "Nardis Del Campo Soler",
 };
@@ -35,7 +35,7 @@ export const OG = {
   locale: "en_US",
   type: "website",
   url: SITE.url,
-  title: `${SITE.title}: : A New Way to Preserve and Share Your Family&aposs Precious Moments`,
+  title: `${SITE.title} | FSA Line One Pro`,
   description: SITE.description,
   image: ogImageSrc,
 };
