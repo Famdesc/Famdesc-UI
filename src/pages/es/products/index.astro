@@ -3,14 +3,14 @@
 import MainLayout from "@/layouts/MainLayout.astro";
 import PrimaryCTA from "@components/ui/buttons/PrimaryCTA.astro";
 import CardSmall from "@components/ui/cards/CardSmall.astro";
-import CardWide from "@components/ui/cards/CardWide.astro";
 import FeaturesStatsAlt from "@components/sections/features/FeaturesStatsAlt.astro";
-import TestimonialsSectionAlt from "@components/sections/testimonials/TestimonialsSectionAlt.astro";
 
 // Importing necessary functions from Astro
 import { getCollection } from "astro:content";
 import type { CollectionEntry } from "astro:content";
 import { SITE } from "@data/constants";
+import TestimonialsSectionAlt from "@/components/sections/testimonials/TestimonialsSectionAlt.astro";
+import CardWide from "@/components/ui/cards/CardWide.astro";
 
 // Fetching all the product related content and sorting it by main.id
 const product: CollectionEntry<"products">[] = (
@@ -21,43 +21,42 @@ const product: CollectionEntry<"products">[] = (
 );
 
 // Define variables for page content
-const title: string = "FSA Products";
+const title: string = "Productos FSA";
 const subTitle: string =
-  "Famdesc Sound Authority is the first premium technology line inside the Famdesc ecosystem. Our current product focus is FSA Line One Pro, a wired in-ear audio product built for dependable low-latency listening without batteries.";
+  "Famdesc Sound Authority es la primera línea tecnológica premium dentro del ecosistema Famdesc. Nuestro producto estrella actual es FSA Line One Pro, un producto de audio intraauricular con cable diseñado para una escucha fiable de baja latencia sin necesidad de baterías ni recargas.";
 
-const pageTitle: string = `Products | ${SITE.title}`;
+const pageTitle: string = `Productos | ${SITE.title}`;
 
-// Testimonial data that will be rendered in the component
 const testimonials = [
   // First testimonial data
   {
     content:
-      ' "FSA feels like a brand with a clear vision: modern, useful technology created with attention to detail. The FSA One Line Pro headphones look elegant, practical, and ready for everyday life. It is exciting to see a product with this level of identity and ambition." ',
+      ' "FSA se siente como una marca con una visión clara: tecnología moderna, útil y creada con atención al detalle. Los audífonos FSA One Line Pro se ven elegantes, prácticos y preparados para el uso diario. Es emocionante ver un producto con tanta identidad y ambición." ',
     author: "Lian Steffan",
-    role: "Dental Medicine Student",
+    role: "Estudiante de Estomatología",
     avatarSrc:
       "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?q=80&w=1374&auto=format&fit=crop&ixlib=rb-4.0.3&auto=format&fit=facearea&facepad=2&w=320&h=320&q=80",
-    avatarAlt: "Portrait of Lian Steffan",
+    avatarAlt: "Retrato de Lian Steffan",
   },
   // Second testimonial data
   {
     content:
-      ' "What I like most about FSA is how the product combines style, technology, and a strong brand presence. The headphones feel like something designed not only to be used, but also to represent confidence, progress, and good taste." ',
+      ' "Lo que más me gusta de FSA es cómo el producto combina estilo, tecnología y una presencia de marca fuerte. Los audífonos se sienten como algo diseñado no solo para usarse, sino también para representar confianza, progreso y buen gusto." ',
     author: "Emine",
-    role: "Commerce Student & Professional",
+    role: "Estudiante y trabajadora en el área comercial",
     avatarSrc:
       "https://images.unsplash.com/photo-1544005313-94ddf0286df2?q=80&w=1376&auto=format&fit=crop&ixlib=rb-4.0.3&auto=format&fit=facearea&facepad=2&w=320&h=320&q=80",
-    avatarAlt: "Portrait of Emine",
+    avatarAlt: "Retrato de Emine",
   },
   // Third testimonial data
   {
     content:
-      ' "From a technical perspective, FSA has a very promising concept. The design of the FSA One Line Pro headphones shows intention, clarity, and a focus on user experience. It is the kind of product that can grow into a strong technology line." ',
+      ' "Desde una perspectiva técnica, FSA tiene un concepto muy prometedor. El diseño de los audífonos FSA One Line Pro muestra intención, claridad y enfoque en la experiencia del usuario. Es el tipo de producto que puede crecer hasta convertirse en una línea tecnológica sólida." ',
     author: "Fabián",
-    role: "Physicist | Medical Biophysics",
+    role: "Físico | Biofísica Médica",
     avatarSrc:
       "https://images.unsplash.com/photo-1474176857210-7287d38d27c6?q=80&w=1470&auto=format&fit=crop&ixlib=rb-4.0.3&auto=format&fit=facearea&facepad=2&w=320&h=320&q=80",
-    avatarAlt: "Portrait of Fabián",
+    avatarAlt: "Retrato de Fabián",
   },
 ];
 ---
@@ -67,19 +66,19 @@ const testimonials = [
   structuredData={{
     "@context": "https://schema.org",
     "@type": "WebPage",
-    "@id": "https://famdesc.com/products",
-    url: "https://famdesc.com/products",
-    name: "FSA Products | Famdesc",
+    "@id": "https://famdesc.com/es/products",
+    url: "https://famdesc.com/es/products",
+    name: "Productos FSA | Famdesc",
     description:
-      "Explore FSA Line One Pro, premium wired earphones by Famdesc Sound Authority.",
+      "Descubre los FSA Line One Pro, unos auriculares con cable de alta gama de Famdesc Sound Authority.",
     isPartOf: {
       "@type": "WebSite",
-      url: "https://famdesc.com",
+      url: "https://famdesc.com/es",
       name: "Famdesc",
       description:
-        "Famdesc is a people-centered technology company starting with premium audio products through FSA while building toward a private family social platform.",
+        "Famdesc es una empresa tecnológica centrada en las personas que comienza con productos de audio de alta gama a través de FSA, mientras construye una plataforma social familiar privada.",
     },
-    inLanguage: "en-US",
+    inLanguage: "es-ES",
   }}
 >
   <div
@@ -101,7 +100,7 @@ const testimonials = [
         }
       </div>
       <PrimaryCTA
-        title="Explore FSA Line One Pro"
+        title="Explora la FSA Line One Pro"
         url="/products/fsa-line-one-pro"
         noArrow={true}
       />
@@ -123,17 +122,18 @@ const testimonials = [
   </div>
   <!--Features statistics section-->
   <FeaturesStatsAlt
-    title="Why Choose FSA Line One Pro?"
-    subTitle="Premium wired earphones for people who want reliable audio without charging, pairing problems, or avoidable latency."
+    title="¿Por qué elegir los FSA Line One Pro?"
+    subTitle="Auriculares con cable de alta gama para quienes buscan un audio fiable sin problemas de carga, emparejamiento o latencia evitable."
     benefits={[
-      "Enhanced Hi-Fi Sound with a 10 mm dynamic driver.",
-      "Low latency wired performance with no battery required.",
-      "Noise isolation, HD microphone, braided cable, metallic housing, and universal 3.5 mm compatibility.",
+      "Sonido Hi-Fi mejorado con un controlador dinámico de 10 mm.",
+      "Rendimiento con cable de baja latencia sin necesidad de batería.",
+      "Aislamiento del ruido, micrófono HD, cable trenzado, carcasa metálica y compatibilidad universal de 3,5 mm.",
     ]}
   />
+
   <!--Testimonials section-->
   <TestimonialsSectionAlt
-    title="What People Are Saying About FSA"
+    title="Lo que dicen sobre FSA"
     testimonials={testimonials}
   />
 </MainLayout>
