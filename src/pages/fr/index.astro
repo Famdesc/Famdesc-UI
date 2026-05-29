@@ -2,7 +2,6 @@
 // Importer les composants nécessaires
 import MainLayout from "@/layouts/MainLayout.astro";
 import HeroSection from "@components/sections/landing/HeroSection.astro";
-import HeroSectionAlt from "@components/sections/landing/HeroSectionAlt.astro";
 import FeaturesGeneral from "@components/sections/features/FeaturesGeneral.astro";
 import FeaturesNavs from "@components/sections/features/FeaturesNavs.astro";
 import TestimonialsSection from "@components/sections/testimonials/TestimonialsSection.astro";
@@ -15,7 +14,6 @@ import faqs from "@data/fr/faqs.json";
 import features from "@data/fr/features.json";
 import fsaLine from "@images/fsa-line.avif";
 import fsaOneLinePro from "@images/fsa-one-line-pro.avif";
-import famdescUmbrella from "@images/famdesc-umbrella.avif";
 import ClientsSliderSection from "@/components/sections/landing/ClientsSliderSection.astro";
 import TestimonialData from "@utils/testimonialsData";
 import { famdescPromo } from "@/videos/videosLink";
@@ -38,11 +36,10 @@ const avatarSrcs: Array<string> = [
 
   <HeroSection
     title=`<span class="text-salmon-500 dark:text-salmon-400">Famdesc:</span> Technologie pour les gens. Conçue pour les familles.`
-    subTitle="Famdesc construit un écosystème technologique axé sur la connexion, la qualité et la valeur durable."
-    primaryBtn="Faire un don"
-    openInNewTab={true}
-    primaryBtnURL="https://www.gofundme.com/famdesc"
-    secondaryBtn="Contactez notre équipe"
+    subTitle="Famdesc est une entreprise technologique centrée sur les personnes et les familles. Nous commençons avec des produits audio premium via FSA tout en construisant une future plateforme sociale familiale privée."
+    primaryBtn="Explorer FSA Line One Pro"
+    primaryBtnURL="/products/fsa-line-one-pro"
+    secondaryBtn="Rejoindre la liste"
     secondaryBtnURL="/contact"
     withReview={true}
     avatars={avatarSrcs}
@@ -55,8 +52,8 @@ const avatarSrcs: Array<string> = [
   />
 
   <FeaturesGeneral
-    title="Découvrez Famdesc : Notre vision et nos valeurs fondamentales."
-    subTitle="Famdesc est une initiative technologique dédiée à développer des outils qui améliorent le quotidien et renforcent les liens familiaux. Nous sommes passés d'un réseau social en pause à une entreprise technologique qui livre des solutions concrètes aujourd'hui, tout en jetant les bases de notre future plateforme sociale."
+    title="Famdesc : Technologie pour les personnes et les familles."
+    subTitle="Famdesc construit une technologie pour les personnes et les familles. Notre première étape est FSA, une ligne audio premium conçue pour apporter une valeur réelle aujourd'hui tout en soutenant le développement à long terme d'une plateforme sociale familiale privée."
     src={famdescPromo}
     alt="Vidéo promotionnelle montrant l'évolution de Famdesc : des solutions matérielles haute fidélité comme la ligne audio FSA jusqu'aux outils de l'écosystème conçus pour garder les familles connectées et en sécurité."
     features={features}
@@ -66,13 +63,13 @@ const avatarSrcs: Array<string> = [
     buttonConfig={{
       btnExists: false,
     }}
-    title={`Famdesc <span class="text-salmon-500 dark:text-salmon-400">Technologie</span>`}
-    subtitle="Notre division matérielle développe des solutions qui combinent physique fondamentale et design centré sur l'humain. De l'acoustique de précision aux futurs systèmes de connectivité, nous construisons des outils durables dans un monde d'obsolescence accélérée."
+    title={`Famdesc <span class="text-salmon-500 dark:text-salmon-400">Sound Authority</span>`}
+    subtitle="FSA est la première ligne technologique premium de l'écosystème Famdesc, centrée sur des produits audio fiables et utiles dès aujourd'hui."
     tabs={[
       {
-        heading: "Ligne de produits technologiques",
+        heading: "Première Ligne Premium",
         content:
-          "Notre verticale technologique inaugurale est Famdesc Sound Authority (FSA), qui introduit une ingénierie matérielle haut de gamme testée en laboratoire et établit la référence en matière de qualité et de performance pour toutes les futures filiales Famdesc.",
+          "Famdesc Sound Authority (FSA) présente la première ligne de produits réels de l'écosystème Famdesc, en commençant par l'audio intra-auriculaire filaire premium.",
         svg: "tools",
         src: fsaLine,
         alt: "Bannière de la ligne audio FSA dans un laboratoire d'ingénierie de haute performance, avec analyseurs de fréquence, bobines en cuivre et composants audio de précision.",
@@ -81,39 +78,31 @@ const avatarSrcs: Array<string> = [
       {
         heading: "Conçu pour la durabilité",
         content:
-          "Les FSA Line One Pro offrent un son professionnel qui rapproche. Conçus avec des câbles tressés premium anti-nœuds, des cavités acoustiques en aluminium, un microphone intégré haute définition, un connecteur 3,5mm en L plaqué or et optimisés pour une réponse basse puissante avec un confort quotidien.",
+          "FSA Line One Pro offre un Enhanced Hi-Fi Sound avec transducteur dynamique de 10 mm, isolation sonore, microphone HD, câble tressé renforcé, boîtier métallique et connecteur 3,5 mm en L plaqué or.",
         svg: "dashboard",
         src: fsaOneLinePro,
         alt: "Présentation commerciale des écouteurs FSA Line One Pro mettant en avant leur finition en aluminium, câble tressé, microphone intégré et spécifications acoustiques techniques.",
         second: true,
       },
-      {
-        heading: "Vision de marque parapluie",
-        content:
-          "Ancré dans la physique fondamentale et l'ingénierie de pointe, Famdesc opère comme une société mère high-tech. Des appareils mobiles grand public et de l'informatique aux frontières futures des réseaux satellites, des voyages aérospatiaux, des systèmes automobiles intelligents et des technologies médicales, nous développons des technologies avancées conçues pour l'humanité.",
-        svg: "features",
-        src: famdescUmbrella,
-        alt: "Représentation minimaliste de l'écosystème de la marque Famdesc, avec des rayons de lumière doux et des vecteurs connectés d'industries diverses convergeant vers un environnement humain et moderne.",
-      },
     ]}
   />
 
   <ClientsSliderSection
-    title="Validation technique, engagement humain"
-    subTitle="Nos produits physiques respectent les normes internationales les plus strictes, renforçant la base économique et technologique de l'écosystème Famdesc de demain."
+    title="Conformité en cours"
+    subTitle="FSA Line One Pro est conçu pour répondre aux exigences CE, FCC, RoHS et WEEE. Les PDFs fournisseur actualisés ont été demandés avant d'utiliser des claims de certification plus forts."
     testimonialsData={TestimonialData.frSliderData}
   />
 
   <MainSection
     title="Présentation de FSA - Famdesc Sound Authority."
-    subTitle="Produits audio professionnels conçus avec une attention au détail, à la durabilité et à la fidélité sonore."
+    subTitle="Produits audio filaires premium conçus pour un usage fiable, à faible latence et sans batterie."
     btnExists={true}
-    btnTitle="Voir les produits"
+    btnTitle="Voir les produits FSA"
     btnURL="/products"
   />
 
   <TestimonialsSection
-    title="La plateforme sociale Famdesc (bientôt)"
+    title="La plateforme sociale Famdesc (en développement)"
     subTitle="Nous développons le prochain chapitre de Famdesc : une future plateforme sociale construite sur notre socle technologique. À mesure que Famdesc Technology se développe avec des gammes comme FSA, nous continuons à bâtir des outils sociaux significatifs qui aident les familles à rester connectées."
     testimonials={[
       {
@@ -134,7 +123,7 @@ const avatarSrcs: Array<string> = [
       {
         count: "Futur",
         description:
-          "plateforme sociale en planification active, appuyée par l'expérience réelle de construction de produits et les retours de la communauté.",
+          "plateforme sociale en planification active, appuyée par l'expérience réelle de développement produit et les retours de la communauté.",
       },
       {
         count: "Réel",
@@ -153,7 +142,7 @@ const avatarSrcs: Array<string> = [
 
   <HeroSectionAlt
     title="Construisons Ensemble"
-    subTitle="Famdesc est un modèle open source, méticuleusement conçu avec Astro, Tailwind CSS et les frameworks Preline UI."
+    subTitle="Famdesc combine la collaboration open source avec une protection commerciale responsable. Le frontend est ouvert afin que les développeurs puissent l’explorer et y contribuer, tandis que le backend reste disponible à l’audit afin de soutenir la transparence, la sécurité et une croissance durable."
     url="https://github.com/Famdesc/Famdesc-UI"
   />
 </MainLayout>
