@@ -16,14 +16,15 @@ export const SEO = {
   description: SITE.description,
   structuredData: {
     "@context": "https://schema.org",
-    "@type": "WebPage",
+    "@type": "WebSite",
     inLanguage: "en-US",
     "@id": SITE.url,
     url: SITE.url,
     name: SITE.title,
     description: SITE.description,
     isPartOf: {
-      "@type": "WebSite",
+      "@type": "Organization",
+      "@id": `${SITE.url}/#organization`,
       url: SITE.url,
       name: SITE.title,
       description: SITE.description,
