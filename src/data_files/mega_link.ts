@@ -3,7 +3,7 @@ export const servicesData = [
   {
     title: "Explore Advice and Explanations",
     description:
-      "Dive deep into helpful guides and explanations for all of ScrewFast's features",
+      "Read product guidance for FSA Line One Pro and Famdesc Sound Authority",
     icon: "guides",
     url: "#",
   },
@@ -16,27 +16,27 @@ export const servicesData = [
   },
   {
     title: "Expert Services",
-    description: "Go beyond tools with ScrewFast's expert services",
+    description: "Connect with Famdesc for FSA product and waitlist support",
     icon: "rocket",
     url: "#",
   },
   {
     title: "Cutting-Edge Tools",
     description:
-      "Build Smarter, Faster. Experience next-level efficiency with ScrewFast's cutting-edge construction tools",
+      "Explore dependable premium wired audio from Famdesc Sound Authority",
     icon: "hammer",
     url: "#",
   },
   {
     title: "Simple Plans",
     description:
-      "Boost your efficiency with ScrewFast's straightforward, value-driven plans",
+      "Follow FSA Line One Pro availability and launch updates",
     icon: "sparks",
     url: "#",
   },
   {
     title: "Community Forum",
-    description: "Learn, share, and connect with other ScrewFast users",
+    description: "Learn, share, and connect with the Famdesc community",
     icon: "community",
     url: "#",
   },
@@ -48,7 +48,7 @@ export const successStoriesData = [
       "https://images.unsplash.com/photo-1544005313-94ddf0286df2?q=80&w=1376&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D8&auto=format&fit=facearea&facepad=2&w=320&h=320&q=80",
     alt: "Image Description",
     description:
-      "See how ScrewFast has empowered businesses of all sizes to achieve outstanding results.",
+      "See how Famdesc is evolving from a family social vision into practical people-centered technology.",
     learnMoreUrl: "#",
   },
 ];

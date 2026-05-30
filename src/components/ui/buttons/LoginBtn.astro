@@ -1,8 +1,9 @@
 ---
-const { title = "Log in" } = Astro.props;
+const { title = "Join Waitlist", url = "/contact" } = Astro.props;
 
 interface Props {
   title?: string;
+  url?: string;
 }
 
 const baseClasses =
@@ -28,13 +29,12 @@ const userSVG = `<svg
   </svg>`;
 ---
 
-<button
-  type="button"
+<a
+  href={url}
   class={`${baseClasses} ${hoverClasses} ${darkClasses} ${mdClasses} ${txtSizeClasses}`}
-  data-hs-overlay="#hs-toggle-between-modals-login-modal"
 >
   <!-- About Fragment: https://docs.astro.build/en/basics/astro-syntax/#fragments -->
 
   <Fragment set:html={userSVG} />
   {title}
-</button>
+</a>
