@@ -35,7 +35,7 @@ export default defineConfig({
       },
     }),
     starlight({
-      title: "ScrewFast Docs",
+      title: "Famdesc Docs",
       defaultLocale: "root",
       // https://github.com/withastro/starlight/blob/main/packages/starlight/CHANGELOG.md
       // If no Astro and Starlight i18n configurations are provided, the built-in default locale is used in Starlight and a matching Astro i18n configuration is generated/used.
@@ -47,41 +47,24 @@ export default defineConfig({
           label: "English",
           lang: "en",
         },
-        de: { label: "Deutsch", lang: "de" },
         es: { label: "Español", lang: "es" },
-        fa: { label: "Persian", lang: "fa", dir: "rtl" },
         fr: { label: "Français", lang: "fr" },
-        ja: { label: "日本語", lang: "ja" },
-        "zh-cn": { label: "简体中文", lang: "zh-CN" },
       },
       // https://starlight.astro.build/guides/sidebar/
       sidebar: [
         {
-          label: "Quick Start Guides",
+          label: "FSA Line One Pro",
           translations: {
-            de: "Schnellstartanleitungen",
-            es: "Guías de Inicio Rápido",
-            fa: "راهنمای شروع سریع",
-            fr: "Guides de Démarrage Rapide",
-            ja: "クイックスタートガイド",
-            "zh-cn": "快速入门指南",
+            es: "FSA Line One Pro",
+            fr: "FSA Line One Pro",
           },
-          autogenerate: { directory: "guides" },
-        },
-        {
-          label: "Tools & Equipment",
           items: [
-            { label: "Tool Guides", link: "tools/tool-guides/" },
-            { label: "Equipment Care", link: "tools/equipment-care/" },
+            { label: "Product Overview", link: "fsa-line-one-pro/product-overview/" },
+            { label: "Compliance and Safety", link: "fsa-line-one-pro/compliance-and-safety/" },
+            { label: "Care and Maintenance", link: "fsa-line-one-pro/care-and-maintenance/" },
+            { label: "Warranty Information", link: "fsa-line-one-pro/warranty-information/" },
+            { label: "Support", link: "fsa-line-one-pro/support/" },
           ],
-        },
-        {
-          label: "Construction Services",
-          autogenerate: { directory: "construction" },
-        },
-        {
-          label: "Advanced Topics",
-          autogenerate: { directory: "advanced" },
         },
       ],
       social: {

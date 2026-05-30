@@ -2,7 +2,7 @@
 
 ![Famdesc](https://raw.githubusercontent.com/nardis9501/Famdesc-images/refs/heads/main/famdesc.jpeg)
 
-Famdesc is a versatile platform that has evolved into a social network. Originally built on the [ScrewFast](https://github.com/mearashadowfax/ScrewFast) open-source template, designed for quick and efficient web project setup, Famdesc began as a flexible solution for landing pages, blogs, and documentation. By leveraging the power of [Astro](https://astro.build/), [Tailwind CSS](https://tailwindcss.com/), and [Preline UI](https://preline.co/), the template offered a minimalist yet functional foundation for our project. Today, Famdesc has evolved into a secure, family-focused social network aimed at fostering authentic connections and delivering a comprehensive user experience. Special thanks to the ScrewFast team for their open-source contribution, which was crucial in the early stages of development. Open-source software plays a vital role in driving innovation, allowing projects like Famdesc to grow and transform, providing value to users across the globe.
+Famdesc is a people-centered technology company starting with premium audio products through Famdesc Sound Authority while building toward a private family social platform.
 
 
 **[View Live Demo](https://famdesc.com)**
@@ -243,7 +243,7 @@ You can pass values to props directly in the page files for components used acro
 
 ```html
 <HeroSection
-  subTitle="Top-quality hardware tools and expert construction services for every project need."
+  subTitle="Premium wired audio products and people-centered technology for families."
   primaryBtn="Start Exploring"
   primaryBtnURL="/explore"
 />
@@ -288,7 +288,7 @@ export const footerLinks: FooterLinkSection[] = [
     section: "Product",
     links: [
       { name: "Tools & Equipment", url: "/tools-equipment" },
-      { name: "Construction Services", url: "/construction-services" },
+      { name: "FSA Products", url: "/products" },
       { name: "Pricing", url: "/pricing" },
     ],
   },

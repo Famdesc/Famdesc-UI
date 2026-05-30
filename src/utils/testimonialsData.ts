@@ -18,9 +18,9 @@ export const usSliderData: SliderItem[] = [
     type: "certification",
     title: "Amazon FBA Ready",
     description:
-      "Optimized for automated distribution through international warehouses and fulfillment networks.",
+      "Prepared for Amazon FBA distribution. Public Amazon listing link will be added after launch.",
     icon: amazonIcon,
-    badgeText: "Official Certification",
+    badgeText: "Distribution Status",
   },
   {
     type: "testimonial",
@@ -34,11 +34,11 @@ export const usSliderData: SliderItem[] = [
   },
   {
     type: "certification",
-    title: "CE & FCC Compliant",
+    title: "CE & FCC Requirements",
     description:
-      "Legal compliance with European and American safety, health, and electromagnetic compatibility directives.",
+      "Designed to meet CE and FCC compliance requirements. Updated supplier PDF documentation has been requested.",
     icon: cefccIcon,
-    badgeText: "Official Certification",
+    badgeText: "Documentation Requested",
   },
   {
     type: "testimonial",
@@ -52,11 +52,11 @@ export const usSliderData: SliderItem[] = [
   },
   {
     type: "certification",
-    title: "OSHWA Open Hardware",
+    title: "WEEE Requirements",
     description:
-      "Official open hardware certification, ensuring schematics that are readable, modifiable, and fully auditable.",
+      "Designed with WEEE electrical and electronic equipment responsibilities in mind before market launch.",
     icon: oshwaIcon,
-    badgeText: "Official Certification",
+    badgeText: "Compliance Planning",
   },
   {
     type: "testimonial",
@@ -70,11 +70,11 @@ export const usSliderData: SliderItem[] = [
   },
   {
     type: "certification",
-    title: "RoHS Certified",
+    title: "RoHS Requirements",
     description:
-      "Compliance with restrictions on hazardous substances in electrical and electronic manufacturing.",
+      "Designed to meet RoHS restrictions on hazardous substances. Supplier documents are being requested for validation.",
     icon: rohsIcon,
-    badgeText: "Official Certification",
+    badgeText: "Documentation Requested",
   },
   {
     type: "testimonial",
@@ -91,11 +91,11 @@ export const usSliderData: SliderItem[] = [
 export const esSliderData: SliderItem[] = [
   {
     type: "certification",
-    title: "Amazon FBA Certified",
+    title: "Amazon FBA Ready",
     description:
-      "Aprobación oficial en almacenes y centros logísticos internacionales para distribución automatizada.",
+      "Preparado para distribución por Amazon FBA. El enlace público al listing se agregará después del lanzamiento.",
     icon: amazonIcon,
-    badgeText: "Certificación Oficial",
+    badgeText: "Estado de Distribución",
   },
   {
     type: "testimonial",
@@ -109,11 +109,11 @@ export const esSliderData: SliderItem[] = [
   },
   {
     type: "certification",
-    title: "CE & FCC Compliant",
+    title: "Requisitos CE & FCC",
     description:
-      "Conformidad legal con las directivas europeas y americanas de seguridad, salud y compatibilidad electromagnética.",
+      "Diseñado para cumplir requisitos CE y FCC. Se han solicitado al proveedor los PDFs actualizados.",
     icon: cefccIcon,
-    badgeText: "Certificación Oficial",
+    badgeText: "Documentación Solicitada",
   },
   {
     type: "testimonial",
@@ -127,11 +127,11 @@ export const esSliderData: SliderItem[] = [
   },
   {
     type: "certification",
-    title: "OSHWA Open Hardware",
+    title: "Requisitos WEEE",
     description:
-      "Certificación oficial de hardware libre, asegurando esquemas legibles, modificables y completamente auditables.",
+      "Diseñado considerando responsabilidades WEEE para equipos eléctricos y electrónicos antes del lanzamiento.",
     icon: oshwaIcon,
-    badgeText: "Certificación Oficial",
+    badgeText: "Plan de Cumplimiento",
   },
   {
     type: "testimonial",
@@ -145,11 +145,11 @@ export const esSliderData: SliderItem[] = [
   },
   {
     type: "certification",
-    title: "RoHS Certified",
+    title: "Requisitos RoHS",
     description:
-      "Restricción total de sustancias peligrosas en la fabricación de componentes eléctricos y electrónicos.",
+      "Diseñado para cumplir restricciones RoHS sobre sustancias peligrosas. La documentación del proveedor está solicitada.",
     icon: rohsIcon,
-    badgeText: "Certificación Oficial",
+    badgeText: "Documentación Solicitada",
   },
   {
     type: "testimonial",
@@ -166,11 +166,11 @@ export const esSliderData: SliderItem[] = [
 export const frSliderData: SliderItem[] = [
   {
     type: "certification",
-    title: "Certifié Amazon FBA",
+    title: "Amazon FBA Ready",
     description:
-      "Agrément officiel dans les entrepôts et centres logistiques internationaux pour la distribution automatisée.",
+      "Préparé pour une distribution Amazon FBA. Le lien public sera ajouté après le lancement.",
     icon: amazonIcon,
-    badgeText: "Certification Officielle",
+    badgeText: "Statut de Distribution",
   },
   {
     type: "testimonial",
@@ -184,11 +184,11 @@ export const frSliderData: SliderItem[] = [
   },
   {
     type: "certification",
-    title: "Conforme CE & FCC",
+    title: "Exigences CE & FCC",
     description:
-      "Conformité légale aux directives européennes et américaines en matière de sécurité, de santé et de compatibilité électromagnétique.",
+      "Conçu pour répondre aux exigences CE et FCC. Les PDFs fournisseur actualisés ont été demandés.",
     icon: cefccIcon,
-    badgeText: "Certification Officielle",
+    badgeText: "Documentation Demandée",
   },
   {
     type: "testimonial",
@@ -202,11 +202,11 @@ export const frSliderData: SliderItem[] = [
   },
   {
     type: "certification",
-    title: "OSHWA Open Hardware",
+    title: "Exigences WEEE",
     description:
-      "Certification officielle de matériel libre, garantissant des schémas lisibles, modifiables et entièrement vérifiables.",
+      "Conçu en tenant compte des responsabilités WEEE pour équipements électriques et électroniques avant lancement.",
     icon: oshwaIcon,
-    badgeText: "Certification Officielle",
+    badgeText: "Plan de Conformité",
   },
   {
     type: "testimonial",
@@ -220,11 +220,11 @@ export const frSliderData: SliderItem[] = [
   },
   {
     type: "certification",
-    title: "Certifié RoHS",
+    title: "Exigences RoHS",
     description:
-      "Restriction totale des substances dangereuses dans la fabrication de composants électriques et électroniques.",
+      "Conçu pour répondre aux restrictions RoHS sur les substances dangereuses. La documentation fournisseur a été demandée.",
     icon: rohsIcon,
-    badgeText: "Certification Officielle",
+    badgeText: "Documentation Demandée",
   },
   {
     type: "testimonial",

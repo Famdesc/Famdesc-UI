@@ -1,7 +1,7 @@
 const navBarLinks = [
   { name: "Inicio", url: "/es" },
-  { name: "Servicios", url: "/es/services" },
-  { name: "Blog", url: "/es/blog" },
+  { name: "Productos", url: "/products" },
+  { name: "Nosotros", url: "/about" },
   { name: "Contacto", url: "/es/contact" },
 ];
 
@@ -9,15 +9,15 @@ const footerLinks = [
   {
     section: "Ecosistema",
     links: [
-      { name: "Documentación", url: "/es/welcome-to-docs/" },
-      { name: "Nuestros Servicios", url: "/es/services" },
+      { name: "Productos FSA", url: "/products" },
+      { name: "FSA Line One Pro", url: "/products/fsa-line-one-pro" },
     ],
   },
   {
     section: "Compañía",
     links: [
-      { name: "Sobre nosotros", url: "#" },
-      { name: "Blog", url: "/es/blog" },
+      { name: "Sobre nosotros", url: "/about" },
+      { name: "Contacto", url: "/es/contact" },
     ],
   },
 ];
@@ -25,7 +25,7 @@ const footerLinks = [
 const socialLinks = {
   facebook: "https://www.facebook.com/famdesc",
   x: "https://twitter.com/fam_desc",
-  github: "https://github.com/nardis9501/Famdesc-landing-blog",
+  github: "https://github.com/Famdesc/Famdesc-UI",
   discord:
     "https://discord.com/channels/1244297608420261983/1244332379154288812",
 };

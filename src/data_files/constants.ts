@@ -1,12 +1,12 @@
 import ogImageSrc from "@images/social.png";
 
 export const SITE = {
-  title: "Famdesc - Hardware, Technology & Professional Audio Solutions",
-  tagline: "Engineering Premium Electronics and Innovative Digital Ecosystems",
+  title: "Famdesc - People-Centered Technology & Premium Audio",
+  tagline: "Premium audio today, private family technology for tomorrow",
   description:
-    "Welcome to Famdesc, a forward-thinking technology and hardware manufacturing firm. We design and engineer premium electronic ecosystems, professional audio equipment, and high-performance digital solutions built to hardware-grade standards.",
+    "Famdesc is a people-centered technology company starting with premium audio products through Famdesc Sound Authority while building toward a private family social platform.",
   description_short:
-    "Famdesc is a technology and hardware firm engineering premium electronics and professional audio ecosystems.",
+    "Famdesc builds people-centered technology, beginning with premium FSA audio products.",
   url: "https://famdesc.com",
   author: "Nardis Del Campo Soler",
 };
@@ -36,7 +36,7 @@ export const OG = {
   locale: "en_US",
   type: "website",
   url: SITE.url,
-  title: `${SITE.title} | Engineering the Future of Tech & Audio`,
+  title: `${SITE.title} | FSA Line One Pro`,
   description: SITE.description,
   image: ogImageSrc,
 };

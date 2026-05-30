@@ -1,8 +1,8 @@
 // An array of links for navigation bar
 const navBarLinks = [
   { name: "Home", url: "/" },
-  { name: "Services", url: "/services" },
-  { name: "Blog", url: "/blog" },
+  { name: "Products", url: "/products" },
+  { name: "About", url: "/about" },
   { name: "Contact", url: "/contact" },
 ];
 // An array of links for footer
@@ -10,15 +10,15 @@ const footerLinks = [
   {
     section: "Ecosystem",
     links: [
-      { name: "Documentation", url: "/welcome-to-docs/" },
-      { name: "Famdesc Services", url: "/services" },
+      { name: "FSA Products", url: "/products" },
+      { name: "FSA Line One Pro", url: "/products/fsa-line-one-pro" },
     ],
   },
   {
     section: "Company",
     links: [
-      { name: "About us", url: "#" },
-      { name: "Blog", url: "/blog" },
+      { name: "About us", url: "/about" },
+      { name: "Contact", url: "/contact" },
     ],
   },
 ];
@@ -26,7 +26,7 @@ const footerLinks = [
 const socialLinks = {
   facebook: "https://www.facebook.com/famdesc",
   x: "https://twitter.com/fam_desc",
-  github: "https://github.com/nardis9501/Famdesc-landing-blog",
+  github: "https://github.com/Famdesc/Famdesc-UI",
   discord:
     "https://discord.com/channels/1244297608420261983/1244332379154288812",
 };
