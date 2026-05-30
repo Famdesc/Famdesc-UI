@@ -1,15 +1,21 @@
 ---
 import { Image } from "astro:assets";
-import product5 from "@images/features-image.avif";
+import type { ImageMetadata } from "astro";
 
 // Define props from Astro
-const { title, subTitle, benefits } = Astro.props;
+const { title, subTitle, benefits, image } = Astro.props;
+
+//Discriminated type for the image object
+type ImageProps =
+  | { src: ImageMetadata; alt: string }
+  | { src?: never; alt?: never };
 
 // Define TypeScript interface for props
 interface Props {
   title: string;
   subTitle?: string;
   benefits?: Array<string>;
+  image?: ImageProps;
 }
 
 // Define SVG marker to be used in the component
@@ -22,7 +28,11 @@ const ListItemMarker: string = `<svg fill="none" viewBox="0 0 24 24" stroke-widt
   <!-- Grid -->
   <div class="lg:grid lg:grid-cols-12 lg:items-center lg:gap-16">
     <div class="lg:col-span-7">
-      <Image class="rounded-xl" src={product5} alt="Mockup of floating boxes" />
+      {
+        image?.src && (
+          <Image class="rounded-xl" src={image.src} alt={image.alt} />
+        )
+      }
     </div>
     <div class="mt-5 sm:mt-10 lg:col-span-5 lg:mt-0">
       <div class="space-y-6 sm:space-y-8">
