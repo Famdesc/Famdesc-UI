@@ -25,14 +25,10 @@ const URL = `${Astro.site}`; // Set the website URL in astro.config.mjs
 const author = SITE.author;
 const canonical = Astro.url.href;
 const basePath = Astro.url.pathname;
+const siteDomain = Astro.site?.hostname ?? SITE.url.replace(/^https?:\/\//, "").replace(/\/$/, "");
 const ogTitle = OG.title;
 const ogDescription = OG.description;
-const socialImageRes = await getImage({
-  src: OG.image,
-  width: 1200,
-  height: 600,
-});
-const socialImage = Astro.url.origin + socialImageRes.src; // Get the full URL of the image (https://stackoverflow.com/a/9858694)
+const socialImage = OG.image;
 
 const languages: { [key: string]: string } = {
   en: "",
@@ -98,20 +94,20 @@ const appleTouchIcon = await getImage({
 
 <!-- Facebook Meta Tags -->
 <meta property="og:locale" content="en_US" />
-<meta property="og:url" content={URL} />
+<meta property="og:url" content={canonical} />
 <meta property="og:type" content="website" />
 <meta property="og:title" content={ogTitle} />
 <meta property="og:site_name" content={SITE.title} />
 <meta property="og:description" content={ogDescription} />
 <meta property="og:image" content={socialImage} />
-<meta content="1200" property="og:image:width" />
-<meta content="600" property="og:image:height" />
-<meta content="image/png" property="og:image:type" />
+<meta content="1536" property="og:image:width" />
+<meta content="1024" property="og:image:height" />
+<meta content="image/jpeg" property="og:image:type" />
 
 <!-- Twitter Meta Tags -->
 <meta name="twitter:card" content="summary_large_image" />
-<meta property="twitter:domain" content={URL} />
-<meta property="twitter:url" content={URL} />
+<meta name="twitter:domain" content={siteDomain} />
+<meta name="twitter:url" content={canonical} />
 <meta name="twitter:title" content={ogTitle} />
 <meta name="twitter:description" content={ogDescription} />
 <meta name="twitter:image" content={socialImage} />

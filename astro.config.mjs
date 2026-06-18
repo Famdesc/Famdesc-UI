@@ -80,22 +80,6 @@ export default defineConfig({
           "./src/components/ui/starlight/MobileMenuFooter.astro",
         ThemeSelect: "./src/components/ui/starlight/ThemeSelect.astro",
       },
-      head: [
-        {
-          tag: "meta",
-          attrs: {
-            property: "og:image",
-            content: "https://famdesc.com" + "/social.webp",
-          },
-        },
-        {
-          tag: "meta",
-          attrs: {
-            property: "twitter:image",
-            content: "https://famdesc.com" + "/social.webp",
-          },
-        },
-      ],
     }),
     compressor({
       gzip: false,

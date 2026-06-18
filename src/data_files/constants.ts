@@ -1,5 +1,3 @@
-import ogImageSrc from "@images/social.png";
-
 export const SITE = {
   title: "Famdesc - People-Centered Technology & Premium Audio",
   tagline: "Premium audio today, private family technology for tomorrow",
@@ -38,5 +36,5 @@ export const OG = {
   url: SITE.url,
   title: `${SITE.title} | FSA Line One Pro`,
   description: SITE.description,
-  image: ogImageSrc,
+  image: `${SITE.url}/social.jpg`,
 };
