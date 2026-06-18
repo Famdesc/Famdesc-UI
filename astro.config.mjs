@@ -85,14 +85,35 @@ export default defineConfig({
           tag: "meta",
           attrs: {
             property: "og:image",
-            content: "https://famdesc.com" + "/social.webp",
+            content: "https://famdesc.com/social.jpg",
           },
         },
         {
           tag: "meta",
           attrs: {
-            property: "twitter:image",
-            content: "https://famdesc.com" + "/social.webp",
+            property: "og:image:width",
+            content: "1536",
+          },
+        },
+        {
+          tag: "meta",
+          attrs: {
+            property: "og:image:height",
+            content: "1024",
+          },
+        },
+        {
+          tag: "meta",
+          attrs: {
+            property: "og:image:type",
+            content: "image/jpeg",
+          },
+        },
+        {
+          tag: "meta",
+          attrs: {
+            name: "twitter:image",
+            content: "https://famdesc.com/social.jpg",
           },
         },
       ],
