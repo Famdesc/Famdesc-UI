@@ -9,30 +9,34 @@ const languageFlags: Record<TLanguage, string> = {
   fr: "🇫🇷",
 };
 
+const { pickerId = "hs-dropdown-default" } = Astro.props;
+
 const supportedLanguages = Object.keys(languages) as TLanguage[];
-const currentPathLanguage = Astro.url.pathname
-  .split("/")
-  .filter(Boolean)[0] as TLanguage | undefined;
+const currentPathLanguage = Astro.url.pathname.split("/").filter(Boolean)[0] as
+  | TLanguage
+  | undefined;
 const currentLanguage: TLanguage = supportedLanguages.includes(
-  currentPathLanguage as TLanguage
+  currentPathLanguage as TLanguage,
 )
   ? (currentPathLanguage as TLanguage)
   : "en";
 ---
 
-<div class="hs-dropdown relative inline-flex">
+<div class="relative inline-flex" data-language-picker>
   <button
-    id="hs-dropdown-default"
+    id={pickerId}
     type="button"
+    aria-expanded="false"
     aria-label={`Change language. Current language: ${languages[currentLanguage]}`}
-    class="hs-dropdown-toggle inline-flex items-center gap-x-2 rounded-lg px-2 py-1.5 text-sm font-medium text-neutral-600 outline-none ring-zinc-500 transition duration-300 hover:bg-neutral-200 hover:text-blue-400 dark:border-neutral-700 dark:text-neutral-400 dark:ring-zinc-200 dark:hover:bg-neutral-700 dark:hover:text-blue-300 dark:focus:outline-none"
+    class="inline-flex items-center gap-x-2 rounded-lg px-2 py-1.5 text-sm font-medium text-neutral-600 outline-none ring-zinc-500 transition duration-300 hover:bg-neutral-200 hover:text-blue-400 dark:border-neutral-700 dark:text-neutral-400 dark:ring-zinc-200 dark:hover:bg-neutral-700 dark:hover:text-blue-300 dark:focus:outline-none"
+    data-language-toggle
   >
     <span class="text-base leading-none" aria-hidden="true">
       {languageFlags[currentLanguage]}
     </span>
     <span class="sr-only">{languages[currentLanguage]}</span>
     <svg
-      class="size-4 hs-dropdown-open:rotate-180"
+      class="size-4 transition-transform"
       width="24"
       height="24"
       viewBox="0 0 24 24"
@@ -40,19 +44,21 @@ const currentLanguage: TLanguage = supportedLanguages.includes(
       stroke="currentColor"
       stroke-width="2"
       stroke-linecap="round"
-      stroke-linejoin="round"><path d="m6 9 6 6 6-6"></path></svg
+      stroke-linejoin="round"
+      data-language-chevron><path d="m6 9 6 6 6-6"></path></svg
     >
   </button>
 
   <div
-    class="hs-dropdown-menu duration !left-[20%] !top-[98%] mt-2 hidden !transform-none rounded-lg bg-neutral-50 p-2 opacity-0 shadow-md transition-[opacity,margin] before:absolute before:-top-4 before:start-0 before:h-4 before:w-full after:absolute after:-bottom-4 after:start-0 after:h-4 after:w-full hs-dropdown-open:opacity-100 dark:divide-neutral-700 dark:border dark:border-neutral-700 dark:bg-neutral-800 md:!left-[90%] md:!top-[80%]"
-    aria-labelledby="hs-dropdown-hover-event"
+    class="absolute right-0 top-full z-50 mt-2 hidden min-w-40 rounded-lg bg-neutral-50 p-2 opacity-0 shadow-md transition-[opacity,margin] before:absolute before:-top-4 before:start-0 before:h-4 before:w-full after:absolute after:-bottom-4 after:start-0 after:h-4 after:w-full dark:divide-neutral-700 dark:border dark:border-neutral-700 dark:bg-neutral-800"
+    aria-labelledby={pickerId}
+    data-language-menu
   >
     {
       // Map through the list of languages, creating a link for each language
       Object.entries(languages).map(([lang, label]) => (
         <a
-          class="flex items-center gap-x-3.5 rounded-lg px-3 py-2 text-sm text-neutral-800 hover:bg-neutral-100 focus:bg-neutral-100 focus:outline-none dark:text-neutral-400 dark:hover:bg-neutral-700 dark:hover:text-neutral-300 dark:focus:bg-neutral-700"
+          class="flex items-center gap-x-3.5 whitespace-nowrap rounded-lg px-3 py-2 text-sm text-neutral-800 hover:bg-neutral-100 focus:bg-neutral-100 focus:outline-none dark:text-neutral-400 dark:hover:bg-neutral-700 dark:hover:text-neutral-300 dark:focus:bg-neutral-700"
           href={`/${lang === "en" ? "" : lang}`}
           data-lang={lang}
           aria-current={lang === currentLanguage ? "true" : undefined}
@@ -67,12 +73,6 @@ const currentLanguage: TLanguage = supportedLanguages.includes(
   </div>
 </div>
 
-<!--Import the necessary Dropdown plugin-->
-<!--https://preline.co/plugins/html/dropdown.html-->
-<script>
-  import "@preline/dropdown/index.js";
-</script>
-
 <script>
   // Type alias for supported languages
   type TLanguage = "en" | "es" | "fr";
@@ -80,18 +80,89 @@ const currentLanguage: TLanguage = supportedLanguages.includes(
   const languages: TLanguage[] = ["en", "fr", "es"];
 
   document.addEventListener("DOMContentLoaded", function () {
-    const languageLinks = document.querySelectorAll(".hs-dropdown-menu a");
+    const closePicker = (picker: HTMLElement) => {
+      const button = picker.querySelector<HTMLButtonElement>(
+        "[data-language-toggle]",
+      );
+      const menu = picker.querySelector<HTMLElement>("[data-language-menu]");
+      const chevron = picker.querySelector<SVGElement>(
+        "[data-language-chevron]",
+      );
+
+      button?.setAttribute("aria-expanded", "false");
+      menu?.classList.add("hidden", "opacity-0");
+      chevron?.removeAttribute("style");
+    };
+
+    const openPicker = (picker: HTMLElement) => {
+      const button = picker.querySelector<HTMLButtonElement>(
+        "[data-language-toggle]",
+      );
+      const menu = picker.querySelector<HTMLElement>("[data-language-menu]");
+      const chevron = picker.querySelector<SVGElement>(
+        "[data-language-chevron]",
+      );
+
+      document
+        .querySelectorAll<HTMLElement>("[data-language-picker]")
+        .forEach((otherPicker) => {
+          if (otherPicker !== picker) closePicker(otherPicker);
+        });
+
+      button?.setAttribute("aria-expanded", "true");
+      menu?.classList.remove("hidden", "opacity-0");
+      chevron?.setAttribute("style", "transform: rotate(180deg)");
+    };
+
+    const languagePickers = document.querySelectorAll<HTMLElement>(
+      "[data-language-picker]",
+    );
+
+    languagePickers.forEach((picker) => {
+      const button = picker.querySelector<HTMLButtonElement>(
+        "[data-language-toggle]",
+      );
+
+      button?.addEventListener("click", (event) => {
+        event.stopPropagation();
+
+        if (button.getAttribute("aria-expanded") === "true") {
+          closePicker(picker);
+        } else {
+          openPicker(picker);
+        }
+      });
+    });
+
+    document.addEventListener("click", (event) => {
+      const target = event.target as Node;
+
+      languagePickers.forEach((picker) => {
+        if (!picker.contains(target)) closePicker(picker);
+      });
+    });
+
+    document.addEventListener("keydown", (event) => {
+      if (event.key !== "Escape") return;
+
+      languagePickers.forEach((picker) => closePicker(picker));
+    });
+
+    const languageLinks = document.querySelectorAll(
+      "[data-language-picker] [data-lang]",
+    );
     languageLinks.forEach((element) => {
       const link = element as HTMLAnchorElement;
       const lang = link.dataset.lang as TLanguage | undefined;
 
       link.addEventListener("click", function (event) {
         if (!lang) return;
+        const picker = link.closest<HTMLElement>("[data-language-picker]");
         event.preventDefault();
 
         const url = new URL(window.location.href);
         const activeLang = languages.includes(
-          url.pathname.split("/").filter(Boolean)[0] as TLanguage
+          url.pathname.split("/").filter(Boolean)[0] as TLanguage,
         )
           ? (url.pathname.split("/").filter(Boolean)[0] as TLanguage)
           : "en";
@@ -100,7 +171,10 @@ const currentLanguage: TLanguage = supportedLanguages.includes(
           .filter((part) => part && !languages.includes(part as TLanguage));
 
         // Disable the selection of the same language
-        if (lang === activeLang) return;
+        if (lang === activeLang) {
+          if (picker) closePicker(picker);
+          return;
+        }
 
         if (
           url.pathname.includes("/post") ||
