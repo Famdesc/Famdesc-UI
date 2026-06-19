@@ -56,6 +56,6 @@ specificationsRight:
   - title: "Distribution"
     subTitle: "Prepared for Amazon FBA distribution. Public Amazon listing link will be added after launch."
 blueprints:
-  first: "@/images/fsa-line.avif"
-  second: "@/images/fsa-one-line-pro.avif"
+  first: "@/images/products/fsa-line-one-pro-earphones-close-up.avif"
+  second: "@/images/products/fsa-line-one-pro-complete-product-kit.avif"
 ---

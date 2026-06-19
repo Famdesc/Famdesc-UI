@@ -55,11 +55,13 @@ const pageTitle: string = `${product.data.title} | ${SITE.title}`;
           {product.data.description}
         </p>
       </div>
-      <div>
+      <div
+        class="overflow-hidden rounded-xl bg-neutral-100/75 shadow-xl ring-1 ring-neutral-200/80 dark:bg-neutral-700/35 dark:ring-neutral-600/50"
+      >
         <Image
           id="fadeInMoveRight"
           src={product.data.main.imgMain}
-          class="w-[600px]"
+          class="w-[600px] object-cover object-center"
           alt={product.data.main.imgAlt}
           format={"avif"}
           loading={"eager"}
@@ -214,7 +216,7 @@ const pageTitle: string = `${product.data.title} | ${SITE.title}`;
   <div id="tabs-with-card-3" class="hidden" role="tabpanel">
     <div class="mx-auto mb-20 flex w-full md:mb-28 2xl:w-4/5">
       <div
-        class="relative left-12 top-12 z-10 overflow-hidden rounded-xl shadow-lg md:left-12 md:top-16 md:-ml-12 lg:ml-0"
+        class="relative left-12 top-12 z-10 overflow-hidden rounded-xl bg-neutral-100/75 shadow-lg ring-1 ring-neutral-200/80 dark:bg-neutral-700/75 dark:ring-neutral-600/50 md:left-12 md:top-16 md:-ml-12 lg:ml-0"
       >
         {
           product.data.blueprints.first && (
@@ -228,7 +230,9 @@ const pageTitle: string = `${product.data.title} | ${SITE.title}`;
         }
       </div>
 
-      <div class="relative right-12 overflow-hidden rounded-xl shadow-xl">
+      <div
+        class="relative right-12 overflow-hidden rounded-xl bg-neutral-100/75 shadow-xl ring-1 ring-neutral-200/80 dark:bg-neutral-700/75 dark:ring-neutral-600/50"
+      >
         {
           product.data.blueprints.second && (
             <Image
