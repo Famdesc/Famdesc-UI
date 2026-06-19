@@ -42,8 +42,8 @@ const homeUrl =
       >
         <BrandLogo class="h-auto w-14" />
       </a>
-      <!-- Collapse toggle for smaller screens -->
-      <div class="ml-auto mr-5 md:hidden">
+      <!-- Mobile controls -->
+      <div class="ml-auto flex items-center gap-2 md:hidden">
         <button
           type="button"
           class="hs-collapse-toggle flex h-8 w-8 items-center justify-center rounded-full text-sm font-bold text-neutral-600 transition duration-300 hover:bg-neutral-200 disabled:pointer-events-none disabled:opacity-50 dark:text-neutral-400 dark:hover:bg-neutral-700 dark:focus:outline-none"
@@ -81,11 +81,9 @@ const homeUrl =
             <path d="m6 6 12 12"></path>
           </svg>
         </button>
-      </div>
-      <!-- ThemeIcon component specifically for smaller screens -->
-      <span class="inline-block md:hidden">
+        <LanguagePicker pickerId="mobile-language-picker" />
         <ThemeIcon />
-      </span>
+      </div>
     </div>
     <!-- Contains navigation links -->
     <div
@@ -104,12 +102,11 @@ const homeUrl =
         }
 
         <Authentication />
-        <LanguagePicker />
-        <!-- ThemeIcon component specifically for larger screens -->
-        <span class="hidden md:inline-block">
-          <ThemeIcon />
-        </span>
       </div>
+    </div>
+    <div class="hidden items-center gap-2 md:flex">
+      <LanguagePicker pickerId="desktop-language-picker" />
+      <ThemeIcon />
     </div>
   </nav>
 </header>
