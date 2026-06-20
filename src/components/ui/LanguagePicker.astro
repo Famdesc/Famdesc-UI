@@ -161,14 +161,12 @@ const currentLanguage: TLanguage = supportedLanguages.includes(
         event.preventDefault();
 
         const url = new URL(window.location.href);
-        const activeLang = languages.includes(
-          url.pathname.split("/").filter(Boolean)[0] as TLanguage,
-        )
-          ? (url.pathname.split("/").filter(Boolean)[0] as TLanguage)
+        const urlParts = url.pathname.split("/").filter(Boolean);
+        const activeLang = languages.includes(urlParts[0] as TLanguage)
+          ? (urlParts[0] as TLanguage)
           : "en";
-        const pathParts = url.pathname
-          .split("/")
-          .filter((part) => part && !languages.includes(part as TLanguage));
+        const routeParts =
+          activeLang === "en" ? urlParts : urlParts.slice(1);
 
         // Disable the selection of the same language
         if (lang === activeLang) {
@@ -177,23 +175,31 @@ const currentLanguage: TLanguage = supportedLanguages.includes(
         }
 
         if (
-          url.pathname.includes("/post") ||
-          url.pathname.includes("/insight")
+          routeParts.length > 1 &&
+          (routeParts[0] === "blog" || routeParts[0] === "insights")
         ) {
-          if (url.pathname.includes("en")) {
-            pathParts.unshift(lang);
-            pathParts.splice(2, 0, lang);
-          } else {
-            pathParts.unshift(lang);
-            pathParts.splice(2, 0, "en");
-          }
-        } else {
+          const contentSlugParts = languages.includes(
+            routeParts[1] as TLanguage,
+          )
+            ? routeParts.slice(2)
+            : routeParts.slice(1);
+          const pathParts = [routeParts[0], lang, ...contentSlugParts];
+
           if (lang !== "en") {
             pathParts.unshift(lang);
           }
+
+          url.pathname = pathParts.join("/");
+        } else {
+          const pathParts = activeLang === "en" ? urlParts : urlParts.slice(1);
+
+          if (lang !== "en") {
+            pathParts.unshift(lang);
+          }
+
+          url.pathname = pathParts.join("/");
         }
 
-        url.pathname = pathParts.join("/");
         window.location.href = url.toString();
       });
     });
