@@ -3,7 +3,7 @@
  *
  * Apps Script PropertiesService keys:
  * - CONTACT_RECIPIENT_EMAIL: contact@famdesc.com
- * - TURNSTILE_SECRET_KEY: Cloudflare Turnstile secret key, optional
+ * - TURNSTILE_SECRET_KEY: Cloudflare Turnstile secret key, required
  * - ALLOWED_ORIGINS: comma-separated origins, e.g. https://famdesc.com,https://www.famdesc.com
  * - CONTACT_SHEET_NAME: Contact Submissions
  * - WAITLIST_SHEET_NAME: Waitlist
@@ -210,7 +210,7 @@ function isRateLimited_(data) {
 }
 
 function verifyTurnstile_(token) {
-  if (!CONFIG.turnstileSecret) return true;
+  if (!CONFIG.turnstileSecret) return false;
   if (!token) return false;
 
   const response = UrlFetchApp.fetch(
