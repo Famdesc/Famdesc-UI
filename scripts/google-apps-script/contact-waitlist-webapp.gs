@@ -52,7 +52,7 @@ function doPost(e) {
       });
     }
 
-    if (isSpam_(data) || isRateLimited_(data)) {
+    if (isSpam_(data)) {
       return json_({
         success: false,
         message: "Verification failed. Please try again.",
@@ -65,6 +65,15 @@ function doPost(e) {
         message: "Verification failed. Please refresh the challenge and try again.",
       });
     }
+
+    if (hasRecentSubmission_(data)) {
+      return json_({
+        success: false,
+        message: "Verification failed. Please try again.",
+      });
+    }
+
+    recordSubmissionAttempt_(data);
 
     if (data.formType === "contact") {
       sendContactEmail_(data);
@@ -199,14 +208,20 @@ function isSpam_(data) {
   return blockedTerms.some((term) => text.indexOf(term) !== -1);
 }
 
-function isRateLimited_(data) {
+function getRateLimitKey_(data) {
+  return `submission:${data.formType}:${data.email}`;
+}
+
+function hasRecentSubmission_(data) {
   const cache = CacheService.getScriptCache();
-  const key = `submission:${data.formType}:${data.email}`;
 
-  if (cache.get(key)) return true;
+  return Boolean(cache.get(getRateLimitKey_(data)));
+}
 
-  cache.put(key, "1", CONFIG.rateLimitSeconds);
-  return false;
+function recordSubmissionAttempt_(data) {
+  const cache = CacheService.getScriptCache();
+
+  cache.put(getRateLimitKey_(data), "1", CONFIG.rateLimitSeconds);
 }
 
 function verifyTurnstile_(token) {
