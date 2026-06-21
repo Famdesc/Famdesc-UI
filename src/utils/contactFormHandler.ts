@@ -314,7 +314,7 @@ async function submitForm(form: HTMLFormElement, endpoint: string) {
     }
 
     resetTurnstile(form);
-    const message = payload.message || successMessage;
+    const message = successMessage || payload.message || fallbackError;
 
     if (!openSuccessModal(submitterName, message)) {
       setMessage(form, message, "success");
