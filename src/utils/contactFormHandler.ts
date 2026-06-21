@@ -1,51 +1,368 @@
-export function handleContactFormSubmission() {
-  const form = document.querySelector("#contactForm") as HTMLFormElement | null;
-  const iframe = document.querySelector("iframe[name='hidden_iframe']") as HTMLIFrameElement | null;
-  const formMessage = document.getElementById("formMessage") as HTMLParagraphElement | null;
+type FormKind = "contact" | "waitlist";
 
-  if (!form || !iframe || !formMessage) {
-    console.error("Formulario, iframe o elemento de mensaje no encontrado");
-    return;
+type FormResponse = {
+  success: boolean;
+  message?: string;
+  formType?: FormKind;
+  errors?: Record<string, string>;
+};
+
+declare global {
+  interface Window {
+    turnstile?: {
+      render: (
+        element: HTMLElement,
+        options: {
+          sitekey: string;
+          callback: (token: string) => void;
+          "expired-callback": () => void;
+          "error-callback": () => void;
+        },
+      ) => string;
+      reset: (widgetId?: string) => void;
+    };
   }
-  // Detect language from URL
+}
+
+const EMAIL_PATTERN = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+const MIN_TIME_TO_SUBMIT_MS = 3000;
+
+function getNetworkErrorMessage(endpoint: string, fallbackError: string) {
+  if (endpoint.includes("/dev")) {
+    return "Google Apps Script is using the /dev test URL. Use the deployed /exec web app URL.";
+  }
+
+  if (window.location.hostname === "localhost") {
+    return "We could not read the Google Apps Script response. Check the /exec deployment URL and Web App access.";
+  }
+
+  return fallbackError;
+}
+
+function getLanguage() {
   const path = window.location.pathname;
-  let lang = "en"; // By default, English
 
-  if (path.startsWith("/es")) {
-    lang = "es";
-  } else if (path.startsWith("/fr")) {
-    lang = "fr";
+  if (path.startsWith("/es")) return "es";
+  if (path.startsWith("/fr")) return "fr";
+
+  return "en";
+}
+
+function getValue(form: HTMLFormElement, name: string) {
+  const field = form.elements.namedItem(name);
+
+  if (
+    field instanceof HTMLInputElement ||
+    field instanceof HTMLTextAreaElement ||
+    field instanceof HTMLSelectElement
+  ) {
+    return field.value.trim();
   }
-  console.log(lang);
-  
 
-  // Add language field as hidden input
-  const languageInput = document.createElement("input");
-  languageInput.type = "hidden";
-  languageInput.name = "language";
-  languageInput.value = lang;
-  form.appendChild(languageInput);
+  return "";
+}
 
+function setMessage(form: HTMLFormElement, message: string, type: "error" | "success" | "idle") {
+  const messageElement = form.querySelector<HTMLElement>("[data-form-message]");
 
-  let submitted = false;
+  if (!messageElement) return;
 
-  // Configures the onload event of the iframe to handle the response once it is received.
-  iframe.onload = function () {
-    if (submitted) {
-      const responseText = iframe.contentDocument?.body?.innerText;
-      if (responseText && responseText.includes("Data processed successfully")) {
-        formMessage.textContent = "Formulario enviado correctamente.";
-        formMessage.style.color = "green";
-      } else {
-        formMessage.textContent = "Hubo un error en el envío del formulario.";
-        formMessage.style.color = "red";
-      }
-      submitted = false; // Reset the submitted variable after handling the response
+  messageElement.textContent = message;
+  messageElement.dataset.state = type;
+  messageElement.classList.toggle("text-red-600", type === "error");
+  messageElement.classList.toggle("dark:text-red-400", type === "error");
+  messageElement.classList.toggle("text-emerald-600", type === "success");
+  messageElement.classList.toggle("dark:text-emerald-400", type === "success");
+  messageElement.classList.toggle("text-neutral-600", type === "idle");
+  messageElement.classList.toggle("dark:text-neutral-400", type === "idle");
+}
+
+function closeSuccessModal() {
+  const modal = document.querySelector<HTMLElement>("[data-form-success-modal]");
+
+  if (!modal) return;
+
+  modal.classList.add("hidden");
+  modal.classList.remove("flex");
+  document.body.classList.remove("overflow-hidden");
+}
+
+function openSuccessModal(name: string, message: string) {
+  const modal = document.querySelector<HTMLElement>("[data-form-success-modal]");
+
+  if (!modal) return false;
+
+  const titleElement = modal.querySelector<HTMLElement>("[data-success-title]");
+  const messageElement = modal.querySelector<HTMLElement>("[data-success-message]");
+  const homeLink = modal.querySelector<HTMLAnchorElement>("[data-success-home-link]");
+  const titleTemplate = modal.dataset.titleTemplate || "Thank you, {name}.";
+
+  if (titleElement) {
+    titleElement.textContent = titleTemplate.replace("{name}", name || "there");
+  }
+
+  if (messageElement) {
+    messageElement.textContent = message;
+  }
+
+  modal.classList.remove("hidden");
+  modal.classList.add("flex");
+  document.body.classList.add("overflow-hidden");
+  homeLink?.focus();
+
+  return true;
+}
+
+function validateForm(form: HTMLFormElement, turnstileEnabled: boolean) {
+  const formType = form.dataset.formType as FormKind | undefined;
+  const errors: Record<string, string> = {};
+  const name = getValue(form, "name");
+  const email = getValue(form, "email");
+  const website = getValue(form, "website");
+  const turnstileToken = getValue(form, "turnstileToken");
+
+  if (website) {
+    errors.website = "Verification failed. Please try again.";
+  }
+
+  if (name.length < 2) {
+    errors.name = "Please enter your name.";
+  }
+
+  if (!EMAIL_PATTERN.test(email)) {
+    errors.email = "Please enter a valid email address.";
+  }
+
+  if (formType === "contact") {
+    const subject = getValue(form, "subject");
+    const message = getValue(form, "message");
+
+    if (subject.length < 2) {
+      errors.subject = "Please enter a subject.";
     }
+
+    if (message.length < 10) {
+      errors.message = "Message must be at least 10 characters.";
+    }
+
+    if (message.length > 5000) {
+      errors.message = "Message is too long.";
+    }
+  }
+
+  if (formType === "waitlist" && !getValue(form, "interest")) {
+    errors.interest = "Please choose an interest.";
+  }
+
+  if (turnstileEnabled && !turnstileToken) {
+    errors.turnstileToken = "Please complete the verification.";
+  }
+
+  return {
+    ok: Object.keys(errors).length === 0,
+    errors,
+  };
+}
+
+function getTurnstileEnabled(form: HTMLFormElement) {
+  return Boolean(form.querySelector("[data-turnstile-widget]"));
+}
+
+function updateSubmitState(form: HTMLFormElement) {
+  const submitButton = form.querySelector<HTMLButtonElement>("[data-submit-button]");
+  const validation = validateForm(form, getTurnstileEnabled(form));
+
+  if (!submitButton || form.dataset.submitting === "true") return;
+
+  submitButton.disabled = !validation.ok;
+}
+
+function resetTurnstile(form: HTMLFormElement) {
+  const widgetId = form.dataset.turnstileWidgetId;
+  const tokenInput = form.elements.namedItem("turnstileToken");
+
+  if (tokenInput instanceof HTMLInputElement) {
+    tokenInput.value = "";
+  }
+
+  if (widgetId && window.turnstile) {
+    window.turnstile.reset(widgetId);
+  }
+}
+
+function createPayload(form: HTMLFormElement) {
+  const formData = new FormData(form);
+  const payload = new URLSearchParams();
+
+  formData.set("language", getLanguage());
+  formData.set("submittedAt", new Date().toISOString());
+  formData.set("origin", window.location.origin);
+
+  formData.forEach((value, key) => {
+    payload.set(key, String(value));
+  });
+
+  return payload;
+}
+
+function attachTurnstile(form: HTMLFormElement) {
+  const widget = form.querySelector<HTMLElement>("[data-turnstile-widget]");
+
+  if (!widget || !window.turnstile || form.dataset.turnstileWidgetId) return;
+
+  const siteKey = widget.dataset.sitekey;
+
+  if (!siteKey) return;
+
+  const widgetId = window.turnstile.render(widget, {
+    sitekey: siteKey,
+    callback: (token: string) => {
+      const tokenInput = form.elements.namedItem("turnstileToken");
+
+      if (tokenInput instanceof HTMLInputElement) {
+        tokenInput.value = token;
+      }
+
+      updateSubmitState(form);
+    },
+    "expired-callback": () => {
+      resetTurnstile(form);
+      updateSubmitState(form);
+    },
+    "error-callback": () => {
+      resetTurnstile(form);
+      updateSubmitState(form);
+    },
+  });
+
+  form.dataset.turnstileWidgetId = widgetId;
+}
+
+function initTurnstile(forms: NodeListOf<HTMLFormElement>) {
+  const hasTurnstile = Array.from(forms).some((form) =>
+    Boolean(form.querySelector("[data-turnstile-widget]")),
+  );
+
+  if (!hasTurnstile) return;
+
+  const render = () => {
+    if (!window.turnstile) return;
+    forms.forEach((form) => attachTurnstile(form));
   };
 
-  // Set the form submit event to initiate submission and mark submitted as true.
-  form.addEventListener("submit", function () {
-    submitted = true;
+  render();
+  window.addEventListener("load", render);
+  window.setTimeout(render, 1200);
+}
+
+async function submitForm(form: HTMLFormElement, endpoint: string) {
+  const submitButton = form.querySelector<HTMLButtonElement>("[data-submit-button]");
+  const defaultLabel = submitButton?.dataset.defaultLabel || "Submit";
+  const loadingLabel = submitButton?.dataset.loadingLabel || "Sending...";
+  const successMessage =
+    form.dataset.successMessage || "Thank you. Your request has been sent successfully.";
+  const fallbackError =
+    form.dataset.errorMessage || "We could not process your request right now.";
+  const startedAt = Number(getValue(form, "formStartedAt"));
+  const validation = validateForm(form, getTurnstileEnabled(form));
+  const submitterName = getValue(form, "name");
+
+  if (form.dataset.submitting === "true") return;
+
+  if (Date.now() - startedAt < MIN_TIME_TO_SUBMIT_MS) {
+    setMessage(form, "Please wait a moment and try again.", "error");
+    return;
+  }
+
+  if (!validation.ok) {
+    setMessage(form, Object.values(validation.errors)[0] || fallbackError, "error");
+    updateSubmitState(form);
+    return;
+  }
+
+  if (!endpoint) {
+    setMessage(form, "The form endpoint is not configured.", "error");
+    return;
+  }
+
+  form.dataset.submitting = "true";
+  setMessage(form, "", "idle");
+
+  if (submitButton) {
+    submitButton.disabled = true;
+    submitButton.textContent = loadingLabel;
+  }
+
+  try {
+    const response = await fetch(endpoint, {
+      method: "POST",
+      body: createPayload(form),
+    });
+    const payload = (await response.json()) as FormResponse;
+
+    if (!response.ok || !payload.success) {
+      setMessage(form, payload.message || fallbackError, "error");
+      resetTurnstile(form);
+      return;
+    }
+
+    form.reset();
+    const startedAtInput = form.elements.namedItem("formStartedAt");
+
+    if (startedAtInput instanceof HTMLInputElement) {
+      startedAtInput.value = String(Date.now());
+    }
+
+    resetTurnstile(form);
+    const message = payload.message || successMessage;
+
+    if (!openSuccessModal(submitterName, message)) {
+      setMessage(form, message, "success");
+    }
+  } catch (error) {
+    console.error(error);
+    setMessage(form, getNetworkErrorMessage(endpoint, fallbackError), "error");
+    resetTurnstile(form);
+  } finally {
+    form.dataset.submitting = "false";
+
+    if (submitButton) {
+      submitButton.textContent = defaultLabel;
+    }
+
+    updateSubmitState(form);
+  }
+}
+
+export function handleContactFormSubmission() {
+  const forms = document.querySelectorAll<HTMLFormElement>("[data-famdesc-form]");
+
+  forms.forEach((form) => {
+    const startedAtInput = form.elements.namedItem("formStartedAt");
+
+    if (startedAtInput instanceof HTMLInputElement) {
+      startedAtInput.value = String(Date.now());
+    }
+
+    form.addEventListener("input", () => updateSubmitState(form));
+    form.addEventListener("change", () => updateSubmitState(form));
+    form.addEventListener("submit", (event) => {
+      event.preventDefault();
+      submitForm(form, form.dataset.endpoint || "");
+    });
+
+    updateSubmitState(form);
+  });
+
+  initTurnstile(forms);
+
+  document
+    .querySelectorAll<HTMLElement>("[data-success-modal-close]")
+    .forEach((button) => {
+      button.addEventListener("click", closeSuccessModal);
+    });
+
+  document.addEventListener("keydown", (event) => {
+    if (event.key === "Escape") closeSuccessModal();
   });
 }

@@ -1,0 +1,94 @@
+---
+type Locale = "en" | "es" | "fr";
+
+const { turnstileSiteKey, locale = "en" } = Astro.props as {
+  turnstileSiteKey?: string;
+  locale?: Locale;
+};
+
+const copy = {
+  en: {
+    title: "Thank you, {name}.",
+    message:
+      "Your request was sent successfully. You can keep exploring Famdesc while we review it.",
+    home: "Continue to home",
+    close: "Close confirmation",
+  },
+  es: {
+    title: "Gracias, {name}.",
+    message:
+      "Tu solicitud se envió correctamente. Puedes seguir explorando Famdesc mientras la revisamos.",
+    home: "Seguir al inicio",
+    close: "Cerrar confirmación",
+  },
+  fr: {
+    title: "Merci, {name}.",
+    message:
+      "Votre demande a bien été envoyée. Vous pouvez continuer à explorer Famdesc pendant que nous l'examinons.",
+    home: "Continuer vers l'accueil",
+    close: "Fermer la confirmation",
+  },
+}[locale];
+
+const homeUrl = locale === "es" ? "/es" : locale === "fr" ? "/fr" : "/";
+---
+
+{
+  turnstileSiteKey && (
+    <script
+      is:inline
+      src="https://challenges.cloudflare.com/turnstile/v0/api.js?render=explicit"
+      async
+      defer
+    />
+  )
+}
+
+<div
+  class="fixed inset-0 z-[80] hidden items-center justify-center bg-neutral-950/60 px-4 py-6 backdrop-blur-sm"
+  role="dialog"
+  aria-modal="true"
+  aria-labelledby="form-success-modal-title"
+  data-form-success-modal
+  data-title-template={copy.title}
+>
+  <div class="w-full max-w-md rounded-lg border border-neutral-200 bg-white p-6 shadow-xl dark:border-neutral-700 dark:bg-neutral-800">
+    <div class="flex items-start justify-between gap-4">
+      <div>
+        <p
+          id="form-success-modal-title"
+          class="text-xl font-bold text-neutral-800 dark:text-neutral-100"
+          data-success-title
+        >
+          {copy.title.replace("{name}", "")}
+        </p>
+        <p class="mt-2 text-sm leading-6 text-neutral-600 dark:text-neutral-300" data-success-message>
+          {copy.message}
+        </p>
+      </div>
+      <button
+        type="button"
+        class="inline-flex h-8 w-8 flex-none items-center justify-center rounded-full text-neutral-500 transition hover:bg-neutral-100 hover:text-neutral-800 focus:outline-none focus-visible:ring dark:text-neutral-400 dark:hover:bg-neutral-700 dark:hover:text-neutral-100"
+        aria-label={copy.close}
+        data-success-modal-close
+      >
+        <span aria-hidden="true">×</span>
+      </button>
+    </div>
+    <a
+      href={homeUrl}
+      class="mt-6 inline-flex w-full items-center justify-center rounded-lg bg-salmon-400 px-4 py-3 text-sm font-bold text-neutral-700 transition hover:bg-salmon-500 focus:outline-none focus-visible:ring dark:ring-zinc-200"
+      data-success-home-link
+    >
+      {copy.home}
+    </a>
+  </div>
+</div>
+
+<script>
+  import { handleContactFormSubmission } from "@utils/contactFormHandler";
+
+  document.addEventListener("DOMContentLoaded", () => {
+    handleContactFormSubmission();
+  });
+</script>

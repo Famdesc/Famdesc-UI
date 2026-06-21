@@ -1,5 +1,14 @@
 ---
 import LoginBtn from "@components/ui/buttons/LoginBtn.astro";
+
+const locale = Astro.currentLocale;
+const waitlistUrl = locale === "es" ? "/es/waitlist" : locale === "fr" ? "/fr/waitlist" : "/waitlist";
+const title =
+  locale === "es"
+    ? "Lista de espera"
+    : locale === "fr"
+      ? "Liste d'attente"
+      : "Join Waitlist";
 ---
 
-<LoginBtn title="Join Waitlist" url="/contact" />
+<LoginBtn title={title} url={waitlistUrl} />

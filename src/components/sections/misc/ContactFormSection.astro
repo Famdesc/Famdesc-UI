@@ -1,0 +1,148 @@
+---
+import ContactIconBlock from "@components/ui/blocks/ContactIconBlock.astro";
+import Icon from "@components/ui/icons/Icon.astro";
+import FormRuntime from "@components/sections/misc/FormRuntime.astro";
+import { contactFormCopy, type ContactFormLocale } from "@utils/contactFormCopy";
+
+const { locale = "en" } = Astro.props as { locale?: ContactFormLocale };
+
+const endpoint = import.meta.env.PUBLIC_GOOGLE_SCRIPT_CONTACT_ENDPOINT;
+const turnstileSiteKey = import.meta.env.PUBLIC_TURNSTILE_SITE_KEY;
+const copy = contactFormCopy[locale];
+const waitlistUrl =
+  locale === "es" ? "/es/waitlist" : locale === "fr" ? "/fr/waitlist" : "/waitlist";
+
+const inputClass =
+  "block w-full rounded-lg border border-neutral-200 bg-neutral-50 px-4 py-3 text-sm text-neutral-700 placeholder:text-neutral-500 focus:border-neutral-200 focus:outline-none focus:ring focus:ring-neutral-400 disabled:pointer-events-none disabled:opacity-50 [color-scheme:light] dark:border-neutral-600 dark:bg-neutral-700/30 dark:text-neutral-300 dark:placeholder:text-neutral-400 dark:focus:ring-1 dark:[color-scheme:dark]";
+const buttonClass =
+  "inline-flex w-full items-center justify-center gap-x-2 rounded-lg border border-transparent bg-salmon-400 px-4 py-3 text-sm font-bold text-neutral-700 outline-none ring-zinc-500 transition duration-300 hover:bg-salmon-500 focus-visible:ring disabled:pointer-events-none disabled:opacity-50 dark:ring-zinc-200 dark:focus:outline-none 2xl:text-base";
+const optionClass = "bg-white text-neutral-800 dark:bg-neutral-800 dark:text-neutral-100";
+---
+
+<FormRuntime turnstileSiteKey={turnstileSiteKey} locale={locale} />
+
+<section class="mx-auto max-w-[85rem] px-4 py-10 sm:px-6 lg:px-8 lg:py-14">
+  <div class="mx-auto max-w-2xl lg:max-w-5xl">
+    <div class="text-center">
+      <h1 class="text-balance text-2xl font-bold tracking-tight text-neutral-800 dark:text-neutral-200 md:text-4xl md:leading-tight">
+        {copy.contactTitle}
+      </h1>
+      <p class="mt-2 text-pretty text-neutral-600 dark:text-neutral-400">
+        {copy.contactSubtitle}
+      </p>
+    </div>
+
+    <div class="mt-12 grid items-start gap-8 lg:grid-cols-[minmax(0,1fr)_minmax(18rem,0.8fr)] lg:gap-12">
+      <form
+        data-famdesc-form
+        data-form-type="contact"
+        data-endpoint={endpoint}
+        data-success-message={copy.success}
+        data-error-message={copy.error}
+        class="rounded-lg border border-neutral-200 bg-white p-4 shadow-sm dark:border-neutral-700 dark:bg-neutral-800/60 sm:p-6 lg:p-8"
+      >
+        <div class="mb-6">
+          <h2 class="text-xl font-bold text-neutral-700 dark:text-neutral-200">
+            {copy.formTitle}
+          </h2>
+          <p class="mt-1 text-sm text-neutral-600 dark:text-neutral-400">
+            {copy.formSubtitle}
+          </p>
+        </div>
+
+        <input type="hidden" name="formType" value="contact" />
+        <input type="hidden" name="turnstileToken" value="" />
+        <input type="hidden" name="formStartedAt" value="" />
+        <input
+          class="hidden"
+          type="text"
+          name="website"
+          tabindex="-1"
+          autocomplete="off"
+          aria-hidden="true"
+        />
+
+        <div class="grid gap-4">
+          <input class={inputClass} type="text" name="name" autocomplete="name" placeholder={copy.name} required minlength="2" />
+          <input class={inputClass} type="email" name="email" autocomplete="email" placeholder={copy.email} required />
+          <select class={inputClass} name="inquiryType" aria-label={copy.inquiryType}>
+            <option value="" disabled selected hidden>{copy.inquiryType}</option>
+            <option class={optionClass} value="General">{copy.general}</option>
+            <option class={optionClass} value="FSA Line One Pro">{copy.fsa}</option>
+            <option class={optionClass} value="Partnership">{copy.partnership}</option>
+            <option class={optionClass} value="Support">{copy.support}</option>
+          </select>
+          <input class={inputClass} type="text" name="subject" placeholder={copy.subject} required minlength="2" />
+          <textarea class={inputClass} name="message" rows="6" placeholder={copy.message} required minlength="10" maxlength="5000"></textarea>
+          {
+            turnstileSiteKey && (
+              <div
+                data-turnstile-widget
+                data-sitekey={turnstileSiteKey}
+                class="min-h-16"
+              />
+            )
+          }
+        </div>
+
+        <div class="mt-4 grid">
+          <button
+            class={buttonClass}
+            type="submit"
+            disabled
+            data-submit-button
+            data-default-label={copy.send}
+            data-loading-label={copy.sending}
+          >
+            {copy.send}
+          </button>
+        </div>
+        <p data-form-message class="mt-3 min-h-5 text-sm text-neutral-600 dark:text-neutral-400" aria-live="polite"></p>
+        <p class="mt-3 text-sm text-neutral-600 dark:text-neutral-400">
+          {copy.responseTime}
+        </p>
+      </form>
+
+      <div class="divide-y divide-neutral-300 dark:divide-neutral-700">
+        <ContactIconBlock
+          heading={copy.knowledgebase}
+          content={copy.knowledgebaseText}
+          isLinkVisible={true}
+          linkTitle={copy.knowledgebaseLink}
+          linkURL="/docs"
+          isArrowVisible={true}
+          ><Icon name="question" />
+        </ContactIconBlock>
+
+        <ContactIconBlock
+          heading={copy.faq}
+          content={copy.faqText}
+          isLinkVisible={true}
+          linkTitle={copy.faqLink}
+          linkURL="/#faq"
+          isArrowVisible={true}
+          ><Icon name="chatBubble" />
+        </ContactIconBlock>
+
+        <ContactIconBlock
+          heading={copy.emailBlock}
+          content={copy.emailText}
+          isLinkVisible={true}
+          linkTitle="contact@famdesc.com"
+          linkURL="mailto:contact@famdesc.com"
+          ><Icon name="envelopeOpen" />
+        </ContactIconBlock>
+
+        <ContactIconBlock
+          heading={copy.waitlistLink}
+          content=""
+          isLinkVisible={true}
+          linkTitle={copy.waitlistLinkText}
+          linkURL={waitlistUrl}
+          isArrowVisible={true}
+          ><Icon name="rocket" />
+        </ContactIconBlock>
+      </div>
+    </div>
+  </div>
+</section>

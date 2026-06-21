@@ -18,6 +18,7 @@ const footerLinks = [
     links: [
       { name: "À propos de nous", url: "/about" },
       { name: "Contact", url: "/fr/contact" },
+      { name: "Liste d'attente", url: "/fr/waitlist" },
     ],
   },
 ];

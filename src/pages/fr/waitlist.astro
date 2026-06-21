@@ -1,0 +1,28 @@
+---
+import MainLayout from "@/layouts/MainLayout.astro";
+import WaitlistSection from "@components/sections/misc/WaitlistSection.astro";
+---
+
+<MainLayout
+  title="Liste d'attente | Famdesc"
+  lang="fr"
+  structuredData={{
+    "@context": "https://schema.org",
+    "@type": "WebPage",
+    "@id": "https://famdesc.com/fr/waitlist",
+    url: "https://famdesc.com/fr/waitlist",
+    name: "Liste d'attente | Famdesc",
+    description:
+      "Rejoignez la liste d'attente Famdesc pour recevoir les premières nouvelles de FSA Line One Pro et de la future plateforme sociale Famdesc.",
+    isPartOf: {
+      "@type": "WebSite",
+      url: "https://famdesc.com/fr/",
+      name: "Famdesc",
+      description:
+        "Famdesc développe une technologie centrée sur les personnes, en commençant par des produits audio premium via FSA.",
+    },
+    inLanguage: "fr",
+  }}
+>
+  <WaitlistSection locale="fr" />
+</MainLayout>

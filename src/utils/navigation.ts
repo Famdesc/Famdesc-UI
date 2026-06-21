@@ -19,6 +19,7 @@ const footerLinks = [
     links: [
       { name: "About us", url: "/about" },
       { name: "Contact", url: "/contact" },
+      { name: "Waitlist", url: "/waitlist" },
     ],
   },
 ];
