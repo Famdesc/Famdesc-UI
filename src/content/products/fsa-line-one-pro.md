@@ -23,7 +23,7 @@ longDescription:
   subTitle: |
     FSA means Famdesc Sound Authority. FSA is the first premium technology line inside the Famdesc ecosystem, created to deliver real value today while supporting the long-term development of a private family social platform. Line One Pro is a serious wired alternative for users tired of cheap or unreliable Bluetooth earbuds: no battery, low latency, stable 3.5 mm performance, and a durable ergonomic design for study, work, casual gaming, travel, and everyday listening.
   btnTitle: "Join the Waitlist"
-  btnURL: "/contact"
+  btnURL: "/waitlist"
 descriptionList:
   - title: "Enhanced Hi-Fi Sound"
     subTitle: "A 10 mm dynamic driver is tuned for clear vocals, stronger detail, and a balanced everyday sound profile."

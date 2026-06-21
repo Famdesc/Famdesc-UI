@@ -1,0 +1,22 @@
+---
+const { turnstileSiteKey } = Astro.props as { turnstileSiteKey?: string };
+---
+
+{
+  turnstileSiteKey && (
+    <script
+      is:inline
+      src="https://challenges.cloudflare.com/turnstile/v0/api.js?render=explicit"
+      async
+      defer
+    />
+  )
+}
+
+<script>
+  import { handleContactFormSubmission } from "@utils/contactFormHandler";
+
+  document.addEventListener("DOMContentLoaded", () => {
+    handleContactFormSubmission();
+  });
+</script>

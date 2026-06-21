@@ -1,0 +1,30 @@
+---
+import MainLayout from "@/layouts/MainLayout.astro";
+import WaitlistSection from "@components/sections/misc/WaitlistSection.astro";
+import { SITE } from "@data/constants";
+
+const pageTitle = `Waitlist | ${SITE.title}`;
+---
+
+<MainLayout
+  title={pageTitle}
+  structuredData={{
+    "@context": "https://schema.org",
+    "@type": "WebPage",
+    "@id": "https://famdesc.com/waitlist",
+    url: "https://famdesc.com/waitlist",
+    name: "Waitlist | Famdesc",
+    description:
+      "Join the Famdesc waitlist for early updates about FSA Line One Pro and the future Famdesc social platform.",
+    isPartOf: {
+      "@type": "WebSite",
+      url: "https://famdesc.com",
+      name: "Famdesc",
+      description:
+        "Famdesc offers premium digital tools and services to strengthen family ties and preserve important memories.",
+    },
+    inLanguage: "en-US",
+  }}
+>
+  <WaitlistSection locale="en" />
+</MainLayout>
