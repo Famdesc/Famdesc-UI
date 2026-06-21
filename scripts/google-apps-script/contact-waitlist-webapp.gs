@@ -21,6 +21,7 @@ const CONFIG = {
   minTimeToSubmitMs: 3000,
   rateLimitSeconds: 300,
   maxMessageLength: 5000,
+  contactStatusOptions: ["Pending", "In progress", "Closed"],
 };
 
 function doGet() {
@@ -231,11 +232,17 @@ function verifyTurnstile_(token) {
 function sendContactEmail_(data) {
   const subject = `[Famdesc Contact] ${data.subject}`;
   const body = [
+    "A new contact message was submitted from famdesc.com.",
+    "",
     `Name: ${data.name}`,
     `Email: ${data.email}`,
     `Inquiry type: ${data.inquiryType || "General"}`,
     `Language: ${data.language}`,
+    `Submitted at: ${data.submittedAt}`,
+    `Origin: ${data.origin || "Unknown"}`,
+    `Initial status: Pending`,
     "",
+    "Message:",
     data.message,
   ].join("\n");
 
@@ -247,8 +254,7 @@ function sendContactEmail_(data) {
 
 function saveContactSubmission_(data) {
   const sheet = getSheet_(CONFIG.contactSheetName);
-
-  appendHeadersIfNeeded_(sheet, [
+  const headers = [
     "Timestamp",
     "Name",
     "Email",
@@ -256,7 +262,11 @@ function saveContactSubmission_(data) {
     "Inquiry Type",
     "Message",
     "Language",
-  ]);
+    "Status",
+  ];
+
+  ensureHeaders_(sheet, headers);
+  applyContactStatusValidation_(sheet);
   sheet.appendRow([
     new Date(),
     data.name,
@@ -265,13 +275,14 @@ function saveContactSubmission_(data) {
     data.inquiryType || "General",
     data.message,
     data.language,
+    "Pending",
   ]);
 }
 
 function saveWaitlistSubmission_(data) {
   const sheet = getSheet_(CONFIG.waitlistSheetName);
 
-  appendHeadersIfNeeded_(sheet, [
+  ensureHeaders_(sheet, [
     "Timestamp",
     "Name",
     "Email",
@@ -293,10 +304,37 @@ function getSheet_(name) {
   return spreadsheet.getSheetByName(name) || spreadsheet.insertSheet(name);
 }
 
-function appendHeadersIfNeeded_(sheet, headers) {
-  if (sheet.getLastRow() > 0) return;
+function ensureHeaders_(sheet, headers) {
+  if (sheet.getLastRow() === 0) {
+    sheet.appendRow(headers);
+    return;
+  }
 
-  sheet.appendRow(headers);
+  const lastColumn = Math.max(sheet.getLastColumn(), 1);
+  const existingHeaders = sheet.getRange(1, 1, 1, lastColumn).getValues()[0];
+
+  headers.forEach((header) => {
+    if (existingHeaders.indexOf(header) === -1) {
+      sheet.getRange(1, sheet.getLastColumn() + 1).setValue(header);
+    }
+  });
+}
+
+function applyContactStatusValidation_(sheet) {
+  const lastColumn = Math.max(sheet.getLastColumn(), 1);
+  const headers = sheet.getRange(1, 1, 1, lastColumn).getValues()[0];
+  const statusColumn = headers.indexOf("Status") + 1;
+
+  if (!statusColumn) return;
+
+  const rule = SpreadsheetApp.newDataValidation()
+    .requireValueInList(CONFIG.contactStatusOptions, true)
+    .setAllowInvalid(false)
+    .build();
+
+  sheet
+    .getRange(2, statusColumn, Math.max(sheet.getMaxRows() - 1, 1), 1)
+    .setDataValidation(rule);
 }
 
 function isAllowedOrigin_(origin) {

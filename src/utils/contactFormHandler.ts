@@ -77,6 +77,42 @@ function setMessage(form: HTMLFormElement, message: string, type: "error" | "suc
   messageElement.classList.toggle("dark:text-neutral-400", type === "idle");
 }
 
+function closeSuccessModal() {
+  const modal = document.querySelector<HTMLElement>("[data-form-success-modal]");
+
+  if (!modal) return;
+
+  modal.classList.add("hidden");
+  modal.classList.remove("flex");
+  document.body.classList.remove("overflow-hidden");
+}
+
+function openSuccessModal(name: string, message: string) {
+  const modal = document.querySelector<HTMLElement>("[data-form-success-modal]");
+
+  if (!modal) return false;
+
+  const titleElement = modal.querySelector<HTMLElement>("[data-success-title]");
+  const messageElement = modal.querySelector<HTMLElement>("[data-success-message]");
+  const homeLink = modal.querySelector<HTMLAnchorElement>("[data-success-home-link]");
+  const titleTemplate = modal.dataset.titleTemplate || "Thank you, {name}.";
+
+  if (titleElement) {
+    titleElement.textContent = titleTemplate.replace("{name}", name || "there");
+  }
+
+  if (messageElement) {
+    messageElement.textContent = message;
+  }
+
+  modal.classList.remove("hidden");
+  modal.classList.add("flex");
+  document.body.classList.add("overflow-hidden");
+  homeLink?.focus();
+
+  return true;
+}
+
 function validateForm(form: HTMLFormElement, turnstileEnabled: boolean) {
   const formType = form.dataset.formType as FormKind | undefined;
   const errors: Record<string, string> = {};
@@ -229,6 +265,7 @@ async function submitForm(form: HTMLFormElement, endpoint: string) {
     form.dataset.errorMessage || "We could not process your request right now.";
   const startedAt = Number(getValue(form, "formStartedAt"));
   const validation = validateForm(form, getTurnstileEnabled(form));
+  const submitterName = getValue(form, "name");
 
   if (form.dataset.submitting === "true") return;
 
@@ -277,7 +314,11 @@ async function submitForm(form: HTMLFormElement, endpoint: string) {
     }
 
     resetTurnstile(form);
-    setMessage(form, payload.message || successMessage, "success");
+    const message = payload.message || successMessage;
+
+    if (!openSuccessModal(submitterName, message)) {
+      setMessage(form, message, "success");
+    }
   } catch (error) {
     console.error(error);
     setMessage(form, getNetworkErrorMessage(endpoint, fallbackError), "error");
@@ -314,4 +355,14 @@ export function handleContactFormSubmission() {
   });
 
   initTurnstile(forms);
+
+  document
+    .querySelectorAll<HTMLElement>("[data-success-modal-close]")
+    .forEach((button) => {
+      button.addEventListener("click", closeSuccessModal);
+    });
+
+  document.addEventListener("keydown", (event) => {
+    if (event.key === "Escape") closeSuccessModal();
+  });
 }
