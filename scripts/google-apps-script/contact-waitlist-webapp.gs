@@ -39,6 +39,7 @@ function doPost(e) {
     if (!isAllowedOrigin_(data.origin)) {
       return json_({
         success: false,
+        code: "origin_not_allowed",
         message: "Verification failed. Please try again.",
       });
     }
@@ -55,6 +56,7 @@ function doPost(e) {
     if (isSpam_(data)) {
       return json_({
         success: false,
+        code: "spam_check_failed",
         message: "Verification failed. Please try again.",
       });
     }
@@ -62,6 +64,7 @@ function doPost(e) {
     if (!verifyTurnstile_(data.turnstileToken)) {
       return json_({
         success: false,
+        code: "turnstile_failed",
         message: "Verification failed. Please refresh the challenge and try again.",
       });
     }
@@ -69,6 +72,7 @@ function doPost(e) {
     if (hasRecentSubmission_(data)) {
       return json_({
         success: false,
+        code: "rate_limited",
         message: "Verification failed. Please try again.",
       });
     }
@@ -144,7 +148,7 @@ function normalizePayload_(data) {
     inquiryType: clean_(data.inquiryType),
     interest: clean_(data.interest),
     language: clean_(data.language || "en"),
-    website: clean_(data.website),
+    honeypot: clean_(data.companyFax || data.website),
     turnstileToken: clean_(data.turnstileToken),
     formStartedAt: Number(data.formStartedAt || 0),
     submittedAt: clean_(data.submittedAt || new Date().toISOString()),
@@ -196,7 +200,7 @@ function validatePayload_(data) {
 }
 
 function isSpam_(data) {
-  if (data.website) return true;
+  if (data.honeypot) return true;
 
   const text = `${data.subject} ${data.message}`.toLowerCase();
   const links = text.match(/https?:\/\//g) || [];

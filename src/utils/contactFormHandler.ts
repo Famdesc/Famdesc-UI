@@ -118,11 +118,11 @@ function validateForm(form: HTMLFormElement, turnstileEnabled: boolean) {
   const errors: Record<string, string> = {};
   const name = getValue(form, "name");
   const email = getValue(form, "email");
-  const website = getValue(form, "website");
+  const honeypot = getValue(form, "companyFax");
   const turnstileToken = getValue(form, "turnstileToken");
 
-  if (website) {
-    errors.website = "Verification failed. Please try again.";
+  if (honeypot) {
+    errors.companyFax = "Verification failed. Please try again.";
   }
 
   if (name.length < 2) {
@@ -314,7 +314,7 @@ async function submitForm(form: HTMLFormElement, endpoint: string) {
     }
 
     resetTurnstile(form);
-    const message = payload.message || successMessage;
+    const message = successMessage || payload.message || fallbackError;
 
     if (!openSuccessModal(submitterName, message)) {
       setMessage(form, message, "success");
