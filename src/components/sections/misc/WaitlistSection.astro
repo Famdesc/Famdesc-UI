@@ -12,9 +12,10 @@ const copy = waitlistFormCopy[locale];
 const contactUrl = locale === "es" ? "/es/contact" : locale === "fr" ? "/fr/contact" : "/contact";
 
 const inputClass =
-  "block w-full rounded-lg border border-neutral-200 bg-neutral-50 px-4 py-3 text-sm text-neutral-700 placeholder:text-neutral-500 focus:border-neutral-200 focus:outline-none focus:ring focus:ring-neutral-400 disabled:pointer-events-none disabled:opacity-50 dark:border-neutral-600 dark:bg-neutral-700/30 dark:text-neutral-300 dark:placeholder:text-neutral-400 dark:focus:ring-1";
+  "block w-full rounded-lg border border-neutral-200 bg-neutral-50 px-4 py-3 text-sm text-neutral-700 placeholder:text-neutral-500 focus:border-neutral-200 focus:outline-none focus:ring focus:ring-neutral-400 disabled:pointer-events-none disabled:opacity-50 [color-scheme:light] dark:border-neutral-600 dark:bg-neutral-700/30 dark:text-neutral-300 dark:placeholder:text-neutral-400 dark:focus:ring-1 dark:[color-scheme:dark]";
 const buttonClass =
   "inline-flex w-full items-center justify-center gap-x-2 rounded-lg border border-transparent bg-salmon-400 px-4 py-3 text-sm font-bold text-neutral-700 outline-none ring-zinc-500 transition duration-300 hover:bg-salmon-500 focus-visible:ring disabled:pointer-events-none disabled:opacity-50 dark:ring-zinc-200 dark:focus:outline-none 2xl:text-base";
+const optionClass = "bg-white text-neutral-800 dark:bg-neutral-800 dark:text-neutral-100";
 ---
 
 <FormRuntime turnstileSiteKey={turnstileSiteKey} locale={locale} />
@@ -64,10 +65,10 @@ const buttonClass =
           <input class={inputClass} type="text" name="name" autocomplete="name" placeholder={copy.name} required minlength="2" />
           <input class={inputClass} type="email" name="email" autocomplete="email" placeholder={copy.email} required />
           <select class={inputClass} name="interest" required aria-label={copy.interest}>
-            <option value="">{copy.interest}</option>
-            <option value="FSA Line One Pro">{copy.fsa}</option>
-            <option value="Famdesc Social Platform">{copy.social}</option>
-            <option value="Both">{copy.both}</option>
+            <option value="" disabled selected hidden>{copy.interest}</option>
+            <option class={optionClass} value="FSA Line One Pro">{copy.fsa}</option>
+            <option class={optionClass} value="Famdesc Social Platform">{copy.social}</option>
+            <option class={optionClass} value="Both">{copy.both}</option>
           </select>
           {
             turnstileSiteKey && (

@@ -13,9 +13,10 @@ const waitlistUrl =
   locale === "es" ? "/es/waitlist" : locale === "fr" ? "/fr/waitlist" : "/waitlist";
 
 const inputClass =
-  "block w-full rounded-lg border border-neutral-200 bg-neutral-50 px-4 py-3 text-sm text-neutral-700 placeholder:text-neutral-500 focus:border-neutral-200 focus:outline-none focus:ring focus:ring-neutral-400 disabled:pointer-events-none disabled:opacity-50 dark:border-neutral-600 dark:bg-neutral-700/30 dark:text-neutral-300 dark:placeholder:text-neutral-400 dark:focus:ring-1";
+  "block w-full rounded-lg border border-neutral-200 bg-neutral-50 px-4 py-3 text-sm text-neutral-700 placeholder:text-neutral-500 focus:border-neutral-200 focus:outline-none focus:ring focus:ring-neutral-400 disabled:pointer-events-none disabled:opacity-50 [color-scheme:light] dark:border-neutral-600 dark:bg-neutral-700/30 dark:text-neutral-300 dark:placeholder:text-neutral-400 dark:focus:ring-1 dark:[color-scheme:dark]";
 const buttonClass =
   "inline-flex w-full items-center justify-center gap-x-2 rounded-lg border border-transparent bg-salmon-400 px-4 py-3 text-sm font-bold text-neutral-700 outline-none ring-zinc-500 transition duration-300 hover:bg-salmon-500 focus-visible:ring disabled:pointer-events-none disabled:opacity-50 dark:ring-zinc-200 dark:focus:outline-none 2xl:text-base";
+const optionClass = "bg-white text-neutral-800 dark:bg-neutral-800 dark:text-neutral-100";
 ---
 
 <FormRuntime turnstileSiteKey={turnstileSiteKey} locale={locale} />
@@ -65,10 +66,11 @@ const buttonClass =
           <input class={inputClass} type="text" name="name" autocomplete="name" placeholder={copy.name} required minlength="2" />
           <input class={inputClass} type="email" name="email" autocomplete="email" placeholder={copy.email} required />
           <select class={inputClass} name="inquiryType" aria-label={copy.inquiryType}>
-            <option value="General">{copy.general}</option>
-            <option value="FSA Line One Pro">{copy.fsa}</option>
-            <option value="Partnership">{copy.partnership}</option>
-            <option value="Support">{copy.support}</option>
+            <option value="" disabled selected hidden>{copy.inquiryType}</option>
+            <option class={optionClass} value="General">{copy.general}</option>
+            <option class={optionClass} value="FSA Line One Pro">{copy.fsa}</option>
+            <option class={optionClass} value="Partnership">{copy.partnership}</option>
+            <option class={optionClass} value="Support">{copy.support}</option>
           </select>
           <input class={inputClass} type="text" name="subject" placeholder={copy.subject} required minlength="2" />
           <textarea class={inputClass} name="message" rows="6" placeholder={copy.message} required minlength="10" maxlength="5000"></textarea>
