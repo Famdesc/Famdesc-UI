@@ -27,6 +27,18 @@ declare global {
 const EMAIL_PATTERN = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 const MIN_TIME_TO_SUBMIT_MS = 3000;
 
+function getNetworkErrorMessage(endpoint: string, fallbackError: string) {
+  if (endpoint.includes("/dev")) {
+    return "Google Apps Script is using the /dev test URL. Use the deployed /exec web app URL.";
+  }
+
+  if (window.location.hostname === "localhost") {
+    return "We could not read the Google Apps Script response. Check the /exec deployment URL and Web App access.";
+  }
+
+  return fallbackError;
+}
+
 function getLanguage() {
   const path = window.location.pathname;
 
@@ -268,7 +280,7 @@ async function submitForm(form: HTMLFormElement, endpoint: string) {
     setMessage(form, payload.message || successMessage, "success");
   } catch (error) {
     console.error(error);
-    setMessage(form, fallbackError, "error");
+    setMessage(form, getNetworkErrorMessage(endpoint, fallbackError), "error");
     resetTurnstile(form);
   } finally {
     form.dataset.submitting = "false";
