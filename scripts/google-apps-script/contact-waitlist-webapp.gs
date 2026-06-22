@@ -9,6 +9,8 @@
  * - WAITLIST_SHEET_NAME: Waitlist
  */
 
+const SCRIPT_VERSION = "2026-06-22-contact-email-1";
+
 const CONFIG = {
   contactSheetName: getProperty_("CONTACT_SHEET_NAME", "Contact Submissions"),
   waitlistSheetName: getProperty_("WAITLIST_SHEET_NAME", "Waitlist"),
@@ -21,7 +23,6 @@ const CONFIG = {
   minTimeToSubmitMs: 3000,
   rateLimitSeconds: 300,
   maxMessageLength: 5000,
-  contactStatusOptions: ["Pending", "In progress", "Closed"],
 };
 
 function doGet() {
@@ -48,6 +49,7 @@ function doPost(e) {
     if (!validation.ok) {
       return json_({
         success: false,
+        code: "validation_failed",
         message: "Please check the form fields and try again.",
         errors: validation.errors,
       });
@@ -80,8 +82,8 @@ function doPost(e) {
     recordSubmissionAttempt_(data);
 
     if (data.formType === "contact") {
-      sendContactEmail_(data);
       saveContactSubmission_(data);
+      sendContactEmailSafely_(data);
 
       return json_({
         success: true,
@@ -104,6 +106,7 @@ function doPost(e) {
 
     return json_({
       success: false,
+      code: "invalid_form_type",
       message: "Invalid form type.",
     });
   } catch (error) {
@@ -111,6 +114,7 @@ function doPost(e) {
 
     return json_({
       success: false,
+      code: "internal_error",
       message:
         "We could not process your request right now. Please try again later.",
     });
@@ -265,10 +269,18 @@ function sendContactEmail_(data) {
     data.message,
   ].join("\n");
 
-  GmailApp.sendEmail(CONFIG.recipientEmail, subject, body, {
+  MailApp.sendEmail(CONFIG.recipientEmail, subject, body, {
     replyTo: data.email,
     name: "Famdesc Website",
   });
+}
+
+function sendContactEmailSafely_(data) {
+  try {
+    sendContactEmail_(data);
+  } catch (error) {
+    console.error("Contact email notification failed", error);
+  }
 }
 
 function saveContactSubmission_(data) {
@@ -285,7 +297,6 @@ function saveContactSubmission_(data) {
   ];
 
   ensureHeaders_(sheet, headers);
-  applyContactStatusValidation_(sheet);
   sheet.appendRow([
     new Date(),
     data.name,
@@ -339,23 +350,6 @@ function ensureHeaders_(sheet, headers) {
   });
 }
 
-function applyContactStatusValidation_(sheet) {
-  const lastColumn = Math.max(sheet.getLastColumn(), 1);
-  const headers = sheet.getRange(1, 1, 1, lastColumn).getValues()[0];
-  const statusColumn = headers.indexOf("Status") + 1;
-
-  if (!statusColumn) return;
-
-  const rule = SpreadsheetApp.newDataValidation()
-    .requireValueInList(CONFIG.contactStatusOptions, true)
-    .setAllowInvalid(false)
-    .build();
-
-  sheet
-    .getRange(2, statusColumn, Math.max(sheet.getMaxRows() - 1, 1), 1)
-    .setDataValidation(rule);
-}
-
 function isAllowedOrigin_(origin) {
   if (!CONFIG.allowedOrigins.length) return true;
   if (!origin) return false;
@@ -376,7 +370,10 @@ function getProperty_(key, fallback) {
 }
 
 function json_(payload) {
-  return ContentService.createTextOutput(JSON.stringify(payload)).setMimeType(
-    ContentService.MimeType.JSON,
-  );
+  return ContentService.createTextOutput(
+    JSON.stringify({
+      version: SCRIPT_VERSION,
+      ...payload,
+    }),
+  ).setMimeType(ContentService.MimeType.JSON);
 }
