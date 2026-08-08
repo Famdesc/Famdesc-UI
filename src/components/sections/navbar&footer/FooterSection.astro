@@ -59,7 +59,7 @@ const crafted: string =
               {section.section}
             </h3>
             <ul class="mt-3 grid space-y-3">
-              {section.links.map((link, index) => (
+              {section.links.map((link) => (
                 <li>
                   <a
                     href={link.url}
@@ -67,12 +67,9 @@ const crafted: string =
                   >
                     {link.name}
                   </a>
-                  {(footerLocale === "es" && link.url === "/es/hiring") ||
-                  (footerLocale !== "es" &&
-                    section.section === "Company" &&
-                    index === 2) ? (
+                  {link.url === "/es/hiring" ? (
                     <span class="ms-1 inline rounded-lg bg-blue-500 px-2 py-1 text-xs font-bold text-neutral-50">
-                      {footerLocale === "es" ? "Contratando" : "We're hiring!"}
+                      Contratando
                     </span>
                   ) : null}
                 </li>
