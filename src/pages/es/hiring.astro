@@ -1,0 +1,299 @@
+---
+import MainLayout from "@/layouts/MainLayout.astro";
+import { Image } from "astro:assets";
+import famdescBrand from "@images/famdesc-brand-identity.avif";
+import { SITE } from "@data/constants";
+
+const pageTitle = "Hiring | Contenido Digital y Marketing | Famdesc";
+const pageDescription =
+  "Oportunidad de formación y trabajo en Famdesc para aprender edición de video, creación de contenido y marketing digital.";
+
+const basicFields = [
+  { id: "fullName", label: "Nombre y apellidos", type: "text" },
+  { id: "age", label: "Edad", type: "text" },
+  { id: "location", label: "Lugar de residencia", type: "text" },
+  { id: "phone", label: "Teléfono / WhatsApp", type: "tel" },
+  {
+    id: "currentOccupation",
+    label: "Ocupación actual, si aplica",
+    type: "text",
+  },
+] as const;
+
+const questions = [
+  "Cuéntanos brevemente sobre ti, qué haces actualmente y qué te interesa aprender.",
+  "¿Qué fue lo que más te llamó la atención de esta oportunidad?",
+  "¿Por qué te interesa aprender edición de videos, creación de contenido o marketing digital?",
+  "¿Has grabado o editado algún video anteriormente, aunque haya sido personal, escolar o para redes sociales? Si sí, explica brevemente.",
+  "¿Qué aplicaciones o programas has utilizado para editar videos, imágenes o publicaciones?",
+  "¿Te sentirías cómodo/a grabando a otras personas, ayudando a organizar una grabación o apareciendo en cámara si alguna vez fuera necesario?",
+  "¿Tienes laptop o acceso frecuente a una computadora? Indica cuál y con qué frecuencia puedes usarla.",
+  "¿Tienes acceso regular a internet y puedes descargar o enviar archivos de video relativamente pesados?",
+  "¿Qué días y horarios tienes normalmente disponibles?",
+  "¿Puedes desplazarte para realizar grabaciones previamente coordinadas? Si no vives en Songo La Maya, ¿con qué frecuencia podrías trasladarte?",
+  "Cuando tienes varias tareas pendientes, ¿cómo acostumbras a organizarte?",
+  "¿Qué haces normalmente cuando recibes una tarea y no entiendes bien cómo hacerla?",
+  "¿Cómo reaccionas cuando alguien revisa tu trabajo y te pide corregirlo o repetirlo?",
+  "Si tuvieras que grabar un video corto para presentar una empresa tecnológica como Famdesc, ¿qué idea se te ocurriría?",
+  "Además de la remuneración, ¿qué esperas obtener de esta oportunidad y cuántas horas por semana podrías comprometer de manera realista?",
+];
+
+const structuredData = {
+  "@context": "https://schema.org",
+  "@type": "WebPage",
+  "@id": `${SITE.url}/es/hiring`,
+  url: `${SITE.url}/es/hiring`,
+  name: pageTitle,
+  description: pageDescription,
+  inLanguage: "es",
+  isPartOf: {
+    "@type": "WebSite",
+    url: `${SITE.url}/es/`,
+    name: "Famdesc",
+  },
+};
+---
+
+<MainLayout
+  title={pageTitle}
+  meta={pageDescription}
+  lang="es"
+  structuredData={structuredData}
+>
+  <section class="mx-auto max-w-[85rem] px-4 py-14 sm:px-6 lg:px-8 lg:py-20">
+    <div class="grid gap-10 lg:grid-cols-[1.05fr_0.95fr] lg:items-center">
+      <div>
+        <p
+          class="text-orange-600 dark:text-orange-400 text-sm font-semibold uppercase tracking-wide"
+        >
+          Hiring Famdesc
+        </p>
+
+        <h1
+          class="mt-4 text-balance text-4xl font-bold tracking-tight text-neutral-800 dark:text-neutral-200 md:text-6xl"
+        >
+          Oportunidad de formación y trabajo en Contenido Digital y Marketing
+        </h1>
+
+        <p
+          class="mt-6 max-w-2xl text-lg text-neutral-600 dark:text-neutral-400"
+        >
+          Buscamos una persona con ganas de aprender y crecer junto a Famdesc.
+          No necesitas experiencia profesional previa; valoramos
+          responsabilidad, creatividad, capacidad de aprender y compromiso.
+        </p>
+
+        <div class="mt-8 flex flex-col gap-3 sm:flex-row">
+          <a
+            href="#formulario"
+            class="hover:bg-salmon-600 focus-visible:ring-salmon-300 inline-flex items-center justify-center rounded-lg bg-salmon-500 px-5 py-3 text-sm font-semibold text-white transition focus:outline-none focus-visible:ring"
+          >
+            Llenar formulario
+          </a>
+          <a
+            href="#preguntas"
+            class="inline-flex items-center justify-center rounded-lg border border-neutral-300 px-5 py-3 text-sm font-semibold text-neutral-800 transition hover:bg-neutral-100 focus:outline-none focus-visible:ring focus-visible:ring-neutral-300 dark:border-neutral-700 dark:text-neutral-200 dark:hover:bg-neutral-700"
+          >
+            Ver preguntas
+          </a>
+        </div>
+      </div>
+
+      <div
+        class="overflow-hidden rounded-lg border border-neutral-200 dark:border-neutral-700"
+      >
+        <Image
+          src={famdescBrand}
+          alt="Identidad visual de Famdesc como empresa tecnológica centrada en las personas y las familias"
+          class="h-full min-h-[22rem] w-full object-cover"
+        />
+      </div>
+    </div>
+  </section>
+
+  <section class="mx-auto max-w-[85rem] px-4 py-8 sm:px-6 lg:px-8">
+    <div class="grid gap-6 md:grid-cols-3">
+      <div
+        class="rounded-lg border border-neutral-200 p-6 dark:border-neutral-700"
+      >
+        <h2
+          class="text-xl font-semibold text-neutral-800 dark:text-neutral-200"
+        >
+          Qué harás
+        </h2>
+        <p class="mt-3 text-neutral-600 dark:text-neutral-400">
+          Apoyarás la creación de videos, publicaciones e ideas para Famdesc y
+          para contenidos sobre emprendimiento, tecnología, liderazgo y
+          aprendizaje.
+        </p>
+      </div>
+
+      <div
+        class="rounded-lg border border-neutral-200 p-6 dark:border-neutral-700"
+      >
+        <h2
+          class="text-xl font-semibold text-neutral-800 dark:text-neutral-200"
+        >
+          Qué aprenderás
+        </h2>
+        <p class="mt-3 text-neutral-600 dark:text-neutral-400">
+          Edición básica y progresiva de video, organización de grabaciones,
+          contenido para redes sociales, narrativa digital y criterios de
+          marketing aplicados a un proyecto real.
+        </p>
+      </div>
+
+      <div
+        class="rounded-lg border border-neutral-200 p-6 dark:border-neutral-700"
+      >
+        <h2
+          class="text-xl font-semibold text-neutral-800 dark:text-neutral-200"
+        >
+          Modalidad
+        </h2>
+        <p class="mt-3 text-neutral-600 dark:text-neutral-400">
+          Trabajo mixto: algunas tareas pueden ser remotas y otras presenciales,
+          especialmente para grabaciones coordinadas.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section
+    id="formulario"
+    class="mx-auto max-w-[85rem] px-4 py-12 sm:px-6 lg:px-8"
+  >
+    <div class="mx-auto max-w-4xl">
+      <div class="mb-8">
+        <p
+          class="text-orange-600 dark:text-orange-400 text-sm font-semibold uppercase tracking-wide"
+        >
+          Primera etapa
+        </p>
+        <h2
+          class="mt-3 text-3xl font-bold tracking-tight text-neutral-800 dark:text-neutral-200"
+        >
+          Formulario de preselección
+        </h2>
+        <p class="mt-4 text-lg text-neutral-600 dark:text-neutral-400">
+          Completa tus datos y respuestas. Al enviar, se abrirá tu aplicación de
+          correo con el mensaje preparado para Famdesc.
+        </p>
+      </div>
+
+      <form id="hiring-form" class="grid gap-8">
+        <div
+          class="grid gap-4 rounded-lg border border-neutral-200 p-5 dark:border-neutral-700 sm:grid-cols-2"
+        >
+          {
+            basicFields.map((field) => (
+              <label
+                class="grid gap-2 text-sm font-semibold text-neutral-800 dark:text-neutral-200"
+                for={field.id}
+              >
+                {field.label}
+                <input
+                  class="rounded-lg border-neutral-300 bg-neutral-100 px-4 py-3 text-sm font-normal text-neutral-800 focus:border-salmon-500 focus:ring-salmon-500 dark:border-neutral-700 dark:bg-neutral-800 dark:text-neutral-200"
+                  id={field.id}
+                  name={field.id}
+                  type={field.type}
+                  required={field.id !== "currentOccupation"}
+                />
+              </label>
+            ))
+          }
+        </div>
+
+        <ol id="preguntas" class="grid gap-4">
+          {
+            questions.map((question, index) => (
+              <li class="rounded-lg border border-neutral-200 p-5 dark:border-neutral-700">
+                <label
+                  class="grid gap-3 text-sm font-semibold text-neutral-800 dark:text-neutral-200"
+                  for={`question-${index + 1}`}
+                >
+                  <span class="text-salmon-600 dark:text-salmon-400">
+                    Pregunta {index + 1}
+                  </span>
+                  <span>{question}</span>
+                  <textarea
+                    class="min-h-28 rounded-lg border-neutral-300 bg-neutral-100 px-4 py-3 text-sm font-normal text-neutral-800 focus:border-salmon-500 focus:ring-salmon-500 dark:border-neutral-700 dark:bg-neutral-800 dark:text-neutral-200"
+                    id={`question-${index + 1}`}
+                    name={`question-${index + 1}`}
+                    required
+                  />
+                </label>
+              </li>
+            ))
+          }
+        </ol>
+
+        <div
+          class="grid gap-5 rounded-lg bg-neutral-800 p-6 text-white dark:bg-neutral-950 sm:p-8 lg:grid-cols-[1fr_auto] lg:items-center"
+        >
+          <div>
+            <h2 class="text-2xl font-bold tracking-tight">
+              Enviar candidatura
+            </h2>
+            <p class="mt-3 max-w-2xl text-neutral-300">
+              Revisa tus respuestas antes de enviar. El sitio no guarda estos
+              datos; solo prepara el correo en tu dispositivo.
+            </p>
+          </div>
+
+          <button
+            type="submit"
+            class="hover:bg-salmon-600 focus-visible:ring-salmon-300 inline-flex items-center justify-center rounded-lg bg-salmon-500 px-5 py-3 text-sm font-semibold text-white transition focus:outline-none focus-visible:ring"
+          >
+            Preparar email
+          </button>
+        </div>
+      </form>
+    </div>
+  </section>
+
+  <script>
+    const form = document.querySelector<HTMLFormElement>("#hiring-form");
+
+    form?.addEventListener("submit", (event) => {
+      event.preventDefault();
+
+      const formData = new FormData(form);
+      const questionLabels = Array.from(
+        document.querySelectorAll("#preguntas label"),
+      ).map((label) => label.textContent?.trim().replace(/\s+/g, " ") || "");
+
+      const basicLines = [
+        ["Nombre y apellidos", formData.get("fullName")],
+        ["Edad", formData.get("age")],
+        ["Lugar de residencia", formData.get("location")],
+        ["Teléfono / WhatsApp", formData.get("phone")],
+        ["Ocupación actual", formData.get("currentOccupation")],
+      ];
+
+      const answerLines = questionLabels.map((label, index) => {
+        const answer = formData.get(`question-${index + 1}`) || "";
+        return `${label}\n${answer}`;
+      });
+
+      const body = [
+        "Hola Famdesc,",
+        "",
+        "Me interesa participar en la preselección para Contenido Digital y Marketing.",
+        "",
+        "Datos básicos:",
+        ...basicLines.map(([label, value]) => `${label}: ${value || ""}`),
+        "",
+        "Respuestas:",
+        ...answerLines.map((line, index) => `${index + 1}. ${line}`),
+        "",
+        "Gracias.",
+      ].join("\n");
+
+      const subject = "Preselección - Contenido Digital y Marketing";
+      window.location.href = `mailto:contact@famdesc.com?subject=${encodeURIComponent(
+        subject,
+      )}&body=${encodeURIComponent(body)}`;
+    });
+  </script>
+</MainLayout>
