@@ -9,31 +9,35 @@ import Icon from "@components/ui/icons/Icon.astro";
 import BrandLogo from "@components/BrandLogo.astro";
 import { SITE } from "@data/constants";
 
+const footerLocale = Astro.url.pathname.startsWith("/es")
+  ? "es"
+  : Astro.currentLocale;
+
 // Select the correct translation based on the page's lang prop:
 const strings =
-  Astro.currentLocale === "es"
+  footerLocale === "es"
     ? esStrings
-    : Astro.currentLocale === "fr"
+    : footerLocale === "fr"
       ? frStrings
       : enStrings;
 
 // Define the variables that will be used in this component
 const sectionThreeTitle: string =
-  Astro.currentLocale === "es"
+  footerLocale === "es"
     ? "Mantente al día"
-    : Astro.currentLocale === "fr"
+    : footerLocale === "fr"
       ? "Rester à jour"
       : "Stay up to date";
 const sectionThreeContent: string =
-  Astro.currentLocale === "es"
+  footerLocale === "es"
     ? "Suscríbete ahora y mantente al tanto de las últimas novedades de Famdesc!"
-    : Astro.currentLocale === "fr"
+    : footerLocale === "fr"
       ? "Abonnez-vous pour recevoir les dernières mises à jour et fonctionnalités!"
       : "Subscribe now for the latest updates and features on Famdesc!";
 const crafted: string =
-  Astro.currentLocale === "es"
+  footerLocale === "es"
     ? "Desarrollado por"
-    : Astro.currentLocale === "fr"
+    : footerLocale === "fr"
       ? "Fabriqué par"
       : "Crafted by";
 ---
@@ -63,9 +67,12 @@ const crafted: string =
                   >
                     {link.name}
                   </a>
-                  {section.section === "Company" && index === 2 ? (
+                  {(footerLocale === "es" && link.url === "/es/hiring") ||
+                  (footerLocale !== "es" &&
+                    section.section === "Company" &&
+                    index === 2) ? (
                     <span class="ms-1 inline rounded-lg bg-blue-500 px-2 py-1 text-xs font-bold text-neutral-50">
-                      We're hiring!
+                      {footerLocale === "es" ? "Contratando" : "We're hiring!"}
                     </span>
                   ) : null}
                 </li>
