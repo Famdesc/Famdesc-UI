@@ -1,0 +1,226 @@
+---
+import MainLayout from "@/layouts/MainLayout.astro";
+import MainSection from "@components/ui/blocks/MainSection.astro";
+import FeaturesStatsAlt from "@components/sections/features/FeaturesStatsAlt.astro";
+import { Image } from "astro:assets";
+import founder from "../../images/nardis.avif";
+import glowingLogo from "../../images/glowing-logo.avif";
+import famdescBrand from "../../images/famdesc-brand-identity.avif";
+import { SITE } from "@data/constants";
+
+const pageTitle = `À propos | ${SITE.title}`;
+const pageDescription =
+  "Découvrez Famdesc, une marque technologique centrée sur les personnes qui crée des produits utiles et développe une plateforme sociale familiale privée.";
+---
+
+<MainLayout title={pageTitle} meta={pageDescription} lang="fr">
+  <section class="mx-auto max-w-[85rem] px-4 py-16 sm:px-6 lg:px-8 lg:py-24">
+    <div class="mx-auto max-w-3xl text-center">
+      <p
+        class="text-orange-600 dark:text-orange-400 mb-4 text-sm font-semibold uppercase tracking-wide"
+      >
+        À propos de Famdesc
+      </p>
+      <h1
+        class="text-balance text-4xl font-bold tracking-tight text-neutral-800 dark:text-neutral-200 md:text-6xl"
+      >
+        Famdesc développe des technologies pour les personnes et les familles.
+      </h1>
+      <p
+        class="mt-6 text-pretty text-lg text-neutral-600 dark:text-neutral-400"
+      >
+        Famdesc est une marque technologique centrée sur les personnes, créée
+        pour développer des produits utiles, fiables et porteurs de sens. Notre
+        première étape est FSA, une gamme audio premium conçue pour apporter une
+        valeur réelle dès aujourd’hui tout en soutenant le développement à long
+        terme d’une plateforme sociale familiale privée.
+      </p>
+    </div>
+  </section>
+
+  <section class="mx-auto max-w-[85rem] px-4 py-12 sm:px-6 lg:px-8">
+    <div class="grid gap-10 lg:grid-cols-2 lg:items-center">
+      <div>
+        <h2
+          class="text-3xl font-bold tracking-tight text-neutral-800 dark:text-neutral-200"
+        >
+          Construite avec connaissance, discipline et détermination
+        </h2>
+        <p class="mt-4 text-lg text-neutral-600 dark:text-neutral-400">
+          Famdesc a été fondée par Nardis Del Campo Soler, entrepreneur cubain,
+          ancien professeur d’université et développeur logiciel, qui a décidé
+          de transformer ses connaissances en réalisations concrètes.
+        </p>
+        <p class="mt-4 text-lg text-neutral-600 dark:text-neutral-400">
+          Après avoir quitté le milieu universitaire pour se lancer dans
+          l’entrepreneuriat, Nardis a consacré plusieurs années à l’étude du
+          développement web, des technologies, des produits numériques, de
+          l’identité de marque et de la stratégie d’entreprise, avec discipline
+          et concentration. Famdesc est le fruit de ce parcours : un projet bâti
+          dans des conditions limitées, mais fondé sur une préparation
+          rigoureuse et une vision à long terme.
+        </p>
+        <p class="mt-4 text-lg text-neutral-600 dark:text-neutral-400">
+          L’objectif n’est pas de créer de la technologie pour les apparences.
+          Il s’agit de concevoir des produits pratiques, de gagner la confiance
+          par la qualité et de s’appuyer sur cette base pour soutenir un
+          écosystème plus vaste, pensé autour des personnes, des familles et de
+          relations numériques porteuses de sens.
+        </p>
+      </div>
+      <div class="overflow-hidden rounded-2xl">
+        <Image
+          class="h-full w-full object-cover"
+          src={founder}
+          alt="Nardis Del Campo Soler, fondateur de Famdesc"
+        />
+      </div>
+    </div>
+  </section>
+
+  <section class="mx-auto max-w-[85rem] px-4 py-12 sm:px-6 lg:px-8">
+    <div class="mx-auto max-w-4xl">
+      <div class="text-center">
+        <h2
+          class="text-3xl font-bold tracking-tight text-neutral-800 dark:text-neutral-200"
+        >
+          Notre parcours
+        </h2>
+        <p class="mt-4 text-lg text-neutral-600 dark:text-neutral-400">
+          Famdesc se construit étape par étape, de l’apprentissage, du sacrifice
+          et de l’exécution vers un écosystème technologique plus vaste.
+        </p>
+      </div>
+      <div class="mt-10 grid gap-6 md:grid-cols-2">
+        <div
+          class="rounded-2xl border border-neutral-200 p-6 dark:border-neutral-700"
+        >
+          <h3
+            class="text-xl font-semibold text-neutral-800 dark:text-neutral-200"
+          >
+            1. L’idée originale
+          </h3>
+          <p class="mt-3 text-neutral-600 dark:text-neutral-400">
+            Famdesc est née de la vision d’une plateforme sociale familiale
+            privée : un espace numérique plus sûr pour les souvenirs,
+            l’identité, les relations et les liens porteurs de sens entre les
+            générations.
+          </p>
+        </div>
+        <div
+          class="rounded-2xl border border-neutral-200 p-6 dark:border-neutral-700"
+        >
+          <h3
+            class="text-xl font-semibold text-neutral-800 dark:text-neutral-200"
+          >
+            2. La phase d’apprentissage
+          </h3>
+          <p class="mt-3 text-neutral-600 dark:text-neutral-400">
+            Avec des ressources limitées mais une forte détermination, le
+            fondateur a étudié pendant des années le développement logiciel, les
+            technologies web, la stratégie produit, l’identité de marque et le
+            commerce numérique afin de concrétiser cette idée.
+          </p>
+        </div>
+        <div
+          class="rounded-2xl border border-neutral-200 p-6 dark:border-neutral-700"
+        >
+          <h3
+            class="text-xl font-semibold text-neutral-800 dark:text-neutral-200"
+          >
+            3. Une décision pragmatique
+          </h3>
+          <p class="mt-3 text-neutral-600 dark:text-neutral-400">
+            Construire une plateforme sociale complète exige du capital, de la
+            confiance et une capacité d’exécution. Plutôt que d’abandonner sa
+            vision, Famdesc est devenue une marque technologique donnant la
+            priorité aux produits, en commençant par FSA.
+          </p>
+        </div>
+        <div
+          class="rounded-2xl border border-neutral-200 p-6 dark:border-neutral-700"
+        >
+          <h3
+            class="text-xl font-semibold text-neutral-800 dark:text-neutral-200"
+          >
+            4. Le soutien familial
+          </h3>
+          <p class="mt-3 text-neutral-600 dark:text-neutral-400">
+            Famdesc bénéficie également du soutien de personnes qui croient en
+            sa mission, notamment de l’implication de proches. Ce soutien permet
+            au projet d’avancer avec responsabilité et engagement sur le long
+            terme.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <MainSection
+    title="FSA - Famdesc Sound Authority"
+    subTitle="FSA est la première gamme technologique premium de l’écosystème Famdesc. FSA Line One Pro inaugure notre approche pragmatique donnant la priorité aux produits avec un équipement audio filaire fiable, conçu pour un usage quotidien réel."
+    btnExists={true}
+    btnTitle="Découvrir FSA Line One Pro"
+    btnURL="/products/fsa-line-one-pro"
+  />
+
+  <section class="mx-auto max-w-[85rem] px-4 py-12 sm:px-6 lg:px-8">
+    <div class="mx-auto max-w-3xl text-center">
+      <h2
+        class="text-3xl font-bold tracking-tight text-neutral-800 dark:text-neutral-200"
+      >
+        Pourquoi nous avons commencé par l’audio
+      </h2>
+      <p class="mt-5 text-lg text-neutral-600 dark:text-neutral-400">
+        Construire une plateforme porteuse de sens exige plus qu’une idée. Cela
+        nécessite de la confiance, une capacité d’exécution, des produits de
+        qualité et une solidité financière. FSA permet à Famdesc de commencer
+        par quelque chose de concret : un produit audio premium que chacun peut
+        utiliser au quotidien.
+      </p>
+      <p class="mt-4 text-lg text-neutral-600 dark:text-neutral-400">
+        FSA Line One Pro représente notre premier pas dans la technologie
+        physique : un équipement audio filaire fiable, à faible latence, sans
+        dépendance à une batterie, fabriqué avec des matériaux premium et conçu
+        pour durer.
+      </p>
+      <p class="mt-4 text-lg text-neutral-600 dark:text-neutral-400">
+        Cette approche donnant la priorité aux produits nous aide à bâtir notre
+        crédibilité aujourd’hui tout en poursuivant le développement de la
+        vision plus large de Famdesc pour demain.
+      </p>
+    </div>
+  </section>
+
+  <FeaturesStatsAlt
+    title="Nos convictions"
+    subTitle="Famdesc est guidée par un principe simple : la technologie doit servir les personnes, et non les éloigner de ce qui compte."
+    benefits={[
+      "Rester fidèle à une marque technologique centrée sur les personnes.",
+      "Créer des produits utiles avant de faire de grandes promesses.",
+      "Gagner la confiance par la qualité, la constance et une communication honnête.",
+      "Avancer avec préparation, discipline et persévérance.",
+      "Indiquer clairement que la plateforme sociale familiale est en cours de développement.",
+      "Respecter la vie privée, la confiance et les relations humaines porteuses de sens.",
+      "Créer une technologie pratique, humaine et accessible.",
+    ]}
+    image={{
+      src: glowingLogo,
+      alt: "Concept technologique futuriste avec un logo lumineux",
+    }}
+  />
+
+  <FeaturesStatsAlt
+    title="Vision à long terme"
+    subTitle="À terme, Famdesc pourra explorer des technologies plus larges centrées sur les personnes, notamment de futures solutions de connectivité, de mobilité, des outils liés à la santé et d’autres systèmes avancés. Il s’agit de possibilités à long terme, et non de produits actuels. Aujourd’hui, notre communication publique porte sur l’audio premium avec FSA et sur la plateforme sociale familiale privée en cours de développement."
+    benefits={[
+      "Construire progressivement un écosystème technologique durable.",
+      "Faire de FSA la première véritable gamme de produits de la marque Famdesc.",
+      "Maintenir une stratégie pragmatique donnant la priorité aux produits pendant la croissance de l’écosystème.",
+      "Développer la plateforme sociale familiale privée sur des bases plus solides.",
+      "Indiquer clairement que la plateforme sociale familiale est en cours de développement.",
+      "Présenter les futurs secteurs comme des possibilités à long terme, et non comme des offres actuelles.",
+    ]}
+    image={{ src: famdescBrand, alt: "Identité visuelle de Famdesc en 3D" }}
+  />
+</MainLayout>
