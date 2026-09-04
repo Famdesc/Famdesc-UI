@@ -1,7 +1,7 @@
 const navBarLinks = [
   { name: "Accueil", url: "/fr" },
   { name: "Produits", url: "/fr/products" },
-  { name: "À propos", url: "/about" },
+  { name: "À propos", url: "/fr/about" },
   { name: "Contact", url: "/fr/contact" },
 ];
 
@@ -16,7 +16,7 @@ const footerLinks = [
   {
     section: "Société",
     links: [
-      { name: "À propos de nous", url: "/about" },
+      { name: "À propos de nous", url: "/fr/about" },
       { name: "Contact", url: "/fr/contact" },
       { name: "Liste d'attente", url: "/fr/waitlist" },
     ],
