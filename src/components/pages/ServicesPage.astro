@@ -1,0 +1,539 @@
+---
+import { Image } from "astro:assets";
+import MainLayout from "@/layouts/MainLayout.astro";
+import ClientTestimonials from "@components/sections/testimonials/ClientTestimonials.astro";
+import { clientTestimonials } from "@data/clientTestimonials";
+import { SITE } from "@data/constants";
+import founder from "@images/nardis.avif";
+
+interface Props {
+  locale: "en" | "fr";
+}
+
+const { locale } = Astro.props;
+const prefix = locale === "fr" ? "/fr" : "";
+const copy =
+  locale === "fr"
+    ? {
+        pageTitle: `Services et solutions numériques | ${SITE.title}`,
+        description:
+          "Famdesc Web crée des sites rapides et des solutions numériques utiles pour les entrepreneurs et les petites entreprises.",
+        eyebrow: "Services Famdesc",
+        title:
+          "Des sites rapides et professionnels, conçus pour transformer les visites en opportunités.",
+        intro:
+          "Nous accompagnons les entrepreneurs et les petites entreprises de l'idée à la mise en ligne : stratégie, design, développement, domaine et suivi technique.",
+        explore: "Découvrir nos solutions web",
+        quote: "Demander un devis",
+        available: "Service disponible",
+        product: "Famdesc Web",
+        serviceTitle: "Nous créons des sites web rapides.",
+        serviceText:
+          "Famdesc Web transforme une idée ou un besoin métier en une solution numérique claire, fiable et prête pour la production. Notre travail ne s'arrête pas à la programmation : nous pensons l'expérience complète.",
+        benefits: [
+          "Rapide et adapté au mobile",
+          "Design professionnel fidèle à votre activité",
+          "Domaine, déploiement et référencement de base",
+          "Formulaires et intégrations essentielles",
+        ],
+        portfolio: "Voir le portfolio",
+        portfolioNote:
+          "Découvrez les problèmes rencontrés, nos solutions et les projets déjà en production.",
+        optionsEyebrow: "Ce que nous pouvons construire",
+        optionsTitle: "Une solution adaptée à la maturité de votre activité",
+        optionsIntro:
+          "Le périmètre se définit avec vos objectifs. Ces exemples sont des points de départ, pas des forfaits rigides.",
+        options: [
+          {
+            title: "Présence web pour entrepreneurs",
+            description:
+              "Présentez votre marque et vos services, puis facilitez le premier contact.",
+            features: [
+              "Page professionnelle",
+              "Design responsive",
+              "Domaine personnalisé",
+              "Formulaire de contact",
+            ],
+          },
+          {
+            title: "Site pour petites entreprises",
+            description:
+              "Organisez plusieurs services, contenus ou domaines de votre activité dans une expérience cohérente.",
+            features: [
+              "Plusieurs pages",
+              "Blog ou catalogue",
+              "Automatisation des e-mails",
+              "Analytique et SEO",
+            ],
+          },
+          {
+            title: "Développement sur mesure",
+            description:
+              "Des fonctionnalités et intégrations conçues autour d'un problème concret.",
+            features: [
+              "Cadrage technique",
+              "Intégrations externes",
+              "Fonctions personnalisées",
+              "Accompagnement technique",
+            ],
+          },
+        ],
+        proof: "Une expérience vérifiable",
+        proofTitle: "Des projets réels, pas des exercices fictifs",
+        proofText:
+          "Nous menons les projets de la définition des besoins à la production : design, développement, formulaires, automatisations, protection anti-spam, SEO, domaine et déploiement.",
+        cases: "Découvrir les études de cas",
+        testimonialIntro:
+          "Des expériences liées à de vrais projets, depuis la définition du besoin jusqu'à la mise en production.",
+        processEyebrow: "Notre méthode",
+        processTitle: "Un processus clair, proche et orienté résultats",
+        process: [
+          [
+            "01",
+            "Échange et besoins",
+            "Nous comprenons votre activité, vos clients, vos objectifs et les fonctions réellement nécessaires.",
+          ],
+          [
+            "02",
+            "Périmètre et proposition",
+            "Nous définissons les priorités, les livrables, le budget et une feuille de route claire.",
+          ],
+          [
+            "03",
+            "Design et développement",
+            "Nous construisons une expérience rapide et simple à utiliser, avec des validations en cours de route.",
+          ],
+          [
+            "04",
+            "Mise en ligne et suivi",
+            "Nous configurons le domaine et le déploiement, puis vous accompagnons après la livraison.",
+          ],
+        ],
+        leadership: "Direction directe",
+        leadershipTitle: "Une équipe dirigée avec responsabilité et vision",
+        bio: "Je suis Nardis Del Campo Soler, développeur logiciel et fondateur de Famdesc. Ma formation en sciences physiques et mon expérience des solutions numériques m'aident à aborder chaque projet avec analyse, stratégie et attention aux détails.",
+        leadershipText:
+          "Je dirige personnellement chaque projet Famdesc Web et accompagne l'équipe tout au long du processus. Vous savez qui porte le projet, comment il avance et pourquoi chaque décision est prise.",
+        talk: "Parlons de votre projet",
+        finalTitle:
+          "Votre activité mérite une présence numérique à sa hauteur.",
+        finalText:
+          "Présentez-nous votre activité. Nous vous aiderons à définir le site et les fonctionnalités réellement utiles.",
+        finalCta: "Demander une première évaluation",
+        founderAlt: "Nardis Del Campo Soler, fondateur et dirigeant de Famdesc",
+      }
+    : {
+        pageTitle: `Digital services and solutions | ${SITE.title}`,
+        description:
+          "Famdesc Web builds fast websites and useful digital solutions for entrepreneurs and small businesses.",
+        eyebrow: "Famdesc services",
+        title:
+          "Fast, professional websites designed to turn visits into opportunities.",
+        intro:
+          "We help entrepreneurs and small businesses move from idea to launch through strategy, design, development, domain setup, and ongoing technical guidance.",
+        explore: "Explore our web solutions",
+        quote: "Request a quote",
+        available: "Available service",
+        product: "Famdesc Web",
+        serviceTitle: "We build fast websites.",
+        serviceText:
+          "Famdesc Web turns an idea or business need into a clear, reliable digital solution that is ready for production. We go beyond writing code to shape the complete experience.",
+        benefits: [
+          "Fast and mobile-ready",
+          "Professional design aligned with your business",
+          "Domain, deployment, and essential SEO",
+          "Forms and practical integrations",
+        ],
+        portfolio: "View portfolio",
+        portfolioNote:
+          "See the problems, solutions, and real projects we have taken to production.",
+        optionsEyebrow: "What we can build",
+        optionsTitle: "A web solution that fits your business today",
+        optionsIntro:
+          "Scope is defined around your goals. These examples are starting points, not rigid packages.",
+        options: [
+          {
+            title: "Web presence for entrepreneurs",
+            description:
+              "Present your brand and services clearly, then make it easy for potential clients to reach you.",
+            features: [
+              "Professional page",
+              "Responsive design",
+              "Custom domain",
+              "Contact form",
+            ],
+          },
+          {
+            title: "Small-business website",
+            description:
+              "Bring multiple services, content areas, or parts of your business into one coherent experience.",
+            features: [
+              "Multiple pages",
+              "Blog or catalog",
+              "Email automation",
+              "Analytics and SEO",
+            ],
+          },
+          {
+            title: "Custom web development",
+            description:
+              "Features and integrations shaped around a concrete business problem.",
+            features: [
+              "Technical discovery",
+              "External integrations",
+              "Custom functionality",
+              "Technical guidance",
+            ],
+          },
+        ],
+        proof: "Experience you can verify",
+        proofTitle: "Real projects, not fictional exercises",
+        proofText:
+          "We take projects from requirements to production: design, development, forms, automation, spam protection, SEO, domains, deployment, and technical support.",
+        cases: "Explore the case studies",
+        testimonialIntro:
+          "Experiences connected to real projects, from understanding the need through production launch.",
+        processEyebrow: "How we work",
+        processTitle: "A clear, collaborative, results-focused process",
+        process: [
+          [
+            "01",
+            "Conversation and requirements",
+            "We learn about your business, customers, goals, and the functionality you actually need.",
+          ],
+          [
+            "02",
+            "Scope and proposal",
+            "We define priorities, deliverables, budget, and a clear path forward before work begins.",
+          ],
+          [
+            "03",
+            "Design and development",
+            "We build a fast, professional experience with reviews throughout the process.",
+          ],
+          [
+            "04",
+            "Launch and support",
+            "We configure the domain and deployment, hand over the solution, and help you make the most of it.",
+          ],
+        ],
+        leadership: "Direct leadership",
+        leadershipTitle: "A team led with accountability and vision",
+        bio: "I’m Nardis Del Campo Soler, a software developer and the founder of Famdesc. My background in physical sciences and experience building digital solutions help me approach every project with analysis, strategy, and attention to detail.",
+        leadershipText:
+          "I lead every Famdesc Web project directly and guide the team throughout the process. You know who is accountable for the work, how it is progressing, and why each decision is made.",
+        talk: "Let’s talk about your project",
+        finalTitle:
+          "Your business deserves a digital presence that reflects its value.",
+        finalText:
+          "Tell us about your business. We’ll help you identify the right website and the features that genuinely matter.",
+        finalCta: "Request an initial consultation",
+        founderAlt: "Nardis Del Campo Soler, founder and leader of Famdesc",
+      };
+
+const visibleTestimonials = import.meta.env.DEV
+  ? clientTestimonials
+  : clientTestimonials.filter(
+      (testimonial) => testimonial.status === "approved",
+    );
+const structuredData = {
+  "@context": "https://schema.org",
+  "@type": "ProfessionalService",
+  "@id": `${SITE.url}${prefix}/services`,
+  url: `${SITE.url}${prefix}/services`,
+  name: "Famdesc Web",
+  description: copy.description,
+  areaServed: "Worldwide",
+  founder: {
+    "@type": "Person",
+    name: "Nardis Del Campo Soler",
+    jobTitle:
+      locale === "fr"
+        ? "Fondateur et dirigeant de Famdesc"
+        : "Founder and leader of Famdesc",
+  },
+  parentOrganization: {
+    "@type": "Organization",
+    name: "Famdesc",
+    url: SITE.url,
+  },
+  inLanguage: locale,
+};
+---
+
+<MainLayout
+  title={copy.pageTitle}
+  meta={copy.description}
+  lang={locale}
+  structuredData={structuredData}
+>
+  <section
+    class="relative overflow-hidden px-4 pb-16 pt-20 text-center sm:px-6 lg:px-8 lg:pb-24 lg:pt-28"
+  >
+    <div
+      class="pointer-events-none absolute inset-x-0 top-0 -z-10 mx-auto h-96 max-w-5xl rounded-full bg-salmon-400/10 blur-3xl dark:bg-salmon-500/10"
+    >
+    </div>
+    <div class="mx-auto max-w-5xl">
+      <p
+        class="mb-5 text-sm font-semibold uppercase tracking-[0.2em] text-salmon-600 dark:text-salmon-400"
+      >
+        {copy.eyebrow}
+      </p>
+      <h1
+        class="text-balance text-4xl font-bold tracking-tight text-neutral-800 dark:text-neutral-100 sm:text-5xl lg:text-7xl"
+      >
+        {copy.title}
+      </h1>
+      <p
+        class="mx-auto mt-7 max-w-3xl text-pretty text-lg leading-8 text-neutral-600 dark:text-neutral-300 sm:text-xl"
+      >
+        {copy.intro}
+      </p>
+      <div class="mt-10 flex flex-col justify-center gap-3 sm:flex-row">
+        <a
+          href="#famdesc-web"
+          class="rounded-lg bg-salmon-500 px-6 py-3.5 text-sm font-semibold text-white transition hover:bg-salmon-600"
+          >{copy.explore}</a
+        >
+        <a
+          href={`${prefix}/contact`}
+          class="rounded-lg border border-neutral-300 px-6 py-3.5 text-sm font-semibold text-neutral-800 transition hover:bg-neutral-100 dark:border-neutral-600 dark:text-neutral-100 dark:hover:bg-neutral-700"
+          >{copy.quote}</a
+        >
+      </div>
+    </div>
+  </section>
+
+  <section
+    id="famdesc-web"
+    class="mx-auto max-w-[85rem] px-4 py-14 sm:px-6 lg:px-8 lg:py-20"
+  >
+    <div
+      class="grid overflow-hidden rounded-3xl border border-neutral-300 bg-neutral-100/60 dark:border-neutral-700 dark:bg-neutral-900/30 lg:grid-cols-[1.1fr_0.9fr]"
+    >
+      <div class="p-7 sm:p-10 lg:p-14">
+        <span
+          class="inline-flex rounded-full bg-salmon-500/10 px-4 py-2 text-sm font-semibold text-salmon-600 dark:text-salmon-400"
+          >{copy.available}</span
+        >
+        <p
+          class="mt-7 text-sm font-semibold uppercase tracking-widest text-neutral-500 dark:text-neutral-400"
+        >
+          {copy.product}
+        </p>
+        <h2
+          class="mt-3 text-balance text-3xl font-bold text-neutral-800 dark:text-neutral-100 sm:text-5xl"
+        >
+          {copy.serviceTitle}
+        </h2>
+        <p
+          class="mt-6 max-w-2xl text-pretty text-lg leading-8 text-neutral-600 dark:text-neutral-300"
+        >
+          {copy.serviceText}
+        </p>
+        <ul class="mt-8 grid gap-4 sm:grid-cols-2">
+          {
+            copy.benefits.map((benefit) => (
+              <li class="flex items-start gap-3 text-neutral-700 dark:text-neutral-300">
+                <span class="text-blue-500 dark:text-blue-300">✓</span>
+                {benefit}
+              </li>
+            ))
+          }
+        </ul>
+        <a
+          href={`${prefix}/projects`}
+          class="mt-10 inline-flex items-center gap-2 rounded-lg bg-neutral-800 px-6 py-3.5 text-sm font-semibold text-white transition hover:bg-neutral-700 dark:bg-neutral-100 dark:text-neutral-900"
+          >{copy.portfolio} <span aria-hidden="true">→</span></a
+        >
+        <p class="mt-3 text-sm text-neutral-500 dark:text-neutral-400">
+          {copy.portfolioNote}
+        </p>
+      </div>
+      <div
+        class="flex min-h-80 items-center justify-center bg-neutral-800 p-8 dark:bg-neutral-950 sm:p-12"
+        aria-hidden="true"
+      >
+        <div
+          class="w-full max-w-md rounded-2xl border border-white/10 bg-white/5 p-8 shadow-2xl"
+        >
+          <div class="mb-8 flex gap-3">
+            <span class="size-3 rounded-full bg-salmon-400"></span><span
+              class="size-3 rounded-full bg-salmon-500"></span><span
+              class="size-3 rounded-full bg-blue-300"></span>
+          </div><div class="space-y-4">
+            <div class="h-4 w-2/5 rounded bg-white/20"></div><div
+              class="h-10 w-4/5 rounded bg-white/90"
+            >
+            </div><div class="h-3 w-full rounded bg-white/15"></div><div
+              class="h-3 w-3/4 rounded bg-white/15"
+            >
+            </div><div class="h-10 w-36 rounded-lg bg-salmon-500"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="mx-auto max-w-[85rem] px-4 py-14 sm:px-6 lg:px-8 lg:py-20">
+    <div class="mx-auto max-w-3xl text-center">
+      <p
+        class="text-sm font-semibold uppercase tracking-widest text-salmon-600 dark:text-salmon-400"
+      >
+        {copy.optionsEyebrow}
+      </p><h2
+        class="mt-3 text-balance text-3xl font-bold text-neutral-800 dark:text-neutral-100 sm:text-4xl"
+      >
+        {copy.optionsTitle}
+      </h2><p class="mt-5 text-lg text-neutral-600 dark:text-neutral-400">
+        {copy.optionsIntro}
+      </p>
+    </div>
+    <div class="mt-12 grid gap-6 lg:grid-cols-3">
+      {
+        copy.options.map((option, index) => (
+          <article
+            class:list={[
+              "rounded-2xl border p-7 sm:p-8",
+              index === 1
+                ? "border-salmon-400 bg-salmon-50/60 dark:border-salmon-500 dark:bg-salmon-500/5"
+                : "border-neutral-300 dark:border-neutral-700",
+            ]}
+          >
+            <>
+              <h3 class="text-xl font-bold text-neutral-800 dark:text-neutral-100">
+                {option.title}
+              </h3>
+              <p class="mt-4 leading-7 text-neutral-600 dark:text-neutral-400">
+                {option.description}
+              </p>
+              <ul class="mt-6 space-y-3 border-t border-neutral-300 pt-6 dark:border-neutral-700">
+                {option.features.map((feature) => (
+                  <li class="flex items-center gap-3 text-sm font-medium text-neutral-700 dark:text-neutral-300">
+                    <span class="size-1.5 rounded-full bg-salmon-500" />
+                    {feature}
+                  </li>
+                ))}
+              </ul>
+            </>
+          </article>
+        ))
+      }
+    </div>
+  </section>
+
+  <section class="mx-auto max-w-[85rem] px-4 py-10 sm:px-6 lg:px-8">
+    <div
+      class="grid gap-8 rounded-3xl border border-blue-300/40 bg-blue-100/40 p-8 dark:border-blue-400/30 dark:bg-blue-500/10 sm:p-10 lg:grid-cols-[0.75fr_1.25fr] lg:items-center"
+    >
+      <div>
+        <p
+          class="text-sm font-semibold uppercase tracking-widest text-blue-500 dark:text-blue-300"
+        >
+          {copy.proof}
+        </p><h2
+          class="mt-3 text-3xl font-bold text-neutral-800 dark:text-neutral-100"
+        >
+          {copy.proofTitle}
+        </h2>
+      </div><div>
+        <p class="text-lg leading-8 text-neutral-700 dark:text-neutral-300">
+          {copy.proofText}
+        </p><a
+          href={`${prefix}/projects`}
+          class="mt-5 inline-flex font-semibold text-blue-500 dark:text-blue-300"
+          >{copy.cases}<span class="ms-2">→</span></a>
+      </div>
+    </div>
+  </section>
+
+  <ClientTestimonials
+    testimonials={visibleTestimonials}
+    intro={copy.testimonialIntro}
+    showDraftBadge={import.meta.env.DEV}
+    locale={locale}
+  />
+
+  <section class="mx-auto max-w-[85rem] px-4 py-14 sm:px-6 lg:px-8 lg:py-20">
+    <div class="mx-auto max-w-3xl text-center">
+      <p
+        class="text-sm font-semibold uppercase tracking-widest text-salmon-600 dark:text-salmon-400"
+      >
+        {copy.processEyebrow}
+      </p><h2
+        class="mt-3 text-3xl font-bold text-neutral-800 dark:text-neutral-100 sm:text-4xl"
+      >
+        {copy.processTitle}
+      </h2>
+    </div><div class="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
+      {
+        copy.process.map(([number, title, description]) => (
+          <article class="rounded-2xl border border-neutral-300 p-7 dark:border-neutral-700">
+            <>
+              <span class="text-sm font-bold text-salmon-600 dark:text-salmon-400">
+                {number}
+              </span>
+              <h3 class="mt-4 text-xl font-semibold text-neutral-800 dark:text-neutral-100">
+                {title}
+              </h3>
+              <p class="mt-3 leading-7 text-neutral-600 dark:text-neutral-400">
+                {description}
+              </p>
+            </>
+          </article>
+        ))
+      }
+    </div>
+  </section>
+
+  <section class="mx-auto max-w-[85rem] px-4 py-14 sm:px-6 lg:px-8 lg:py-20">
+    <div
+      class="grid overflow-hidden rounded-3xl bg-neutral-300 dark:bg-neutral-900 lg:grid-cols-2 lg:items-center"
+    >
+      <div class="aspect-[4/3] overflow-hidden lg:aspect-auto lg:h-full">
+        <Image
+          class="h-full w-full object-cover object-center"
+          src={founder}
+          alt={copy.founderAlt}
+        />
+      </div><div class="p-8 sm:p-12 lg:p-16">
+        <p
+          class="text-sm font-semibold uppercase tracking-widest text-salmon-600 dark:text-salmon-400"
+        >
+          {copy.leadership}
+        </p><h2
+          class="mt-3 text-3xl font-bold text-neutral-800 dark:text-neutral-100 sm:text-4xl"
+        >
+          {copy.leadershipTitle}
+        </h2><p
+          class="mt-6 text-lg leading-8 text-neutral-600 dark:text-neutral-300"
+        >
+          {copy.bio}
+        </p><p class="mt-4 leading-7 text-neutral-600 dark:text-neutral-400">
+          {copy.leadershipText}
+        </p><a
+          href={`${prefix}/contact`}
+          class="mt-8 inline-flex font-semibold text-blue-500 dark:text-blue-300"
+          >{copy.talk}<span class="ms-2">→</span></a>
+      </div>
+    </div>
+  </section>
+
+  <section
+    class="mx-auto max-w-4xl px-4 py-16 text-center sm:px-6 lg:px-8 lg:py-24"
+  >
+    <h2
+      class="text-balance text-3xl font-bold text-neutral-800 dark:text-neutral-100 sm:text-5xl"
+    >
+      {copy.finalTitle}
+    </h2><p
+      class="mx-auto mt-5 max-w-2xl text-lg text-neutral-600 dark:text-neutral-300"
+    >
+      {copy.finalText}
+    </p><a
+      href={`${prefix}/contact`}
+      class="mt-8 inline-flex rounded-lg bg-salmon-500 px-6 py-3.5 text-sm font-semibold text-white transition hover:bg-salmon-600"
+      >{copy.finalCta}</a>
+  </section>
+</MainLayout>

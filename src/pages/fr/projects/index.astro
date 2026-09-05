@@ -1,0 +1,6 @@
+---
+import PortfolioIndexPage from "@components/pages/PortfolioIndexPage.astro";
+import { getLocalizedProjects } from "@data/projectTranslations";
+---
+
+<PortfolioIndexPage locale="fr" projects={getLocalizedProjects("fr")} />

@@ -1,51 +1,61 @@
 ---
 import MainLayout from "@/layouts/MainLayout.astro";
-import { projects, type Project } from "@data/projects";
-import { SITE } from "@data/constants";
 import ClientTestimonials from "@components/sections/testimonials/ClientTestimonials.astro";
 import { clientTestimonials } from "@data/clientTestimonials";
-
-export function getStaticPaths() {
-  return projects.map((project) => ({
-    params: { slug: project.slug },
-    props: { project },
-  }));
-}
+import type { Project } from "@data/projects";
+import { SITE } from "@data/constants";
 
 interface Props {
+  locale: "en" | "fr";
   project: Project;
 }
-
-const { project } = Astro.props;
-const pageTitle = `${project.name}: caso de estudio | ${SITE.title}`;
-const pageDescription = project.summary;
+const { locale, project } = Astro.props;
+const prefix = locale === "fr" ? "/fr" : "";
+const copy =
+  locale === "fr"
+    ? {
+        all: "Tous les projets",
+        visit: "Voir le projet en production",
+        context: "Contexte",
+        challenge: "Problématique",
+        result: "Résultat",
+        solution: "La solution",
+        solutionTitle: "Conçue autour d'un besoin réel.",
+        role: "Contribution de Famdesc",
+        tech: "Technologies utilisées",
+        testimonial: "Un témoignage sur ce projet",
+        next: "Votre projet peut être le prochain",
+        nextTitle:
+          "Construisons une solution claire, utile et prête pour la production.",
+        contact: "Parlez-nous de votre projet",
+      }
+    : {
+        all: "All projects",
+        visit: "Visit the live project",
+        context: "Context",
+        challenge: "Challenge",
+        result: "Result",
+        solution: "The solution",
+        solutionTitle: "Designed around a real need.",
+        role: "Famdesc's contribution",
+        tech: "Technologies used",
+        testimonial: "A perspective on this project",
+        next: "Your project could be next",
+        nextTitle:
+          "Let’s build a clear, useful solution that is ready for production.",
+        contact: "Tell us what you need",
+      };
 const projectTestimonials = clientTestimonials.filter(
-  (testimonial) =>
-    testimonial.projectSlug === project.slug &&
-    (import.meta.env.DEV || testimonial.status === "approved"),
+  (item) =>
+    item.projectSlug === project.slug &&
+    (import.meta.env.DEV || item.status === "approved"),
 );
-
-const structuredData = {
-  "@context": "https://schema.org",
-  "@type": "CreativeWork",
-  name: project.name,
-  description: project.summary,
-  url: `${SITE.url}/es/projects/${project.slug}`,
-  sameAs: project.productionUrl,
-  creator: {
-    "@type": "Organization",
-    name: "Famdesc",
-    url: SITE.url,
-  },
-  inLanguage: "es",
-};
 ---
 
 <MainLayout
-  title={pageTitle}
-  meta={pageDescription}
-  lang="es"
-  structuredData={structuredData}
+  title={`${project.name} | ${SITE.title}`}
+  meta={project.summary}
+  lang={locale}
 >
   <article>
     <header
@@ -57,11 +67,10 @@ const structuredData = {
       </div>
       <div class="mx-auto max-w-5xl">
         <a
-          href="/es/projects"
+          href={`${prefix}/projects`}
           class="inline-flex items-center gap-2 text-sm font-semibold text-neutral-600 transition hover:text-salmon-600 dark:text-neutral-300 dark:hover:text-salmon-400"
+          ><span aria-hidden="true">←</span> {copy.all}</a
         >
-          <span aria-hidden="true">←</span> Todos los proyectos
-        </a>
         <p
           class="mt-12 text-sm font-semibold uppercase tracking-[0.2em] text-salmon-600 dark:text-salmon-400"
         >
@@ -82,78 +91,55 @@ const structuredData = {
           target="_blank"
           rel="noopener noreferrer"
           class="mt-9 inline-flex items-center gap-2 rounded-lg bg-neutral-800 px-6 py-3.5 text-sm font-semibold text-white transition hover:bg-neutral-700 dark:bg-neutral-100 dark:text-neutral-900 dark:hover:bg-white"
+          >{copy.visit} <span aria-hidden="true">↗</span></a
         >
-          Visitar proyecto en producción
-          <span aria-hidden="true">↗</span>
-        </a>
       </div>
     </header>
 
     <section
       class="mx-auto grid max-w-5xl gap-6 px-4 py-12 sm:px-6 lg:grid-cols-3 lg:px-8 lg:py-20"
     >
-      <div
-        class="rounded-2xl border border-neutral-300 p-6 dark:border-neutral-700"
-      >
-        <p
-          class="text-sm font-semibold uppercase tracking-wider text-salmon-600 dark:text-salmon-400"
-        >
-          Contexto
-        </p>
-        <p class="mt-4 leading-7 text-neutral-600 dark:text-neutral-300">
-          {project.context}
-        </p>
-      </div>
-      <div
-        class="rounded-2xl border border-neutral-300 p-6 dark:border-neutral-700"
-      >
-        <p
-          class="text-sm font-semibold uppercase tracking-wider text-salmon-600 dark:text-salmon-400"
-        >
-          Problemática
-        </p>
-        <p class="mt-4 leading-7 text-neutral-600 dark:text-neutral-300">
-          {project.challenge}
-        </p>
-      </div>
-      <div
-        class="rounded-2xl border border-neutral-300 p-6 dark:border-neutral-700"
-      >
-        <p
-          class="text-sm font-semibold uppercase tracking-wider text-salmon-600 dark:text-salmon-400"
-        >
-          Resultado
-        </p>
-        <p class="mt-4 leading-7 text-neutral-600 dark:text-neutral-300">
-          {project.result}
-        </p>
-      </div>
+      {
+        [
+          [copy.context, project.context],
+          [copy.challenge, project.challenge],
+          [copy.result, project.result],
+        ].map(([title, text]) => (
+          <div class="rounded-2xl border border-neutral-300 p-6 dark:border-neutral-700">
+            <>
+              <p class="text-sm font-semibold uppercase tracking-wider text-salmon-600 dark:text-salmon-400">
+                {title}
+              </p>
+              <p class="mt-4 leading-7 text-neutral-600 dark:text-neutral-300">
+                {text}
+              </p>
+            </>
+          </div>
+        ))
+      }
     </section>
 
     <section class="mx-auto max-w-5xl px-4 py-12 sm:px-6 lg:px-8 lg:py-20">
-      <div class="grid gap-12 lg:grid-cols-[0.9fr_1.1fr] lg:items-start">
+      <div class="grid gap-12 lg:grid-cols-[0.9fr_1.1fr]">
         <div>
           <p
             class="text-sm font-semibold uppercase tracking-[0.2em] text-salmon-600 dark:text-salmon-400"
           >
-            La solución
-          </p>
-          <h2
+            {copy.solution}
+          </p><h2
             class="mt-4 text-balance text-3xl font-bold text-neutral-800 dark:text-neutral-100 sm:text-4xl"
           >
-            Diseñada alrededor de una necesidad real.
+            {copy.solutionTitle}
           </h2>
-        </div>
-        <div>
+        </div><div>
           <p class="text-lg leading-8 text-neutral-600 dark:text-neutral-300">
             {project.solution}
-          </p>
-          <ul class="mt-8 grid gap-4 sm:grid-cols-2">
+          </p><ul class="mt-8 grid gap-4 sm:grid-cols-2">
             {
               project.features.map((feature) => (
                 <li class="flex gap-3 text-neutral-700 dark:text-neutral-300">
                   <span class="mt-2 size-2 flex-none rounded-full bg-salmon-500" />
-                  <span>{feature}</span>
+                  {feature}
                 </li>
               ))
             }
@@ -171,9 +157,8 @@ const structuredData = {
             <h2
               class="text-2xl font-bold text-neutral-800 dark:text-neutral-100"
             >
-              Participación de Famdesc
-            </h2>
-            <ul class="mt-6 space-y-4">
+              {copy.role}
+            </h2><ul class="mt-6 space-y-4">
               {
                 project.participation.map((item) => (
                   <li class="flex gap-3 text-neutral-600 dark:text-neutral-300">
@@ -185,14 +170,12 @@ const structuredData = {
                 ))
               }
             </ul>
-          </div>
-          <div>
+          </div><div>
             <h2
               class="text-2xl font-bold text-neutral-800 dark:text-neutral-100"
             >
-              Tecnologías utilizadas
-            </h2>
-            <div class="mt-6 flex flex-wrap gap-3">
+              {copy.tech}
+            </h2><div class="mt-6 flex flex-wrap gap-3">
               {
                 project.technologies.map((technology) => (
                   <span class="rounded-full border border-neutral-300 bg-neutral-200/70 px-4 py-2 text-sm font-medium text-neutral-700 dark:border-neutral-600 dark:bg-neutral-800 dark:text-neutral-200">
@@ -208,29 +191,26 @@ const structuredData = {
 
     <ClientTestimonials
       testimonials={projectTestimonials}
-      title="Una valoración sobre este proyecto"
+      title={copy.testimonial}
       showProject={false}
       showDraftBadge={import.meta.env.DEV}
+      locale={locale}
     />
-
     <section
       class="mx-auto max-w-5xl px-4 pb-20 pt-12 text-center sm:px-6 lg:px-8 lg:pb-28 lg:pt-20"
     >
       <p
         class="text-sm font-semibold uppercase tracking-[0.2em] text-salmon-600 dark:text-salmon-400"
       >
-        Tu proyecto puede ser el próximo
-      </p>
-      <h2
+        {copy.next}
+      </p><h2
         class="mx-auto mt-4 max-w-3xl text-balance text-3xl font-bold text-neutral-800 dark:text-neutral-100 sm:text-4xl"
       >
-        Construyamos una solución clara, útil y preparada para producción.
-      </h2>
-      <a
-        href="/es/contact"
+        {copy.nextTitle}
+      </h2><a
+        href={`${prefix}/contact`}
         class="mt-8 inline-flex rounded-lg bg-salmon-500 px-6 py-3.5 text-sm font-semibold text-white transition hover:bg-salmon-600"
-        >Cuéntanos qué necesitas</a
-      >
+        >{copy.contact}</a>
     </section>
   </article>
 </MainLayout>

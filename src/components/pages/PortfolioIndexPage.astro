@@ -1,11 +1,43 @@
 ---
 import MainLayout from "@/layouts/MainLayout.astro";
-import { projects } from "@data/projects";
+import type { Project } from "@data/projects";
 import { SITE } from "@data/constants";
 
-const pageTitle = `Proyectos reales y soluciones digitales | ${SITE.title}`;
-const pageDescription =
-  "Conoce proyectos digitales desarrollados por Famdesc para negocios reales: el problema, la solución construida y el resultado en producción.";
+interface Props {
+  locale: "en" | "fr";
+  projects: Project[];
+}
+
+const { locale, projects } = Astro.props;
+const prefix = locale === "fr" ? "/fr" : "";
+const copy =
+  locale === "fr"
+    ? {
+        pageTitle: `Projets et solutions numériques | ${SITE.title}`,
+        description:
+          "Découvrez les projets numériques réalisés par Famdesc pour de véritables entreprises.",
+        eyebrow: "Portfolio Famdesc",
+        title: "Des solutions numériques déjà au service de projets réels.",
+        intro:
+          "Chaque projet part d'un besoin concret. Découvrez le problème, la solution construite et le résultat mis en production.",
+        caseStudy: "Voir l'étude de cas",
+        ctaEyebrow: "Vous avez un projet ?",
+        ctaTitle: "Parlons du problème que vous souhaitez résoudre.",
+        cta: "Contacter Famdesc",
+      }
+    : {
+        pageTitle: `Real projects and digital solutions | ${SITE.title}`,
+        description:
+          "Explore digital projects delivered by Famdesc for real businesses.",
+        eyebrow: "Famdesc portfolio",
+        title: "Digital solutions already working for real businesses.",
+        intro:
+          "Every project begins with a concrete need. See how we understood the problem, built the solution, and took it to production.",
+        caseStudy: "View case study",
+        ctaEyebrow: "Have a project in mind?",
+        ctaTitle: "Let’s talk about the problem you need to solve.",
+        cta: "Contact Famdesc",
+      };
 
 const accentClasses = {
   salmon:
@@ -14,28 +46,9 @@ const accentClasses = {
   amber:
     "from-amber-500/30 via-amber-400/10 to-transparent text-amber-700 dark:text-amber-300",
 };
-
-const structuredData = {
-  "@context": "https://schema.org",
-  "@type": "CollectionPage",
-  name: "Proyectos de Famdesc",
-  description: pageDescription,
-  url: `${SITE.url}/es/projects`,
-  inLanguage: "es",
-  hasPart: projects.map((project) => ({
-    "@type": "CreativeWork",
-    name: project.name,
-    url: `${SITE.url}/es/projects/${project.slug}`,
-  })),
-};
 ---
 
-<MainLayout
-  title={pageTitle}
-  meta={pageDescription}
-  lang="es"
-  structuredData={structuredData}
->
+<MainLayout title={copy.pageTitle} meta={copy.description} lang={locale}>
   <section
     class="relative overflow-hidden px-4 pb-16 pt-20 sm:px-6 lg:px-8 lg:pb-24 lg:pt-28"
   >
@@ -47,19 +60,17 @@ const structuredData = {
       <p
         class="mb-5 text-sm font-semibold uppercase tracking-[0.2em] text-salmon-600 dark:text-salmon-400"
       >
-        Portafolio Famdesc
+        {copy.eyebrow}
       </p>
       <h1
         class="text-balance text-4xl font-bold tracking-tight text-neutral-800 dark:text-neutral-100 sm:text-5xl lg:text-7xl"
       >
-        Soluciones digitales que ya trabajan para negocios reales.
+        {copy.title}
       </h1>
       <p
         class="mx-auto mt-7 max-w-3xl text-pretty text-lg leading-8 text-neutral-600 dark:text-neutral-300 sm:text-xl"
       >
-        Cada proyecto comienza con un problema concreto. Aquí mostramos cómo lo
-        entendimos, qué construimos y cómo convertimos la solución en una
-        experiencia lista para producción.
+        {copy.intro}
       </p>
     </div>
   </section>
@@ -81,21 +92,26 @@ const structuredData = {
               ]}
             >
               <div class="absolute -right-12 -top-12 size-48 rounded-full border border-current opacity-10" />
-              <div class="absolute -right-4 top-8 size-28 rounded-full border border-current opacity-10" />
               <div class="relative flex min-h-52 flex-col justify-between">
                 <div class="flex items-center justify-between gap-4">
-                  <span class="border-current/20 rounded-full border bg-white/50 px-3 py-1 text-xs font-semibold uppercase tracking-wider dark:bg-neutral-900/40">
-                    {project.eyebrow}
-                  </span>
-                  <span class="font-mono text-sm opacity-70">0{index + 1}</span>
+                  <>
+                    <span class="border-current/20 rounded-full border bg-white/50 px-3 py-1 text-xs font-semibold uppercase tracking-wider dark:bg-neutral-900/40">
+                      {project.eyebrow}
+                    </span>
+                    <span class="font-mono text-sm opacity-70">
+                      0{index + 1}
+                    </span>
+                  </>
                 </div>
                 <div>
-                  <p class="mb-2 text-sm font-semibold uppercase tracking-widest opacity-80">
-                    {project.type}
-                  </p>
-                  <h2 class="text-balance text-3xl font-bold text-neutral-800 dark:text-neutral-100 sm:text-4xl">
-                    {project.name}
-                  </h2>
+                  <>
+                    <p class="mb-2 text-sm font-semibold uppercase tracking-widest opacity-80">
+                      {project.type}
+                    </p>
+                    <h2 class="text-balance text-3xl font-bold text-neutral-800 dark:text-neutral-100 sm:text-4xl">
+                      {project.name}
+                    </h2>
+                  </>
                 </div>
               </div>
             </div>
@@ -111,11 +127,10 @@ const structuredData = {
                 ))}
               </div>
               <a
-                href={`/es/projects/${project.slug}`}
+                href={`${prefix}/projects/${project.slug}`}
                 class="mt-8 inline-flex items-center gap-2 font-semibold text-neutral-800 transition group-hover:gap-3 dark:text-neutral-100"
               >
-                Ver caso de estudio
-                <span aria-hidden="true">→</span>
+                {copy.caseStudy} <span aria-hidden="true">→</span>
               </a>
             </div>
           </article>
@@ -131,18 +146,15 @@ const structuredData = {
       <p
         class="text-sm font-semibold uppercase tracking-[0.2em] text-salmon-400"
       >
-        ¿Tienes un proyecto en mente?
-      </p>
-      <h2
+        {copy.ctaEyebrow}
+      </p><h2
         class="mx-auto mt-4 max-w-3xl text-balance text-3xl font-bold sm:text-4xl"
       >
-        Conversemos sobre el problema que necesitas resolver.
-      </h2>
-      <a
-        href="/es/contact"
-        class="mt-8 inline-flex rounded-lg bg-salmon-500 px-6 py-3.5 text-sm font-semibold text-white transition hover:bg-salmon-600 focus:outline-none focus-visible:ring focus-visible:ring-salmon-300"
-        >Contactar con Famdesc</a
-      >
+        {copy.ctaTitle}
+      </h2><a
+        href={`${prefix}/contact`}
+        class="mt-8 inline-flex rounded-lg bg-salmon-500 px-6 py-3.5 text-sm font-semibold text-white transition hover:bg-salmon-600"
+        >{copy.cta}</a>
     </div>
   </section>
 </MainLayout>

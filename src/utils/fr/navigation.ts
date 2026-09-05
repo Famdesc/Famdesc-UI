@@ -1,6 +1,8 @@
 const navBarLinks = [
   { name: "Accueil", url: "/fr" },
   { name: "Produits", url: "/fr/products" },
+  { name: "Services", url: "/fr/services" },
+  { name: "Projets", url: "/fr/projects" },
   { name: "À propos", url: "/fr/about" },
   { name: "Contact", url: "/fr/contact" },
 ];
@@ -11,6 +13,8 @@ const footerLinks = [
     links: [
       { name: "Produits FSA", url: "/fr/products" },
       { name: "FSA Line One Pro", url: "/fr/products/fsa-line-one-pro" },
+      { name: "Famdesc Web", url: "/fr/services" },
+      { name: "Projets", url: "/fr/projects" },
     ],
   },
   {
