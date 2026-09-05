@@ -2,6 +2,8 @@
 import MainLayout from "@/layouts/MainLayout.astro";
 import { projects, type Project } from "@data/projects";
 import { SITE } from "@data/constants";
+import ClientTestimonials from "@components/sections/testimonials/ClientTestimonials.astro";
+import { clientTestimonials } from "@data/clientTestimonials";
 
 export function getStaticPaths() {
   return projects.map((project) => ({
@@ -17,6 +19,11 @@ interface Props {
 const { project } = Astro.props;
 const pageTitle = `${project.name}: caso de estudio | ${SITE.title}`;
 const pageDescription = project.summary;
+const projectTestimonials = clientTestimonials.filter(
+  (testimonial) =>
+    testimonial.projectSlug === project.slug &&
+    (import.meta.env.DEV || testimonial.status === "approved"),
+);
 
 const structuredData = {
   "@context": "https://schema.org",
@@ -198,6 +205,13 @@ const structuredData = {
         </div>
       </div>
     </section>
+
+    <ClientTestimonials
+      testimonials={projectTestimonials}
+      title="Una valoración sobre este proyecto"
+      showProject={false}
+      showDraftBadge={import.meta.env.DEV}
+    />
 
     <section
       class="mx-auto max-w-5xl px-4 pb-20 pt-12 text-center sm:px-6 lg:px-8 lg:pb-28 lg:pt-20"

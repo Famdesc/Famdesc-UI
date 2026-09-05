@@ -3,6 +3,14 @@ import MainLayout from "@/layouts/MainLayout.astro";
 import { Image } from "astro:assets";
 import founder from "@images/nardis.avif";
 import { SITE } from "@data/constants";
+import ClientTestimonials from "@components/sections/testimonials/ClientTestimonials.astro";
+import { clientTestimonials } from "@data/clientTestimonials";
+
+const visibleTestimonials = import.meta.env.DEV
+  ? clientTestimonials
+  : clientTestimonials.filter(
+      (testimonial) => testimonial.status === "approved",
+    );
 
 const pageTitle = `Servicios y soluciones digitales | ${SITE.title}`;
 const pageDescription =
@@ -346,6 +354,12 @@ const structuredData = {
       </div>
     </div>
   </section>
+
+  <ClientTestimonials
+    testimonials={visibleTestimonials}
+    intro="Experiencias vinculadas a proyectos reales, desde la definición de la necesidad hasta la puesta en producción."
+    showDraftBadge={import.meta.env.DEV}
+  />
 
   <section class="mx-auto max-w-[85rem] px-4 py-14 sm:px-6 lg:px-8 lg:py-20">
     <div class="mx-auto max-w-3xl text-center">

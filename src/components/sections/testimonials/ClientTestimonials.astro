@@ -1,0 +1,99 @@
+---
+import type { ClientTestimonial } from "@data/clientTestimonials";
+
+interface Props {
+  testimonials: ClientTestimonial[];
+  title?: string;
+  intro?: string;
+  showProject?: boolean;
+  showDraftBadge?: boolean;
+}
+
+const {
+  testimonials,
+  title = "La experiencia de nuestros clientes",
+  intro,
+  showProject = true,
+  showDraftBadge = false,
+} = Astro.props;
+---
+
+{
+  testimonials.length > 0 && (
+    <section class="mx-auto max-w-[85rem] px-4 py-14 sm:px-6 lg:px-8 lg:py-20">
+      <div class="mx-auto max-w-3xl text-center">
+        <p class="text-sm font-semibold uppercase tracking-[0.2em] text-salmon-600 dark:text-salmon-400">
+          Testimonios
+        </p>
+        <h2 class="mt-3 text-balance text-3xl font-bold text-neutral-800 dark:text-neutral-100 sm:text-4xl">
+          {title}
+        </h2>
+        {intro && (
+          <p class="mt-5 text-pretty text-lg leading-8 text-neutral-600 dark:text-neutral-300">
+            {intro}
+          </p>
+        )}
+      </div>
+
+      <div
+        class:list={[
+          "mt-12 grid gap-6",
+          testimonials.length > 1 && "lg:grid-cols-3",
+        ]}
+      >
+        {testimonials.map((testimonial) => (
+          <figure class="flex h-full flex-col rounded-3xl border border-neutral-300 bg-neutral-100/60 p-7 dark:border-neutral-700 dark:bg-neutral-900/30 sm:p-8">
+            {showDraftBadge && testimonial.status === "draft" && (
+              <span class="bg-amber-100 text-amber-800 dark:bg-amber-400/10 dark:text-amber-300 mb-6 w-fit rounded-full px-3 py-1 text-xs font-semibold">
+                Borrador · pendiente de aprobación
+              </span>
+            )}
+            {testimonial.logo && testimonial.permissions.logo && (
+              <img
+                src={testimonial.logo}
+                alt={`Logotipo de ${testimonial.projectName}`}
+                class="mb-7 h-10 w-auto max-w-48 object-contain object-left dark:brightness-110"
+                loading="lazy"
+              />
+            )}
+            <blockquote class="flex-1 text-pretty text-lg leading-8 text-neutral-700 dark:text-neutral-200">
+              “{testimonial.quote}”
+            </blockquote>
+            <figcaption class="mt-8 flex items-center gap-4 border-t border-neutral-300 pt-6 dark:border-neutral-700">
+              {testimonial.photo && testimonial.permissions.photo ? (
+                <img
+                  src={testimonial.photo}
+                  alt={`Retrato de ${testimonial.author}`}
+                  class="size-12 flex-none rounded-full object-cover"
+                  width="48"
+                  height="48"
+                  loading="lazy"
+                />
+              ) : (
+                <span class="text-salmon-700 flex size-12 flex-none items-center justify-center rounded-full bg-salmon-500/15 text-sm font-bold dark:text-salmon-300">
+                  {testimonial.initials}
+                </span>
+              )}
+              <span>
+                <strong class="block text-neutral-800 dark:text-neutral-100">
+                  {testimonial.author}
+                </strong>
+                <span class="text-sm text-neutral-500 dark:text-neutral-400">
+                  {testimonial.role}
+                </span>
+                {showProject && (
+                  <a
+                    class="mt-1 block text-sm font-semibold text-blue-500 hover:text-blue-400 dark:text-blue-300"
+                    href={`/es/projects/${testimonial.projectSlug}`}
+                  >
+                    {testimonial.projectName} →
+                  </a>
+                )}
+              </span>
+            </figcaption>
+          </figure>
+        ))}
+      </div>
+    </section>
+  )
+}
