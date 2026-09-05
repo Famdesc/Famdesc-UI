@@ -1,0 +1,450 @@
+---
+import MainLayout from "@/layouts/MainLayout.astro";
+import { Image } from "astro:assets";
+import founder from "@images/nardis.avif";
+import { SITE } from "@data/constants";
+
+const pageTitle = `Servicios y soluciones digitales | ${SITE.title}`;
+const pageDescription =
+  "Famdesc Web crea sitios web rápidos y soluciones digitales para pequeños negocios, con liderazgo directo y un proceso claro de principio a fin.";
+
+const benefits = [
+  "Sitios rápidos y adaptados a móviles",
+  "Diseño profesional alineado con tu negocio",
+  "Dominio, despliegue y SEO básico",
+  "Formularios e integraciones esenciales",
+];
+
+const serviceOptions = [
+  {
+    title: "Presencia web para emprendedores",
+    description:
+      "Una solución clara para presentar tu marca, explicar tus servicios y facilitar que nuevos clientes te contacten.",
+    features: [
+      "Página profesional",
+      "Diseño adaptable",
+      "Dominio personalizado",
+      "Formulario de contacto",
+    ],
+  },
+  {
+    title: "Sitio web para negocios",
+    description:
+      "Una presencia digital más completa para negocios que necesitan organizar varias áreas, servicios o contenidos.",
+    features: [
+      "Varias páginas",
+      "Blog o catálogo",
+      "Automatización de correos",
+      "Analítica y SEO",
+    ],
+  },
+  {
+    title: "Desarrollo web a medida",
+    description:
+      "Funcionalidades e integraciones definidas alrededor de un problema concreto y de los objetivos reales del proyecto.",
+    features: [
+      "Levantamiento técnico",
+      "Integraciones externas",
+      "Funciones personalizadas",
+      "Acompañamiento técnico",
+    ],
+  },
+];
+
+const process = [
+  {
+    number: "01",
+    title: "Conversación y requisitos",
+    description:
+      "Entendemos tu negocio, tus clientes, tus objetivos y las funcionalidades que realmente necesitas.",
+  },
+  {
+    number: "02",
+    title: "Alcance y propuesta",
+    description:
+      "Definimos prioridades, entregables, presupuesto y una ruta de trabajo clara antes de comenzar.",
+  },
+  {
+    number: "03",
+    title: "Diseño y desarrollo",
+    description:
+      "Construimos una experiencia profesional, rápida y fácil de usar, con revisiones durante el proceso.",
+  },
+  {
+    number: "04",
+    title: "Publicación y soporte",
+    description:
+      "Configuramos dominio y despliegue, entregamos la solución y te acompañamos para que puedas aprovecharla.",
+  },
+];
+
+const structuredData = {
+  "@context": "https://schema.org",
+  "@type": "ProfessionalService",
+  "@id": `${SITE.url}/es/services`,
+  url: `${SITE.url}/es/services`,
+  name: "Famdesc Web",
+  description: pageDescription,
+  areaServed: "Worldwide",
+  founder: {
+    "@type": "Person",
+    name: "Nardis Del Campo Soler",
+    jobTitle: "Fundador y líder de Famdesc",
+  },
+  parentOrganization: {
+    "@type": "Organization",
+    name: "Famdesc",
+    url: SITE.url,
+  },
+  inLanguage: "es",
+};
+---
+
+<MainLayout
+  title={pageTitle}
+  meta={pageDescription}
+  lang="es"
+  structuredData={structuredData}
+>
+  <section
+    class="relative mx-auto overflow-hidden px-4 pb-16 pt-20 sm:px-6 lg:px-8 lg:pb-24 lg:pt-28"
+  >
+    <div
+      class="pointer-events-none absolute inset-x-0 top-0 -z-10 mx-auto h-96 max-w-5xl rounded-full bg-salmon-400/10 blur-3xl dark:bg-salmon-500/10"
+    >
+    </div>
+
+    <div class="mx-auto max-w-5xl text-center">
+      <p
+        class="mb-5 text-sm font-semibold uppercase tracking-[0.2em] text-salmon-600 dark:text-salmon-400"
+      >
+        Servicios Famdesc
+      </p>
+      <h1
+        class="text-balance text-4xl font-bold tracking-tight text-neutral-800 dark:text-neutral-100 sm:text-5xl lg:text-7xl"
+      >
+        Sitios web rápidos, profesionales y preparados para convertir visitantes
+        en clientes.
+      </h1>
+      <p
+        class="mx-auto mt-7 max-w-3xl text-pretty text-lg leading-8 text-neutral-600 dark:text-neutral-300 sm:text-xl"
+      >
+        Ayudamos a emprendedores y pequeños negocios a construir su presencia
+        digital, desde la idea y el diseño hasta el dominio, el despliegue y el
+        acompañamiento técnico.
+      </p>
+      <div class="mt-10 flex flex-col justify-center gap-3 sm:flex-row">
+        <a
+          href="#famdesc-web"
+          class="inline-flex items-center justify-center rounded-lg bg-salmon-500 px-6 py-3.5 text-sm font-semibold text-white transition hover:bg-salmon-600 focus:outline-none focus-visible:ring focus-visible:ring-salmon-300"
+        >
+          Ver soluciones web
+        </a>
+        <a
+          href="/es/contact"
+          class="inline-flex items-center justify-center rounded-lg border border-neutral-300 px-6 py-3.5 text-sm font-semibold text-neutral-800 transition hover:bg-neutral-100 focus:outline-none focus-visible:ring focus-visible:ring-neutral-300 dark:border-neutral-600 dark:text-neutral-100 dark:hover:bg-neutral-700"
+        >
+          Solicitar presupuesto
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <section
+    id="famdesc-web"
+    class="mx-auto max-w-[85rem] px-4 py-14 sm:px-6 lg:px-8 lg:py-20"
+  >
+    <div
+      class="overflow-hidden rounded-3xl border border-neutral-300 bg-neutral-100/60 dark:border-neutral-700 dark:bg-neutral-900/30"
+    >
+      <div class="grid lg:grid-cols-[1.1fr_0.9fr]">
+        <div class="p-7 sm:p-10 lg:p-14">
+          <div
+            class="mb-7 inline-flex rounded-full bg-salmon-500/10 px-4 py-2 text-sm font-semibold text-salmon-600 dark:text-salmon-400"
+          >
+            Servicio disponible
+          </div>
+          <p
+            class="text-sm font-semibold uppercase tracking-widest text-neutral-500 dark:text-neutral-400"
+          >
+            Famdesc Web
+          </p>
+          <h2
+            class="mt-3 text-balance text-3xl font-bold text-neutral-800 dark:text-neutral-100 sm:text-5xl"
+          >
+            Creamos sitios web rápidos.
+          </h2>
+          <p
+            class="mt-6 max-w-2xl text-pretty text-lg leading-8 text-neutral-600 dark:text-neutral-300"
+          >
+            En Famdesc Web ayudamos a transformar ideas y negocios en soluciones
+            digitales útiles. No nos limitamos a programar una página: nos
+            ocupamos de convertir una necesidad concreta en un sitio claro,
+            confiable y listo para funcionar en producción.
+          </p>
+
+          <ul class="mt-8 grid gap-4 sm:grid-cols-2">
+            {
+              benefits.map((benefit) => (
+                <li class="flex items-start gap-3 text-neutral-700 dark:text-neutral-300">
+                  <svg
+                    class="mt-0.5 size-5 flex-none text-blue-400 dark:text-blue-300"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="1.8"
+                    aria-hidden="true"
+                  >
+                    <path
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      d="m9 12.75 2.25 2.25L15 9.75M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z"
+                    />
+                  </svg>
+                  <span>{benefit}</span>
+                </li>
+              ))
+            }
+          </ul>
+
+          <a
+            href="/proyectos"
+            class="mt-10 inline-flex items-center gap-2 rounded-lg bg-neutral-800 px-6 py-3.5 text-sm font-semibold text-white transition hover:bg-neutral-700 focus:outline-none focus-visible:ring focus-visible:ring-neutral-400 dark:bg-neutral-100 dark:text-neutral-900 dark:hover:bg-white"
+          >
+            Ver portafolio
+            <svg
+              class="size-4"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              aria-hidden="true"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                d="M5 12h14m-6-6 6 6-6 6"></path>
+            </svg>
+          </a>
+          <p class="mt-3 text-sm text-neutral-500 dark:text-neutral-400">
+            Próximamente encontrarás aquí nuestros proyectos reales en
+            producción.
+          </p>
+        </div>
+
+        <div
+          class="flex min-h-80 items-center justify-center bg-neutral-800 p-8 dark:bg-neutral-950 sm:p-12"
+        >
+          <div
+            class="w-full max-w-md rounded-2xl border border-white/10 bg-white/5 p-6 shadow-2xl backdrop-blur sm:p-8"
+          >
+            <div class="mb-8 flex items-center gap-3">
+              <span class="size-3 rounded-full bg-salmon-400"></span>
+              <span class="size-3 rounded-full bg-salmon-500"></span>
+              <span class="size-3 rounded-full bg-blue-300"></span>
+            </div>
+            <div class="space-y-4" aria-hidden="true">
+              <div class="h-4 w-2/5 rounded bg-white/20"></div>
+              <div class="h-10 w-4/5 rounded bg-white/90"></div>
+              <div class="h-3 w-full rounded bg-white/15"></div>
+              <div class="h-3 w-3/4 rounded bg-white/15"></div>
+              <div class="pt-4">
+                <div class="h-10 w-36 rounded-lg bg-salmon-500"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="mx-auto max-w-[85rem] px-4 py-14 sm:px-6 lg:px-8 lg:py-20">
+    <div class="mx-auto max-w-3xl text-center">
+      <p
+        class="text-sm font-semibold uppercase tracking-widest text-salmon-600 dark:text-salmon-400"
+      >
+        Qué podemos construir
+      </p>
+      <h2
+        class="mt-3 text-balance text-3xl font-bold text-neutral-800 dark:text-neutral-100 sm:text-4xl"
+      >
+        Una solución web ajustada a la etapa de tu negocio
+      </h2>
+      <p
+        class="mt-5 text-pretty text-lg text-neutral-600 dark:text-neutral-400"
+      >
+        El alcance se define después de conocer tus objetivos. Estas opciones
+        sirven como punto de partida, no como paquetes rígidos.
+      </p>
+    </div>
+
+    <div class="mt-12 grid gap-6 lg:grid-cols-3">
+      {
+        serviceOptions.map((service, index) => (
+          <article
+            class:list={[
+              "flex h-full flex-col rounded-2xl border p-7 sm:p-8",
+              index === 1
+                ? "border-salmon-400 bg-salmon-50/60 dark:border-salmon-500 dark:bg-salmon-500/5"
+                : "border-neutral-300 dark:border-neutral-700",
+            ]}
+          >
+            <h3 class="text-xl font-bold text-neutral-800 dark:text-neutral-100">
+              {service.title}
+            </h3>
+            <p class="mt-4 leading-7 text-neutral-600 dark:text-neutral-400">
+              {service.description}
+            </p>
+            <ul class="mt-6 space-y-3 border-t border-neutral-300 pt-6 dark:border-neutral-700">
+              {service.features.map((feature) => (
+                <li class="flex items-center gap-3 text-sm font-medium text-neutral-700 dark:text-neutral-300">
+                  <span
+                    class="size-1.5 flex-none rounded-full bg-salmon-500"
+                    aria-hidden="true"
+                  />
+                  {feature}
+                </li>
+              ))}
+            </ul>
+          </article>
+        ))
+      }
+    </div>
+  </section>
+
+  <section class="mx-auto max-w-[85rem] px-4 py-10 sm:px-6 lg:px-8">
+    <div
+      class="grid gap-8 rounded-3xl border border-blue-300/40 bg-blue-100/40 p-8 dark:border-blue-400/30 dark:bg-blue-500/10 sm:p-10 lg:grid-cols-[0.75fr_1.25fr] lg:items-center"
+    >
+      <div>
+        <p
+          class="text-sm font-semibold uppercase tracking-widest text-blue-500 dark:text-blue-300"
+        >
+          Experiencia comprobable
+        </p>
+        <h2
+          class="mt-3 text-3xl font-bold text-neutral-800 dark:text-neutral-100"
+        >
+          Proyectos reales, no ejercicios ficticios
+        </h2>
+      </div>
+      <div>
+        <p
+          class="text-pretty text-lg leading-8 text-neutral-700 dark:text-neutral-300"
+        >
+          Nuestra experiencia incluye llevar proyectos desde el levantamiento de
+          requisitos hasta su publicación: diseño, desarrollo, formularios,
+          automatizaciones, SEO, dominio, despliegue y acompañamiento técnico.
+        </p>
+        <a
+          href="/proyectos"
+          class="mt-5 inline-flex items-center font-semibold text-blue-500 transition hover:text-blue-400 dark:text-blue-300 dark:hover:text-blue-200"
+        >
+          Conocer los próximos casos de estudio
+          <span class="ms-2" aria-hidden="true">→</span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <section class="mx-auto max-w-[85rem] px-4 py-14 sm:px-6 lg:px-8 lg:py-20">
+    <div class="mx-auto max-w-3xl text-center">
+      <p
+        class="text-sm font-semibold uppercase tracking-widest text-salmon-600 dark:text-salmon-400"
+      >
+        Cómo trabajamos
+      </p>
+      <h2
+        class="mt-3 text-balance text-3xl font-bold text-neutral-800 dark:text-neutral-100 sm:text-4xl"
+      >
+        Un proceso claro, cercano y orientado a resultados
+      </h2>
+    </div>
+    <div class="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
+      {
+        process.map((step) => (
+          <article class="rounded-2xl border border-neutral-300 p-7 dark:border-neutral-700">
+            <span class="text-sm font-bold text-salmon-600 dark:text-salmon-400">
+              {step.number}
+            </span>
+            <h3 class="mt-4 text-xl font-semibold text-neutral-800 dark:text-neutral-100">
+              {step.title}
+            </h3>
+            <p class="mt-3 leading-7 text-neutral-600 dark:text-neutral-400">
+              {step.description}
+            </p>
+          </article>
+        ))
+      }
+    </div>
+  </section>
+
+  <section class="mx-auto max-w-[85rem] px-4 py-14 sm:px-6 lg:px-8 lg:py-20">
+    <div
+      class="grid overflow-hidden rounded-3xl bg-neutral-300 dark:bg-neutral-900 lg:grid-cols-2 lg:items-center"
+    >
+      <div class="aspect-[4/3] overflow-hidden lg:aspect-auto lg:h-full">
+        <Image
+          class="h-full w-full object-cover object-center"
+          src={founder}
+          alt="Nardis Del Campo Soler, fundador y líder de Famdesc"
+        />
+      </div>
+      <div class="p-8 sm:p-12 lg:p-16">
+        <p
+          class="text-sm font-semibold uppercase tracking-widest text-salmon-600 dark:text-salmon-400"
+        >
+          Liderazgo directo
+        </p>
+        <h2
+          class="mt-3 text-balance text-3xl font-bold text-neutral-800 dark:text-neutral-100 sm:text-4xl"
+        >
+          Un equipo liderado con responsabilidad y visión
+        </h2>
+        <p
+          class="mt-6 text-pretty text-lg leading-8 text-neutral-600 dark:text-neutral-300"
+        >
+          Soy Nardis Del Campo Soler, desarrollador de software y fundador de
+          Famdesc. Mi formación en Ciencias Físicas y mi experiencia
+          construyendo soluciones digitales me permiten abordar cada proyecto
+          con análisis, estrategia y atención al detalle.
+        </p>
+        <p class="mt-4 leading-7 text-neutral-600 dark:text-neutral-400">
+          Lidero directamente cada proyecto de Famdesc Web y acompaño al equipo
+          durante todo el proceso. Nuestra ventaja es el trato cercano: sabes
+          quién dirige el trabajo, cómo avanzamos y por qué tomamos cada
+          decisión.
+        </p>
+        <a
+          href="/es/contact"
+          class="mt-8 inline-flex items-center font-semibold text-blue-500 transition hover:text-blue-400 dark:text-blue-300 dark:hover:text-blue-200"
+        >
+          Hablemos de tu proyecto
+          <span class="ms-2" aria-hidden="true">→</span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <section
+    class="mx-auto max-w-4xl px-4 py-16 text-center sm:px-6 lg:px-8 lg:py-24"
+  >
+    <h2
+      class="text-balance text-3xl font-bold text-neutral-800 dark:text-neutral-100 sm:text-5xl"
+    >
+      Tu negocio merece una presencia digital a su altura.
+    </h2>
+    <p
+      class="mx-auto mt-5 max-w-2xl text-pretty text-lg text-neutral-600 dark:text-neutral-300"
+    >
+      Cuéntanos sobre tu negocio. Te ayudaremos a definir qué tipo de sitio
+      necesitas y cuáles funcionalidades son realmente importantes.
+    </p>
+    <a
+      href="/es/contact"
+      class="mt-8 inline-flex items-center justify-center rounded-lg bg-salmon-500 px-6 py-3.5 text-sm font-semibold text-white transition hover:bg-salmon-600 focus:outline-none focus-visible:ring focus-visible:ring-salmon-300"
+    >
+      Solicitar una evaluación inicial
+    </a>
+  </section>
+</MainLayout>
