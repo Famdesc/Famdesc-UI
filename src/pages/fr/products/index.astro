@@ -10,6 +10,7 @@ import TestimonialsSectionAlt from "@components/sections/testimonials/Testimonia
 // Importing necessary functions from Astro
 import { getCollection } from "astro:content";
 import type { CollectionEntry } from "astro:content";
+import { productTranslations } from "@data/productTranslations";
 
 // Fetching all the product related content and sorting it by main.id
 const product: CollectionEntry<"products">[] = (
@@ -100,7 +101,7 @@ const testimonials = [
       </div>
       <PrimaryCTA
         title="Explorer FSA Line One Pro"
-        url="/products/fsa-line-one-pro"
+        url="/fr/products/fsa-line-one-pro"
         noArrow={true}
       />
     </div>
@@ -111,9 +112,21 @@ const testimonials = [
         product.map((product, index) => {
           const position = index % 4;
           if (position === 0 || position === 3) {
-            return <CardSmall product={product} />;
+            return (
+              <CardSmall
+                product={product}
+                basePath="/fr/products"
+                description={productTranslations.fr.description}
+              />
+            );
           } else {
-            return <CardWide product={product} />;
+            return (
+              <CardWide
+                product={product}
+                basePath="/fr/products"
+                description={productTranslations.fr.description}
+              />
+            );
           }
         })
       }
