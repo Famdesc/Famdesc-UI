@@ -9,19 +9,12 @@ import esStrings from "@utils/es/navigation.ts";
 import BrandLogo from "@components/BrandLogo.astro";
 import LanguagePicker from "@components/ui/LanguagePicker.astro";
 
+const { lang = Astro.currentLocale } = Astro.props;
+
 // Select the correct translation based on the page's lang prop:
 const strings =
-  Astro.currentLocale === "fr"
-    ? frStrings
-    : Astro.currentLocale === "es"
-      ? esStrings
-      : enStrings;
-const homeUrl =
-  Astro.currentLocale === "fr"
-    ? "/fr"
-    : Astro.currentLocale === "es"
-      ? "/es"
-      : "/";
+  lang === "fr" ? frStrings : lang === "es" ? esStrings : enStrings;
+const homeUrl = lang === "fr" ? "/fr" : lang === "es" ? "/es" : "/";
 ---
 
 <!-- Main header component -->

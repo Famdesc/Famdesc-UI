@@ -51,12 +51,12 @@ We set the language of the page to English and add classes for scrollbar and scr
     The Navbar is placed at the top, with a slot for the main content and FooterSection at the bottom.
     -->
     <div class="mx-auto max-w-screen-2xl px-4 sm:px-6 lg:px-8">
-      <Navbar />
+      <Navbar lang={lang} />
       <main>
         <slot />
       </main>
     </div>
-    <FooterSection />
+    <FooterSection lang={lang} />
     <style>
       /* CSS rules for the page scrollbar */
       .scrollbar-hide::-webkit-scrollbar {
