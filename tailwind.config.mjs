@@ -1,5 +1,10 @@
 /** @type {import('tailwindcss').Config} */
-import colors from "tailwindcss/colors";
+import colors from "tailwindcss/colors.js";
+import nesting from "tailwindcss/nesting/index.js";
+import prelinePlugin from "preline/plugin.js";
+import forms from "@tailwindcss/forms";
+import typography from "@tailwindcss/typography";
+
 export default {
   content: [
     "./src/**/*.{astro,html,js,jsx,md,mdx,svelte,ts,tsx,vue}",
@@ -18,8 +23,11 @@ export default {
       salmon: {
         50: "#FDF4F2",
         100: "#FAE5E0",
+        200: "#F5CEC5",
+        300: "#F0B5A7",
         400: "#EB9B89",
         500: "#E6816B",
+        600: "#CF6A55",
       }, // Accent colors, used mainly for star color, heading and buttons
       blue: {
         100: "#C2E3FA",
@@ -81,10 +89,5 @@ export default {
       },
     },
   },
-  plugins: [
-    require("tailwindcss/nesting"),
-    require("preline/plugin"),
-    require("@tailwindcss/forms"),
-    require("@tailwindcss/typography"),
-  ],
+  plugins: [nesting, prelinePlugin, forms, typography],
 };

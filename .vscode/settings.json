@@ -15,4 +15,15 @@
   "markdown.copyFiles.destination": {
     "/src/content/**/*": "/src/images/content/${documentBaseName}/"
   },
+
+  // Tailwind CSS IntelliSense: enable completions and color previews in Astro.
+  "tailwindCSS.includeLanguages": {
+    "astro": "html"
+  },
+  "tailwindCSS.experimental.configFile": "./tailwind.config.mjs",
+  "tailwindCSS.colorDecorators": true,
+  "editor.colorDecorators": true,
+  "editor.quickSuggestions": {
+    "strings": "on"
+  }
 }
