@@ -11,6 +11,7 @@ import type { CollectionEntry } from "astro:content";
 import { SITE } from "@data/constants";
 import TestimonialsSectionAlt from "@/components/sections/testimonials/TestimonialsSectionAlt.astro";
 import CardWide from "@/components/ui/cards/CardWide.astro";
+import { productTranslations } from "@data/productTranslations";
 
 // Fetching all the product related content and sorting it by main.id
 const product: CollectionEntry<"products">[] = (
@@ -63,6 +64,7 @@ const testimonials = [
 
 <MainLayout
   title={pageTitle}
+  lang="es"
   structuredData={{
     "@context": "https://schema.org",
     "@type": "WebPage",
@@ -101,7 +103,7 @@ const testimonials = [
       </div>
       <PrimaryCTA
         title="Explora la FSA Line One Pro"
-        url="/products/fsa-line-one-pro"
+        url="/es/products/fsa-line-one-pro"
         noArrow={true}
       />
     </div>
@@ -112,9 +114,21 @@ const testimonials = [
         product.map((product, index) => {
           const position = index % 4;
           if (position === 0 || position === 3) {
-            return <CardSmall product={product} />;
+            return (
+              <CardSmall
+                product={product}
+                basePath="/es/products"
+                description={productTranslations.es.description}
+              />
+            );
           } else {
-            return <CardWide product={product} />;
+            return (
+              <CardWide
+                product={product}
+                basePath="/es/products"
+                description={productTranslations.es.description}
+              />
+            );
           }
         })
       }
