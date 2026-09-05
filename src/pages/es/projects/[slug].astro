@@ -1,0 +1,222 @@
+---
+import MainLayout from "@/layouts/MainLayout.astro";
+import { projects, type Project } from "@data/projects";
+import { SITE } from "@data/constants";
+
+export function getStaticPaths() {
+  return projects.map((project) => ({
+    params: { slug: project.slug },
+    props: { project },
+  }));
+}
+
+interface Props {
+  project: Project;
+}
+
+const { project } = Astro.props;
+const pageTitle = `${project.name}: caso de estudio | ${SITE.title}`;
+const pageDescription = project.summary;
+
+const structuredData = {
+  "@context": "https://schema.org",
+  "@type": "CreativeWork",
+  name: project.name,
+  description: project.summary,
+  url: `${SITE.url}/es/projects/${project.slug}`,
+  sameAs: project.productionUrl,
+  creator: {
+    "@type": "Organization",
+    name: "Famdesc",
+    url: SITE.url,
+  },
+  inLanguage: "es",
+};
+---
+
+<MainLayout
+  title={pageTitle}
+  meta={pageDescription}
+  lang="es"
+  structuredData={structuredData}
+>
+  <article>
+    <header
+      class="relative overflow-hidden px-4 pb-16 pt-16 sm:px-6 lg:px-8 lg:pb-24 lg:pt-24"
+    >
+      <div
+        class="pointer-events-none absolute inset-x-0 top-0 -z-10 mx-auto h-96 max-w-5xl rounded-full bg-salmon-400/10 blur-3xl dark:bg-salmon-500/10"
+      >
+      </div>
+      <div class="mx-auto max-w-5xl">
+        <a
+          href="/es/projects"
+          class="inline-flex items-center gap-2 text-sm font-semibold text-neutral-600 transition hover:text-salmon-600 dark:text-neutral-300 dark:hover:text-salmon-400"
+        >
+          <span aria-hidden="true">←</span> Todos los proyectos
+        </a>
+        <p
+          class="mt-12 text-sm font-semibold uppercase tracking-[0.2em] text-salmon-600 dark:text-salmon-400"
+        >
+          {project.eyebrow} · {project.type}
+        </p>
+        <h1
+          class="mt-4 max-w-4xl text-balance text-4xl font-bold tracking-tight text-neutral-800 dark:text-neutral-100 sm:text-6xl"
+        >
+          {project.name}
+        </h1>
+        <p
+          class="mt-7 max-w-3xl text-pretty text-xl leading-9 text-neutral-600 dark:text-neutral-300"
+        >
+          {project.summary}
+        </p>
+        <a
+          href={project.productionUrl}
+          target="_blank"
+          rel="noopener noreferrer"
+          class="mt-9 inline-flex items-center gap-2 rounded-lg bg-neutral-800 px-6 py-3.5 text-sm font-semibold text-white transition hover:bg-neutral-700 dark:bg-neutral-100 dark:text-neutral-900 dark:hover:bg-white"
+        >
+          Visitar proyecto en producción
+          <span aria-hidden="true">↗</span>
+        </a>
+      </div>
+    </header>
+
+    <section
+      class="mx-auto grid max-w-5xl gap-6 px-4 py-12 sm:px-6 lg:grid-cols-3 lg:px-8 lg:py-20"
+    >
+      <div
+        class="rounded-2xl border border-neutral-300 p-6 dark:border-neutral-700"
+      >
+        <p
+          class="text-sm font-semibold uppercase tracking-wider text-salmon-600 dark:text-salmon-400"
+        >
+          Contexto
+        </p>
+        <p class="mt-4 leading-7 text-neutral-600 dark:text-neutral-300">
+          {project.context}
+        </p>
+      </div>
+      <div
+        class="rounded-2xl border border-neutral-300 p-6 dark:border-neutral-700"
+      >
+        <p
+          class="text-sm font-semibold uppercase tracking-wider text-salmon-600 dark:text-salmon-400"
+        >
+          Problemática
+        </p>
+        <p class="mt-4 leading-7 text-neutral-600 dark:text-neutral-300">
+          {project.challenge}
+        </p>
+      </div>
+      <div
+        class="rounded-2xl border border-neutral-300 p-6 dark:border-neutral-700"
+      >
+        <p
+          class="text-sm font-semibold uppercase tracking-wider text-salmon-600 dark:text-salmon-400"
+        >
+          Resultado
+        </p>
+        <p class="mt-4 leading-7 text-neutral-600 dark:text-neutral-300">
+          {project.result}
+        </p>
+      </div>
+    </section>
+
+    <section class="mx-auto max-w-5xl px-4 py-12 sm:px-6 lg:px-8 lg:py-20">
+      <div class="grid gap-12 lg:grid-cols-[0.9fr_1.1fr] lg:items-start">
+        <div>
+          <p
+            class="text-sm font-semibold uppercase tracking-[0.2em] text-salmon-600 dark:text-salmon-400"
+          >
+            La solución
+          </p>
+          <h2
+            class="mt-4 text-balance text-3xl font-bold text-neutral-800 dark:text-neutral-100 sm:text-4xl"
+          >
+            Diseñada alrededor de una necesidad real.
+          </h2>
+        </div>
+        <div>
+          <p class="text-lg leading-8 text-neutral-600 dark:text-neutral-300">
+            {project.solution}
+          </p>
+          <ul class="mt-8 grid gap-4 sm:grid-cols-2">
+            {
+              project.features.map((feature) => (
+                <li class="flex gap-3 text-neutral-700 dark:text-neutral-300">
+                  <span class="mt-2 size-2 flex-none rounded-full bg-salmon-500" />
+                  <span>{feature}</span>
+                </li>
+              ))
+            }
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section class="mx-auto max-w-5xl px-4 py-12 sm:px-6 lg:px-8 lg:py-20">
+      <div
+        class="rounded-3xl bg-neutral-100/70 p-7 dark:bg-neutral-900/40 sm:p-10 lg:p-14"
+      >
+        <div class="grid gap-12 lg:grid-cols-2">
+          <div>
+            <h2
+              class="text-2xl font-bold text-neutral-800 dark:text-neutral-100"
+            >
+              Participación de Famdesc
+            </h2>
+            <ul class="mt-6 space-y-4">
+              {
+                project.participation.map((item) => (
+                  <li class="flex gap-3 text-neutral-600 dark:text-neutral-300">
+                    <span class="font-semibold text-salmon-600 dark:text-salmon-400">
+                      ✓
+                    </span>
+                    {item}
+                  </li>
+                ))
+              }
+            </ul>
+          </div>
+          <div>
+            <h2
+              class="text-2xl font-bold text-neutral-800 dark:text-neutral-100"
+            >
+              Tecnologías utilizadas
+            </h2>
+            <div class="mt-6 flex flex-wrap gap-3">
+              {
+                project.technologies.map((technology) => (
+                  <span class="rounded-full border border-neutral-300 bg-neutral-200/70 px-4 py-2 text-sm font-medium text-neutral-700 dark:border-neutral-600 dark:bg-neutral-800 dark:text-neutral-200">
+                    {technology}
+                  </span>
+                ))
+              }
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section
+      class="mx-auto max-w-5xl px-4 pb-20 pt-12 text-center sm:px-6 lg:px-8 lg:pb-28 lg:pt-20"
+    >
+      <p
+        class="text-sm font-semibold uppercase tracking-[0.2em] text-salmon-600 dark:text-salmon-400"
+      >
+        Tu proyecto puede ser el próximo
+      </p>
+      <h2
+        class="mx-auto mt-4 max-w-3xl text-balance text-3xl font-bold text-neutral-800 dark:text-neutral-100 sm:text-4xl"
+      >
+        Construyamos una solución clara, útil y preparada para producción.
+      </h2>
+      <a
+        href="/es/contact"
+        class="mt-8 inline-flex rounded-lg bg-salmon-500 px-6 py-3.5 text-sm font-semibold text-white transition hover:bg-salmon-600"
+        >Cuéntanos qué necesitas</a
+      >
+    </section>
+  </article>
+</MainLayout>

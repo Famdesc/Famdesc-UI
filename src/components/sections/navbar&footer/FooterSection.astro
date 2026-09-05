@@ -9,9 +9,8 @@ import Icon from "@components/ui/icons/Icon.astro";
 import BrandLogo from "@components/BrandLogo.astro";
 import { SITE } from "@data/constants";
 
-const footerLocale = Astro.url.pathname.startsWith("/es")
-  ? "es"
-  : Astro.currentLocale;
+const { lang = Astro.currentLocale } = Astro.props;
+const footerLocale = lang;
 
 // Select the correct translation based on the page's lang prop:
 const strings =
