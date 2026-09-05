@@ -7,6 +7,7 @@ interface Props {
   intro?: string;
   showProject?: boolean;
   showDraftBadge?: boolean;
+  locale?: "en" | "es" | "fr";
 }
 
 const {
@@ -15,7 +16,29 @@ const {
   intro,
   showProject = true,
   showDraftBadge = false,
+  locale = "es",
 } = Astro.props;
+
+const labels = {
+  en: {
+    eyebrow: "Testimonials",
+    draft: "Draft · awaiting approval",
+    logo: "logo",
+    portrait: "Portrait of",
+  },
+  es: {
+    eyebrow: "Testimonios",
+    draft: "Borrador · pendiente de aprobación",
+    logo: "Logotipo de",
+    portrait: "Retrato de",
+  },
+  fr: {
+    eyebrow: "Témoignages",
+    draft: "Brouillon · en attente d'approbation",
+    logo: "Logo de",
+    portrait: "Portrait de",
+  },
+}[locale];
 ---
 
 {
@@ -23,7 +46,7 @@ const {
     <section class="mx-auto max-w-[85rem] px-4 py-14 sm:px-6 lg:px-8 lg:py-20">
       <div class="mx-auto max-w-3xl text-center">
         <p class="text-sm font-semibold uppercase tracking-[0.2em] text-salmon-600 dark:text-salmon-400">
-          Testimonios
+          {labels.eyebrow}
         </p>
         <h2 class="mt-3 text-balance text-3xl font-bold text-neutral-800 dark:text-neutral-100 sm:text-4xl">
           {title}
@@ -45,25 +68,29 @@ const {
           <figure class="flex h-full flex-col rounded-3xl border border-neutral-300 bg-neutral-100/60 p-7 dark:border-neutral-700 dark:bg-neutral-900/30 sm:p-8">
             {showDraftBadge && testimonial.status === "draft" && (
               <span class="bg-amber-100 text-amber-800 dark:bg-amber-400/10 dark:text-amber-300 mb-6 w-fit rounded-full px-3 py-1 text-xs font-semibold">
-                Borrador · pendiente de aprobación
+                {labels.draft}
               </span>
             )}
             {testimonial.logo && testimonial.permissions.logo && (
               <img
                 src={testimonial.logo}
-                alt={`Logotipo de ${testimonial.projectName}`}
+                alt={`${labels.logo} ${testimonial.projectName}`}
                 class="mb-7 h-10 w-auto max-w-48 object-contain object-left dark:brightness-110"
                 loading="lazy"
               />
             )}
             <blockquote class="flex-1 text-pretty text-lg leading-8 text-neutral-700 dark:text-neutral-200">
-              “{testimonial.quote}”
+              “
+              {locale === "es"
+                ? testimonial.quote
+                : testimonial.translations[locale].quote}
+              ”
             </blockquote>
             <figcaption class="mt-8 flex items-center gap-4 border-t border-neutral-300 pt-6 dark:border-neutral-700">
               {testimonial.photo && testimonial.permissions.photo ? (
                 <img
                   src={testimonial.photo}
-                  alt={`Retrato de ${testimonial.author}`}
+                  alt={`${labels.portrait} ${testimonial.author}`}
                   class="size-12 flex-none rounded-full object-cover"
                   width="48"
                   height="48"
@@ -79,12 +106,14 @@ const {
                   {testimonial.author}
                 </strong>
                 <span class="text-sm text-neutral-500 dark:text-neutral-400">
-                  {testimonial.role}
+                  {locale === "es"
+                    ? testimonial.role
+                    : testimonial.translations[locale].role}
                 </span>
                 {showProject && (
                   <a
                     class="mt-1 block text-sm font-semibold text-blue-500 hover:text-blue-400 dark:text-blue-300"
-                    href={`/es/projects/${testimonial.projectSlug}`}
+                    href={`${locale === "en" ? "" : `/${locale}`}/projects/${testimonial.projectSlug}`}
                   >
                     {testimonial.projectName} →
                   </a>

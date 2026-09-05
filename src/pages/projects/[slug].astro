@@ -1,0 +1,13 @@
+---
+import ProjectCaseStudyPage from "@components/pages/ProjectCaseStudyPage.astro";
+import { getLocalizedProjects } from "@data/projectTranslations";
+export function getStaticPaths() {
+  return getLocalizedProjects("en").map((project) => ({
+    params: { slug: project.slug },
+    props: { project },
+  }));
+}
+const { project } = Astro.props;
+---
+
+<ProjectCaseStudyPage locale="en" project={project} />
