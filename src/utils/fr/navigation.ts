@@ -10,7 +10,7 @@ const footerLinks = [
     section: "Écosystème",
     links: [
       { name: "Produits FSA", url: "/fr/products" },
-      { name: "FSA Line One Pro", url: "/products/fsa-line-one-pro" },
+      { name: "FSA Line One Pro", url: "/fr/products/fsa-line-one-pro" },
     ],
   },
   {
